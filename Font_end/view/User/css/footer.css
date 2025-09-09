@@ -1,16 +1,5 @@
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-    html, body {
-    height: 100%;
-    margin: 0;
-    }
-
-    body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    }
-
   footer {
     background: #D2C1B6;
     color: #456882;

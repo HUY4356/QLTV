@@ -1,0 +1,9 @@
+li a {
+  font-weight: 600;
+  font-size: 1.5rem;
+  padding: 5px;
+  cursor: pointer;
+  color: #456882;
+  transition: color 0.25s ease, transform 0.2s ease;
+  text-decoration: none;
+}

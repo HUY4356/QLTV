@@ -1,17 +1,26 @@
 
-  const slides = document.querySelectorAll(".slide");
-  const thumb = document.getElementById("thumb");
-  let index = 0;
+  document.addEventListener("DOMContentLoaded", () => {
+    const swiper = document.querySelector(".home_swiper");
+    const slides = document.querySelectorAll(".home_article");
+    let index = 0;
 
-  function showNextSlide() {
-    slides[index].classList.remove("active");
-    index = (index + 1) % slides.length;
-    slides[index].classList.add("active");
+    function showSlide(i) {
+      swiper.style.transform = `translateX(-${i * 100}%)`;
+    }
 
-    // đổi ảnh bìa theo slide hiện tại
-    const img = slides[index].querySelector("img").src;
-    thumb.src = img;
-  }
+    setInterval(() => {
+      index = (index + 1) % slides.length;
+      showSlide(index);
+    }, 3000); // đổi ảnh mỗi 3 giây
+  });
 
-  setInterval(showNextSlide, 3000);
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".featured_track");
+  track.innerHTML += track.innerHTML; // nhân đôi item để loop
+});
+
+
+
+
+
 

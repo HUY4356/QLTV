@@ -28,6 +28,7 @@ let page = "Home.html"; // mặc định nếu không có tham số
 // Map tham số URL với file HTML tương ứng
 const pageMap = {
   feature: "feature.html",
+  Home: "Home.html",
   category: "category.html",
   Login: "Login.html",
   Account: "Account.html",
@@ -35,19 +36,53 @@ const pageMap = {
   get_help: "help/get_help.html",
   returns: "help/returns.html",
   payment_options: "help/payment_options.html",
-  contact_us: "help/contact_us.html"
+  contact_us: "help/contact_us.html",
+  sign: "sign.html" // thêm route cho sign
+};
+
+// Map tham số URL với CSS tương ứng
+const cssMap = {
+  feature: "css/feature.css",
+  Home: "css/home.css",
+  category: "css/category.css",
+  Login: "css/sign_up login.css",
+  Account: "css/account.css",
+  Admin: "css/admin.css",
+  get_help: "css/help.css",
+  returns: "css/help.css",
+  payment_options: "css/help.css",
+  contact_us: "css/help.css",
+  sign: "css/sign_up login.css"
 };
 
 // Duyệt qua các key trong pageMap để kiểm tra tham số
 for (const key in pageMap) {
   if (params.has(key)) {
     page = pageMap[key];
+
+    // Nếu có CSS tương ứng thì chèn vào
+    if (cssMap[key]) {
+      addCSS(cssMap[key]);
+    }
     break;
   }
 }
 
 // Nhúng nội dung chính vào phần tử có id="main-placeholder"
 includeHTML("main-placeholder", `pages/${page}`);
+
+// Hàm thêm CSS an toàn (tránh xung đột, không thêm trùng)
+function addCSS(href) {
+  // Kiểm tra nếu đã có link này thì bỏ qua
+  if ([...document.styleSheets].some(sheet => sheet.href && sheet.href.includes(href))) {
+    return;
+  }
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = href;
+  document.head.appendChild(link);
+}
+
 
 
 
