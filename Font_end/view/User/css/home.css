@@ -1,0 +1,100 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+}
+body {
+  font-family: "Epunda Slab", serif;
+  margin: 0;
+  padding: 0;
+  background: #fdfdfd;
+}
+
+.cover {
+  width: 70%;
+  height: 90vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  background-color: #D2C1B6;
+  border: solid #eb0707;
+}
+
+.hero {
+  width: 100%;
+  height: 70%;
+  perspective: 1200px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  margin:1rem 2rem;
+  position: relative; /* để đặt thumbnail tuyệt đối */
+  border: solid #eb0707;
+}
+
+.features {
+  position: relative;
+  height: 800px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 6rem;
+  background-color: rgb(41, 143, 143);
+  color: white;
+  transition: background-image 1s ease-in-out;
+}
+
+.features h1 {
+  font-size: 45px;
+  font-weight: 700;
+  max-width: 600px;
+  text-align: center;
+  margin: 1rem 2rem;
+}
+
+.features h2 {
+  font-size: 45px;
+  font-weight: 700;
+  text-align: left;
+  margin: 1rem 4rem;
+}
+
+.features::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transition: background 1s ease-in-out;
+}
+
+
+.favorite {
+  position: relative;
+  height: 800px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 6rem;
+  background-color: rgb(34, 73, 73);
+  color: white;
+  transition: background-image 1s ease-in-out;
+}
+
+.favorite h1 {
+  font-size: 45px;
+  font-weight: 700;
+  max-width: 600px;
+  text-align: center;
+  margin: 1rem 2rem;
+}
+
+.favorite::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transition: background 1s ease-in-out;
+}
