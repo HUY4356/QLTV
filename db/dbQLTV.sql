@@ -3,12 +3,14 @@ GO
 USE ThuVienDB;
 GO
 
+-- 1. Nhóm sách
 CREATE TABLE NhomSach (
   id INT PRIMARY KEY IDENTITY(1,1),
   MaNhom NVARCHAR(6) NOT NULL UNIQUE,
   TenNhom NVARCHAR(50) NOT NULL
 );
 
+-- 2. Danh mục sách (đầu sách)
 CREATE TABLE DanhMucSach (
   id INT PRIMARY KEY IDENTITY(1,1),
   NhomSach_id INT NOT NULL,
@@ -21,11 +23,22 @@ CREATE TABLE DanhMucSach (
   FOREIGN KEY (NhomSach_id) REFERENCES NhomSach(id)
 );
 
+-- 3. Bản thể sách (mỗi quyển riêng biệt)
+CREATE TABLE BanTheSach (
+  id INT PRIMARY KEY IDENTITY(1,1),
+  DanhMucSach_id INT NOT NULL,
+  MaVach NVARCHAR(50) NOT NULL UNIQUE,
+  TinhTrang NVARCHAR(20) NOT NULL CHECK (TinhTrang IN ('available','borrowed','lost','damaged')),
+  FOREIGN KEY (DanhMucSach_id) REFERENCES DanhMucSach(id)
+);
+
+-- 4. Vai trò người dùng
 CREATE TABLE Role (
   id INT PRIMARY KEY IDENTITY(1,1),
   name NVARCHAR(50) NOT NULL UNIQUE
 );
 
+-- 5. Người dùng
 CREATE TABLE [User] (
   id INT PRIMARY KEY IDENTITY(1,1),
   fullname NVARCHAR(100) NOT NULL,
@@ -37,6 +50,7 @@ CREATE TABLE [User] (
   FOREIGN KEY (role_id) REFERENCES Role(id)
 );
 
+-- 6. Thẻ thư viện
 CREATE TABLE The (
   id INT PRIMARY KEY IDENTITY(1,1),
   The_code NVARCHAR(20) NOT NULL UNIQUE,
@@ -46,19 +60,22 @@ CREATE TABLE The (
   FOREIGN KEY (user_id) REFERENCES [User](id)
 );
 
+-- 7. Mượn trả sách
 CREATE TABLE MuonTra (
   id INT PRIMARY KEY IDENTITY(1,1),
   the_id INT NOT NULL,
-  DanhMucSach_id INT NOT NULL,
+  BanTheSach_id INT NOT NULL,
   NgayMuon DATETIME NOT NULL DEFAULT GETDATE(),
   DueDate DATETIME NOT NULL,
   NgayTra DATETIME NULL,
+  SoLanGiaHan INT NOT NULL DEFAULT 0 CHECK (SoLanGiaHan >= 0),
   TienPhat DECIMAL(10,2) DEFAULT 0 CHECK (TienPhat >= 0),
   TrangThai NVARCHAR(20) NOT NULL CHECK (TrangThai IN ('open','returned','lost')),
   FOREIGN KEY (the_id) REFERENCES The(id),
-  FOREIGN KEY (DanhMucSach_id) REFERENCES DanhMucSach(id)
+  FOREIGN KEY (BanTheSach_id) REFERENCES BanTheSach(id)
 );
 
+-- 8. Phòng học
 CREATE TABLE Phong (
   id INT PRIMARY KEY IDENTITY(1,1),
   Ten_Phong NVARCHAR(50) NOT NULL,
@@ -66,7 +83,7 @@ CREATE TABLE Phong (
   SucChua INT NOT NULL CHECK (SucChua > 0)
 );
 
-
+-- 9. Đặt phòng học
 CREATE TABLE DatPhong (
   id INT PRIMARY KEY IDENTITY(1,1),
   user_id INT NOT NULL,
@@ -79,6 +96,7 @@ CREATE TABLE DatPhong (
   FOREIGN KEY (user_id) REFERENCES [User](id)
 );
 
+-- 10. Đề xuất bổ sung tài liệu
 CREATE TABLE BoSungTaiLieu (
   id INT PRIMARY KEY IDENTITY(1,1),
   DeXuat NVARCHAR(255) NOT NULL,
@@ -89,6 +107,7 @@ CREATE TABLE BoSungTaiLieu (
   FOREIGN KEY (DanhMucSach_id) REFERENCES DanhMucSach(id)
 );
 
+-- 11. Báo cáo vòng quay sách
 CREATE TABLE BaoCaoVongQuaySach (
   id INT PRIMARY KEY IDENTITY(1,1),
   DanhMucSach_id INT NOT NULL,
@@ -97,6 +116,7 @@ CREATE TABLE BaoCaoVongQuaySach (
   FOREIGN KEY (DanhMucSach_id) REFERENCES DanhMucSach(id)
 );
 
+-- 12. Hạn mức mượn theo vai trò
 CREATE TABLE HanMuc (
   id INT PRIMARY KEY IDENTITY(1,1),
   role_id INT NOT NULL,
@@ -107,6 +127,7 @@ CREATE TABLE HanMuc (
   FOREIGN KEY (role_id) REFERENCES Role(id)
 );
 
+-- 13. Đặt trước sách
 CREATE TABLE DatTruocSach (
   id INT PRIMARY KEY IDENTITY(1,1),
   DanhMucSach_id INT NOT NULL,
@@ -117,6 +138,7 @@ CREATE TABLE DatTruocSach (
   FOREIGN KEY (user_id) REFERENCES [User](id)
 );
 
+-- 14. Vi phạm của người dùng
 CREATE TABLE ViPhamUser (
   id INT PRIMARY KEY IDENTITY(1,1),
   user_id INT NOT NULL,
@@ -126,12 +148,14 @@ CREATE TABLE ViPhamUser (
   FOREIGN KEY (user_id) REFERENCES [User](id)
 );
 
+-- 15. Tham số hệ thống
 CREATE TABLE ThamSoHeThong (
   id INT PRIMARY KEY IDENTITY(1,1),
   Ten NVARCHAR(100) NOT NULL UNIQUE,
   GiaTri NVARCHAR(100) NOT NULL
 );
 
+-- 16. Indexes hỗ trợ tìm kiếm & hiệu năng
 CREATE INDEX IX_Sach_TenSach ON DanhMucSach(TenSach);
 CREATE INDEX IX_Sach_TacGia ON DanhMucSach(TacGia);
 CREATE INDEX IX_MuonTra_The_Open ON MuonTra(the_id) WHERE TrangThai = 'open';
