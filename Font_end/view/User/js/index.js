@@ -37,7 +37,6 @@ const pageMap = {
   returns: "help/returns.html",
   payment_options: "help/payment_options.html",
   contact_us: "help/contact_us.html",
-  sign: "sign.html" // thêm route cho sign
 };
 
 // Map tham số URL với CSS tương ứng
@@ -45,14 +44,27 @@ const cssMap = {
   rent: "css/rent.css",
   Home: "css/home.css",
   category: "css/category.css",
-  Login: "css/sign_up login.css",
+  Login: "css/Login.css",
   Account: "css/account.css",
   Admin: "css/admin.css",
   get_help: "css/help.css",
   returns: "css/help.css",
   payment_options: "css/help.css",
   contact_us: "css/help.css",
-  sign: "css/sign_up login.css"
+};
+
+// Map tham số URL với JS tương ứng
+const jsMap = {
+  rent: "js/rent.js",
+  Home: "js/home.js",
+  category: "js/category.js",
+  Login: "js/Login.js",
+  Account: "js/account.js",
+  Admin: "js/admin.js",
+  get_help: "js/help.js",
+  returns: "js/help.js",
+  payment_options: "js/help.js",
+  contact_us: "js/help.js",
 };
 
 // Duyệt qua các key trong pageMap để kiểm tra tham số
@@ -64,6 +76,11 @@ for (const key in pageMap) {
     if (cssMap[key]) {
       addCSS(cssMap[key]);
     }
+
+    // Nếu có JS tương ứng thì chèn vào
+    if (jsMap[key]) {
+      addJS(jsMap[key]);
+    }
     break;
   }
 }
@@ -73,7 +90,6 @@ includeHTML("main-placeholder", `pages/${page}`);
 
 // Hàm thêm CSS an toàn (tránh xung đột, không thêm trùng)
 function addCSS(href) {
-  // Kiểm tra nếu đã có link này thì bỏ qua
   if ([...document.styleSheets].some(sheet => sheet.href && sheet.href.includes(href))) {
     return;
   }
@@ -81,6 +97,17 @@ function addCSS(href) {
   link.rel = "stylesheet";
   link.href = href;
   document.head.appendChild(link);
+}
+
+// Hàm thêm JS an toàn (tránh trùng lặp)
+function addJS(src) {
+  if ([...document.scripts].some(script => script.src && script.src.includes(src))) {
+    return;
+  }
+  const script = document.createElement("script");
+  script.src = src;
+  script.defer = true; // tránh block rendering
+  document.body.appendChild(script);
 }
 
 
