@@ -27,7 +27,7 @@ let page = "Home.html"; // mặc định nếu không có tham số
 
 // Map tham số URL với file HTML tương ứng
 const pageMap = {
-  feature: "feature.html",
+  rent: "rent.html",
   Home: "Home.html",
   category: "category.html",
   Login: "Login.html",
@@ -42,7 +42,7 @@ const pageMap = {
 
 // Map tham số URL với CSS tương ứng
 const cssMap = {
-  feature: "css/feature.css",
+  rent: "css/rent.css",
   Home: "css/home.css",
   category: "css/category.css",
   Login: "css/sign_up login.css",

@@ -13,7 +13,7 @@ body {
 
 /* ===== MAIN BOX ===== */
 .main_box {
-  width: 70%;
+  width: 80%;
   margin:auto;
   overflow: hidden;
   background-color: #caab93;
@@ -21,7 +21,7 @@ body {
 
 /* ===== HOME (SLOGAN) ===== */
 .home_wrapper {
-  width: 90%; /* nhỏ hơn featured */
+  width: 100%; /* nhỏ hơn featured */
   margin: 0 auto 3rem auto;
   background: url("../img/Tàng\ thư\ các.jpg") center/cover no-repeat;
   border-radius: 0 0 20px 20px;
@@ -116,7 +116,7 @@ body {
 /* ===== FEATURED ===== */
 .featured_section {
   position: relative;          /* để tiêu đề bám theo box */
-  width: 100%;
+  width: 90%;
   border: solid #fa2c36;
   border-radius: 15px;
   margin: 2rem auto;
@@ -150,7 +150,7 @@ body {
   overflow: hidden;
   text-align: center;
   cursor: pointer;
-  border-radius: 12px;
+  border-radius: 5px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -159,7 +159,7 @@ body {
   aspect-ratio: 3/4;       /* Giữ đúng tỉ lệ bìa sách */
   object-fit: cover;       /* Ảnh luôn lấp đầy khung, không méo */
   display: block;
-  border-radius: 12px;
+  border-radius: 5px;
   background: #fff;        /* nền phụ cho khoảng trống (nếu có) */
 }
 

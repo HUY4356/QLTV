@@ -22,7 +22,7 @@
 .header-nav {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* chia left và right menu */
+  justify-content: space-between;
   height: 100%;
 }
 
@@ -56,6 +56,8 @@
 /* Search bar trong header */
 .header-search {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .header-search input[type="text"] {
@@ -66,7 +68,6 @@
   font-size: 0.9rem;
   outline: none;
   width: 155px;
-  box-sizing: border-box;
   transition: width 0.3s ease;
 }
 
@@ -88,4 +89,36 @@
   color: #1B3C53;
 }
 
+/* ===== Responsive Mobile ===== */
+@media (max-width: 768px) {
+  /* Category & Rent thành icon */
+  .header-menu li a[title="Category"]::before {
+    content: "\f0c9"; /* icon book (Font Awesome) */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: #1B3C53;
+  }
+  .header-menu li a[title="Rent"]::before {
+    content: "\f7b6"; /* icon cart */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: #1B3C53;
+  }
+  .header-menu li a[title="Category"],
+  .header-menu li a[title="Rent"] {
+    font-size: 0; /* ẩn chữ */
+    padding: 0.5rem;
+  }
 
+  /* Search mặc định chỉ hiện icon */
+  .header-search input[type="text"] {
+    display: none;
+  }
+  .header-search.active input[type="text"] {
+    display: inline-block;
+    width: 150px;
+    padding: 7px 12px;
+  }
+}
