@@ -16,15 +16,14 @@ body {
   width: 80%;
   margin:auto;
   overflow: hidden;
-  background-color: #caab93;
 }
 
 /* ===== HOME (SLOGAN) ===== */
 .home_wrapper {
-  width: 100%; /* nhỏ hơn featured */
+  width: 100%;
   margin: 0 auto 3rem auto;
   background: url("../img/Tàng\ thư\ các.jpg") center/cover no-repeat;
-  border-radius: 0 0 20px 20px;
+  border-radius: 0 0 10px 10px;
   overflow: hidden;
   padding: 2rem;
 }
@@ -34,13 +33,18 @@ body {
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 2rem;
+  background: rgba(51, 207, 255, 0.15);
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 210, 210, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
 }
 
 .home_data {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  background: rgba(0,0,0,0.6);
   padding: 2rem;
   border-radius: 12px;
 }
@@ -76,9 +80,9 @@ body {
 /* Slider ảnh */
 .home_img {
   position: relative;
-  max-width: 424px;
+  max-width: 300px;
   aspect-ratio: 3/4;
-  margin: 0 auto;
+  margin: 2rem auto;
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.4);
@@ -114,11 +118,11 @@ body {
 }
 
 /* ===== FEATURED ===== */
+
 .featured_section {
   position: relative;          /* để tiêu đề bám theo box */
-  width: 90%;
-  border: solid #fa2c36;
-  border-radius: 15px;
+  width: 100%;
+  border-radius: 5px;
   margin: 2rem auto;
   background-color: #D2C1B6;
   padding: 3rem 2rem 2rem 2rem; /* chừa khoảng trống trên cho title */
@@ -126,6 +130,7 @@ body {
 
 .featured_title {
   position: absolute;
+  min-width: 180px;
   top: -20px;                  /* cho nó nổi lên trên */
   left: 0px;                  /* dịch sang trái */
   padding: 10px 25px;
@@ -151,6 +156,7 @@ body {
   text-align: center;
   cursor: pointer;
   border-radius: 5px;
+  margin: 5px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -173,7 +179,7 @@ body {
 
 .featured_card:hover {
   transform: scale(1.05);
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.3);
+  box-shadow: 10px 10px 5px rgba(0,0,0,0.3);
   z-index: 5;
 }
 

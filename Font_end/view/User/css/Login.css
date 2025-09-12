@@ -1,29 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
+:root {
+  --primary-color: #1B3C53;
+  --secondary-color: #456882;
+  --background-color: #F9F3EF;
+  --text-color: #D2C1B6;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
+
 }
 
 body {
-  background-color: #F9F3EF;
+  min-height: 100vh;
+
+  justify-content: center;
+  align-items: center;
+  background: url("../img/Tàng\ thư\ các.jpg") no-repeat center center/cover;
   color: #1B3C53;
 }
 
 main {
-  min-height: 400px;
-  margin: 4rem 0;
+  min-height: calc(100vh - 8rem); /* trừ đi khoảng cách trên dưới */
+  margin: 4rem 0;                /* cách header & footer 4rem */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* ===== CONTAINER ===== */
+
+/* ===== MAIN CONTAINER ===== */
 .container {
-  background-color: #D2C1B6;
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
   width: 768px;
@@ -31,10 +42,17 @@ main {
   min-height: 480px;
   border-radius: 15px;
   transition: all 0.6s ease-in-out;
+
+  /* Hiệu ứng kính mờ */
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(25px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 210, 210, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
+/* ===== FORM ===== */
 .container form {
-  background-color: #D2C1B6;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,41 +60,45 @@ main {
   padding: 0 40px;
   height: 100%;
   text-align: center;
-
 }
 
 .container h1 {
   margin-bottom: 10px;
+  font-size: 2rem;
+  color: #fff;
 }
 
 .container p {
   font-size: 14px;
   line-height: 20px;
   margin: 15px 0;
+  color: #e6e6e6;
 }
 
 .container span {
   font-size: 12px;
+  color: #ddd;
 }
 
 .container a {
-  color: #1B3C53;
+  color: #fff;
   font-size: 13px;
   text-decoration: none;
   margin: 15px 0 10px;
+  padding: 5px;
   transition: 0.3s;
 }
 .container a:hover {
-  color: #456882;
+  color: #ffdf91;
 }
 
 /* ===== BUTTON ===== */
 .container button {
-  background-color: #456882;
-  color: #F9F3EF;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
   font-size: 12px;
   padding: 10px 45px;
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 8px;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -86,21 +108,21 @@ main {
   transition: 0.3s;
 }
 .container button:hover {
-  background-color: #2276b6;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #1B3C53;
 }
 .container button.hidden {
   background: transparent;
   border: 2px solid #fff;
   color: #fff;
 }
-
 .container button.hidden:hover {
-  background-color: #0c5386
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* ===== INPUT ===== */
 .container input {
-  background-color: #F9F3EF;
+  background-color: rgba(255, 255, 255, 0.2);
   border: none;
   margin: 8px;
   padding: 12px 15px;
@@ -108,7 +130,10 @@ main {
   border-radius: 8px;
   width: 120%;
   outline: none;
-  color: #1B3C53;
+  color: #fff;
+}
+.container input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* ===== FORM CONTAINER ===== */
@@ -123,7 +148,7 @@ main {
   align-items: center;
 }
 
-/* ===== SIGN-IN FORM ===== */
+/* ===== SIGN-IN ===== */
 .sign-in {
   left: 0;
   z-index: 2;
@@ -134,7 +159,7 @@ main {
   z-index: 1;
 }
 
-/* ===== SIGN-UP FORM ===== */
+/* ===== SIGN-UP ===== */
 .sign-up {
   left: 0;
   opacity: 0;
@@ -156,41 +181,17 @@ main {
   height: 100%;
   overflow: hidden;
   transition: all 0.6s ease-in-out;
-  z-index: 100;
-}
-
-/* Optional: Add background and animation for toggle panels */
-.toggle-panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0 30px;
-  text-align: center;
-  transition: all 0.6s ease-in-out;
-}
-
-
-
-/* ===== TOGGLE ===== */
-.toggle-container {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 50%;
-  height: 100%;
-  overflow: hidden;
-  transition: all 0.6s ease-in-out;
   z-index: 1000;
-  border-radius: 0 15px 15px 0;
+  border-radius: 25px 15px 15px 25px;
 }
 .container.active .toggle-container {
   transform: translateX(-100%);
-  border-radius: 15px 0 0 15px;
+  border-radius: 15px 25px 25px 15px;
 }
 
+/* ===== TOGGLE ===== */
 .toggle {
-  background: linear-gradient(to right, #1f3646, #47afff);
+  background: linear-gradient(to right, rgba(31, 54, 70, 0.85), rgba(71, 175, 255, 0.85));
   color: #fff;
   position: relative;
   left: -100%;
@@ -232,3 +233,17 @@ main {
   transform: translateX(200%);
 }
 
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+    min-height: 600px;
+  }
+  .form-container {
+    width: 100%;
+    position: relative;
+  }
+  .toggle-container {
+    display: none;
+  }
+}
