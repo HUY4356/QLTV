@@ -239,11 +239,4 @@ main {
     width: 95%;
     min-height: 600px;
   }
-  .form-container {
-    width: 100%;
-    position: relative;
-  }
-  .toggle-container {
-    display: none;
-  }
 }

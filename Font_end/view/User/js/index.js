@@ -23,7 +23,7 @@ includeHTML("footer-placeholder", "pages/Footer.html");
 
 // Xác định nội dung chính cần nhúng dựa trên tham số URL
 const params = new URLSearchParams(window.location.search);
-let page = "Home.html"; // mặc định nếu không có tham số
+let page = "Home.html"; // mặc định
 
 // Map tham số URL với file HTML tương ứng
 const pageMap = {
@@ -67,28 +67,29 @@ const jsMap = {
   contact_us: "js/help.js",
 };
 
-// Duyệt qua các key trong pageMap để kiểm tra tham số
+// Kiểm tra tham số URL
+let matched = false;
 for (const key in pageMap) {
   if (params.has(key)) {
+    matched = true;
     page = pageMap[key];
 
-    // Nếu có CSS tương ứng thì chèn vào
-    if (cssMap[key]) {
-      addCSS(cssMap[key]);
-    }
-
-    // Nếu có JS tương ứng thì chèn vào
-    if (jsMap[key]) {
-      addJS(jsMap[key]);
-    }
+    if (cssMap[key]) addCSS(cssMap[key]);
+    if (jsMap[key]) addJS(jsMap[key]);
     break;
   }
 }
 
-// Nhúng nội dung chính vào phần tử có id="main-placeholder"
+// Nếu không có tham số nào -> load Home mặc định + CSS/JS
+if (!matched) {
+  addCSS(cssMap.Home);
+  addJS(jsMap.Home);
+}
+
+// Nhúng nội dung chính
 includeHTML("main-placeholder", `pages/${page}`);
 
-// Hàm thêm CSS an toàn (tránh xung đột, không thêm trùng)
+// Hàm thêm CSS an toàn
 function addCSS(href) {
   if ([...document.styleSheets].some(sheet => sheet.href && sheet.href.includes(href))) {
     return;
@@ -99,19 +100,13 @@ function addCSS(href) {
   document.head.appendChild(link);
 }
 
-// Hàm thêm JS an toàn (tránh trùng lặp)
+// Hàm thêm JS an toàn
 function addJS(src) {
   if ([...document.scripts].some(script => script.src && script.src.includes(src))) {
     return;
   }
   const script = document.createElement("script");
   script.src = src;
-  script.defer = true; // tránh block rendering
+  script.defer = true;
   document.body.appendChild(script);
 }
-
-
-
-
-
-
