@@ -1,0 +1,72 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Epunda Slab", serif;
+  background: #F9F3EF;
+  color: #1B3C53;
+}
+
+.main_box {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    height: 100vh;
+
+    border: solid rgb(0, 255, 55);
+}
+
+.slider {
+    width: 100%;
+    height: 60%;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    border: solid #ff0;
+}
+
+.slider .list {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+}
+
+.slider .item {
+    min-width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.slider .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.button .prev, .button .next {
+    background: rgba(0,0,0,0.3);
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 2;
+}
