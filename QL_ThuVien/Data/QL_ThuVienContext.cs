@@ -15,5 +15,9 @@ namespace QL_ThuVien.Data
         }
 
         public DbSet<QL_ThuVien.Models.User> User { get; set; } = default!;
+        public DbSet<QL_ThuVien.Models.NhomSach> NhomSach { get; set; } = default!;
+        public DbSet<QL_ThuVien.Models.DanhMucSach> DanhMucSach { get; set; } = default!;
+        public DbSet<QL_ThuVien.Models.BanTheSach> BanTheSach { get; set; } = default!;
+        public DbSet<QL_ThuVien.Models.DatTruocSach> DatTruocSach { get; set; } = default!;
     }
 }

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QL_ThuVien")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+92c76769c0f8e71b3c211ea35b4edf8c1eeaf913")]
 [assembly: System.Reflection.AssemblyProductAttribute("QL_ThuVien")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QL_ThuVien")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

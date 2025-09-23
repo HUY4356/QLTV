@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-/* ===== HEADER ===== */
+
 .header[b-t6vr02dq5r] {
     background-color: #D2C1B6;
     padding: 10px 20px;
@@ -17,15 +17,22 @@
     font-family: "Epunda Slab", serif;
     font-size: 25px;
     font-weight: 500;
+    position: relative; /* cần thiết nếu dùng position tuyệt đối bên trong */
+    display: flex;
+    justify-content: center; /* canh giữa nội dung bên trong */
+    align-items: center;
 }
 
 /* Nav trong header */
 .header-nav[b-t6vr02dq5r] {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* chia left và right menu */
+    justify-content: space-between;
     height: 100%;
+    width: 80%;
+    margin: 0 auto; /* canh giữa theo chiều ngang */
 }
+
 
 /* Menu chung */
 .header-menu[b-t6vr02dq5r] {
@@ -54,9 +61,11 @@
             outline: none;
         }
 
-/* Search bar trong header */
+/* ===== Search bar ===== */
 .header-search[b-t6vr02dq5r] {
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
     .header-search input[type="text"][b-t6vr02dq5r] {
@@ -67,8 +76,7 @@
         font-size: 0.9rem;
         outline: none;
         width: 155px;
-        box-sizing: border-box;
-        transition: width 0.3s ease;
+        transition: width 0.3s ease, background-color 0.3s ease;
     }
 
         .header-search input[type="text"]:focus[b-t6vr02dq5r] {
@@ -88,3 +96,136 @@
         font-size: 1.1rem;
         color: #1B3C53;
     }
+
+/* ===== Category Mega Menu ===== */
+.category-btn[b-t6vr02dq5r] {
+    position: relative;
+}
+
+/* Ẩn mặc định */
+.category-menu[b-t6vr02dq5r] {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -120%;
+    width: 80vw;
+    background-color: #D2C1B6;
+    box-shadow: 0 10px 5px rgba(0,0,0,0.3);
+    border-radius: 0 0 6px 6px;
+    z-index: 1000;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+/* Hiện khi hover */
+.category-btn:hover .category-menu[b-t6vr02dq5r] {
+    display: flex;
+}
+
+/* ==== Cột phải ==== */
+.category-right[b-t6vr02dq5r] {
+    display: grid;
+    grid-template-columns: repeat(4, auto); /* 6 mục mỗi hàng */
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.subcategory[b-t6vr02dq5r] {
+    display: block;
+    width: 18vw;
+}
+
+    .subcategory.active[b-t6vr02dq5r] {
+        display: block;
+    }
+
+    .subcategory h3[b-t6vr02dq5r] {
+        font-size: 1.3rem;
+        height: 60px;
+        margin-left: 0px;
+        color: #456882;
+    }
+
+        .subcategory h3:hover[b-t6vr02dq5r] {
+            color: #1B3C53;
+        }
+
+    .subcategory .columns[b-t6vr02dq5r] {
+        display: grid;
+    }
+
+        .subcategory .columns ul[b-t6vr02dq5r] {
+            list-style: none;
+        }
+
+
+            .subcategory .columns ul li[b-t6vr02dq5r] {
+                display: flex;
+                margin: 5px 0;
+                font-size: 20px;
+                font-weight: 300;
+                cursor: pointer;
+                transition: color 0.2s;
+            }
+
+                .subcategory .columns ul li:hover[b-t6vr02dq5r] {
+                    color: #2276b6;
+                }
+
+                .subcategory .columns ul li a[b-t6vr02dq5r] {
+                    text-decoration: none;
+                    color: #1976d2;
+                    font-size: 0.85rem;
+                }
+
+                    .subcategory .columns ul li a:hover[b-t6vr02dq5r] {
+                        text-decoration: underline;
+                    }
+
+/* ===== Responsive Mobile ===== */
+@media (max-width: 768px) {
+    .header-nav[b-t6vr02dq5r] {
+        width: 100%;
+    }
+
+    /* Icon thay cho chữ */
+    .header-menu li a[title="Category"][b-t6vr02dq5r]::before {
+        content: "\f0c9"; /* icon bars */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 1.4rem;
+        color: #1B3C53;
+    }
+
+    .header-menu li a[title="Rent"][b-t6vr02dq5r]::before {
+        content: "\f7b6"; /* icon cart */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 1.4rem;
+        color: #1B3C53;
+    }
+
+    .header-menu li a[title="Category"][b-t6vr02dq5r],
+    .header-menu li a[title="Rent"][b-t6vr02dq5r] {
+        font-size: 0; /* ẩn chữ */
+        padding: 0.5rem;
+    }
+
+    /* Search chỉ hiện icon */
+    .header-search input[type="text"][b-t6vr02dq5r] {
+        display: none;
+    }
+
+    .header-search.active input[type="text"][b-t6vr02dq5r] {
+        display: inline-block;
+        width: 150px;
+        padding: 7px 12px;
+    }
+
+    .category-menu[b-t6vr02dq5r] {
+        top: 100%;
+        left: -325%;
+        width: 100vw;
+    }
+}
