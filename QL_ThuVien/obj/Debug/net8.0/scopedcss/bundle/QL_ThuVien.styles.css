@@ -1,0 +1,90 @@
+/* _content/QL_ThuVien/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* Reset cơ bản */
+*[b-t6vr02dq5r] {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== HEADER ===== */
+.header[b-t6vr02dq5r] {
+    background-color: #D2C1B6;
+    padding: 10px 20px;
+    height: 5rem;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 10px 5px rgba(0,0,0,0.3);
+    font-family: "Epunda Slab", serif;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+/* Nav trong header */
+.header-nav[b-t6vr02dq5r] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* chia left và right menu */
+    height: 100%;
+}
+
+/* Menu chung */
+.header-menu[b-t6vr02dq5r] {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+    margin: 0;
+    align-items: center;
+    background-color: #D2C1B6;
+}
+
+    .header-menu li a[b-t6vr02dq5r] {
+        font-weight: 600;
+        font-size: 1.5rem;
+        padding: 5px;
+        cursor: pointer;
+        color: #456882;
+        transition: color 0.25s ease, transform 0.2s ease;
+        text-decoration: none;
+    }
+
+        .header-menu li a:hover[b-t6vr02dq5r],
+        .header-menu li a:focus[b-t6vr02dq5r] {
+            color: #1B3C53;
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+/* Search bar trong header */
+.header-search[b-t6vr02dq5r] {
+    position: relative;
+}
+
+    .header-search input[type="text"][b-t6vr02dq5r] {
+        border: 1px solid #1B3C53;
+        border-radius: 20px;
+        padding: 7px 35px 7px 15px;
+        background-color: #D2C1B6;
+        font-size: 0.9rem;
+        outline: none;
+        width: 155px;
+        box-sizing: border-box;
+        transition: width 0.3s ease;
+    }
+
+        .header-search input[type="text"]:focus[b-t6vr02dq5r] {
+            width: 270px;
+            background-color: #1B3C53;
+            color: #fff;
+        }
+
+    .header-search button[b-t6vr02dq5r] {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 1.1rem;
+        color: #1B3C53;
+    }

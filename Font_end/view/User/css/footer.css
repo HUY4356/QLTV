@@ -1,0 +1,92 @@
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+  footer {
+    background: #D2C1B6;
+    color: #456882;
+    padding: 40px 20px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-top: auto; /* đẩy footer xuống dưới */
+  }
+
+  footer a {
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.25s ease;
+    color:#1B3C53
+  }
+  footer a:hover {
+    color:#1B3C53;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+
+  .footer-column {
+    flex: 1 1 220px;
+    min-width: 220px;
+  }
+  .footer-column h3 {
+    font-weight: 700;
+    color:#1B3C53;
+    margin-bottom: 20px;
+  }
+  .footer-about p {
+    color: #456882;
+  }
+  .footer-nav ul {
+    display: block;
+    list-style: none;
+  }
+  .footer-nav ul li {
+  text-indent: -10px;
+  padding-left: 10px;
+  }
+  .footer-nav ul li a {
+    font-weight: 500;
+  }
+
+  .footer-tag {
+    color: #456882;
+  }
+
+  /* Newsletter form */
+  .footer-newsletter p {
+    margin-bottom: 10px;
+    color:#1B3C53;
+  }
+  .newsletter-form {
+    display: flex;
+    max-width: 320px;
+  }
+  .newsletter-form input[type="email"] {
+    flex-grow: 1;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 3px 0 0 3px;
+    font-size: 0.9rem;
+    outline: none;
+  }
+  .newsletter-form button {
+    background: #456882;
+    border: none;
+    padding: 8px 16px;
+    color:#D2C1B6;
+    font-weight: 600;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .newsletter-form button:hover {
+    background: #1B3C53;
+  }
