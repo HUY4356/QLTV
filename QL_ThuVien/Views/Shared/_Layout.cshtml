@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - QL_ThuVien</title>
 
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    @* <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
     <link rel="stylesheet" href="~/QL_ThuVien.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="../css/header.css" />
+    @* <link rel="stylesheet" href="../css/header.css" /> *@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -145,11 +145,21 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </form>
-                <li><a href="index.html?Login" title="login"><i class="fa-solid fa-user"></i></a></li>
+
+                @* @await Html.PartialAsync("_LoginPartial") *@
+                <!-- Register link (Identity) -->
+                <li>
+                    <a asp-area="Identity" asp-page="/Account/Register" title="Register" class="nav-link">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                </li>
+               @* <li><a asp-controller="Users" asp-action="Index" title="Index"><i class="fa-solid fa-user"></i></a></li> *@
+
+                 <li><a href="index.html?Login" title="login"><i class="fa-solid fa-user"></i></a></li>
 
                 <!-- ba duong dan chuyen doi icon voi nhau dua theo trang thai account-->
 
-                <li><a href="index.html?Account" title="account"><i class="fa-regular fa-user"></i></a></li>
+                @* <li><a href="index.html?Account" title="account"><i class="fa-regular fa-user"></i></a></li> *@
                 <!--<li><a href="index.html?Admin" title="admin"><i class="fa-regular fa-user"></i></a></li>-->
             </ul>
         </nav>
@@ -167,7 +177,7 @@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @* <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

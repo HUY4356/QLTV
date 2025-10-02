@@ -1,0 +1,250 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #1B3C53;
+    --secondary-color: #456882;
+    --background-color: #F9F3EF;
+    --text-color: #D2C1B6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    min-height: 60vh;
+    justify-content: center;
+    align-items: center;
+    background: url("../img/Tàng\ thư\ các.jpg") no-repeat center center/cover;
+    color: #1B3C53;
+}
+
+main {
+    min-height: calc(100vh - 4rem); /* trừ đi khoảng cách trên dưới */ /* cách header & footer 4rem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+    position: relative;
+    overflow: hidden;
+    width: 850px;
+    max-width: 100%;
+    height: 550px;
+    min-height: 480px;
+    border-radius: 15px;
+    transition: all 0.6s ease-in-out;
+    /* Hiệu ứng kính mờ */
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid rgba(255, 210, 210, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+    /* ===== FORM ===== */
+    .container form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 40px;
+        height: 100%;
+        text-align: center;
+    }
+
+    .container h1 {
+        margin-bottom: 10px;
+        font-size: 2rem;
+        color: #fff;
+    }
+
+    .container p {
+        font-size: 14px;
+        line-height: 20px;
+        margin: 15px 0;
+        color: #e6e6e6;
+    }
+
+    .container span {
+        font-size: 12px;
+        color: #ddd;
+    }
+
+    .container a {
+        color: #fff;
+        font-size: 13px;
+        text-decoration: none;
+        margin: 15px 0 10px;
+        padding: 5px;
+        transition: 0.3s;
+    }
+
+        .container a:hover {
+            color: #ffdf91;
+        }
+
+    /* ===== BUTTON ===== */
+    .container button {
+        background-color: rgba(255, 255, 255, 0.3);
+        color: #fff;
+        font-size: 12px;
+        padding: 10px 45px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 8px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .container button:hover {
+            background-color: rgba(255, 255, 255, 0.6);
+            color: #1B3C53;
+        }
+
+        .container button.hidden {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+        }
+
+            .container button.hidden:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+    /* ===== INPUT ===== */
+    .container input {
+        background-color: rgba(255, 255, 255, 0.2);
+        border: none;
+        margin: 8px;
+        padding: 12px 15px;
+        font-size: 13px;
+        border-radius: 8px;
+        width: 120%;
+        outline: none;
+        color: #fff;
+    }
+
+        .container input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+/* ===== FORM CONTAINER ===== */
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transition: all 0.6s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== SIGN-IN ===== */
+.sign-in {
+    left: 0;
+    z-index: 2;
+}
+
+.container.active .sign-in {
+    transform: translateX(100%);
+    opacity: 0;
+    z-index: 1;
+}
+
+/* ===== SIGN-UP ===== */
+.sign-up {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container.active .sign-up {
+    left: 50%;
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 5;
+}
+
+/* ===== TOGGLE CONTAINER ===== */
+.toggle-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    z-index: 1000;
+    border-radius: 25px 15px 15px 25px;
+}
+
+.container.active .toggle-container {
+    transform: translateX(-100%);
+    border-radius: 15px 25px 25px 15px;
+}
+
+/* ===== TOGGLE ===== */
+.toggle {
+    background: linear-gradient(to right, rgba(31, 54, 70, 0.85), rgba(71, 175, 255, 0.85));
+    color: #fff;
+    position: relative;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+    display: flex;
+}
+
+.container.active .toggle {
+    transform: translateX(50%);
+}
+
+.toggle-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+    text-align: center;
+    top: 0;
+    transition: transform 0.6s ease-in-out;
+}
+
+.toggle-left {
+    transform: translateX(-200%);
+}
+
+.container.active .toggle-left {
+    transform: translateX(0);
+}
+
+.toggle-right {
+    right: 0;
+}
+
+.container.active .toggle-right {
+    transform: translateX(200%);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        min-height: 600px;
+    }
+}

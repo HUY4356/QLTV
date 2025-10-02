@@ -18,6 +18,12 @@ namespace QL_ThuVien.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult HomeContent()
+        {
+            return PartialView("_HomePartial");
+        }
+
         public IActionResult Home()
         {
             return View();

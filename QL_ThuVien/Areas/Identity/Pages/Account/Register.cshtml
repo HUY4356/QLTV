@@ -1,15 +1,81 @@
 ﻿@page
-@model RegisterModel
+@model QL_ThuVien.Areas.Identity.Pages.Account.RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    // ViewData["Title"] = "Register";
 }
 
 <h1>@ViewData["Title"]</h1>
 
+@* <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="@(Url.Content("~/css/login.css"))" />
+    <title>Register / Login</title>
+</head>
+<body>
+    <main>
+        <div class="container" id="container">
+            <!-- Đăng ký -->
+            <div class="form-container sign-up">
+                <form method="post">
+                    <input type="hidden" name="action" value="register" />
+                    <h1 style="color: #ffffff">Create Account</h1>
+                    <input asp-for="Input.Email" type="email" placeholder="Email" required />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    <input asp-for="Input.Password" type="password" placeholder="Password" required minlength="6" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    <input asp-for="Input.ConfirmPassword" type="password" placeholder="Confirm Password" required minlength="6" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+
+            <!-- Đăng nhập -->
+            <div class="form-container sign-in">
+                <form method="post">
+                    <input type="hidden" name="action" value="login" />
+                    <h1 style="color: #ffffff">Sign In</h1>
+                    <input asp-for="LoginInput.Email" type="email" placeholder="Email" required />
+                    <span asp-validation-for="LoginInput.Email" class="text-danger"></span>
+                    <input asp-for="LoginInput.Password" type="password" placeholder="Password" required minlength="6" />
+                    <span asp-validation-for="LoginInput.Password" class="text-danger"></span>
+                    <label>
+                        <input asp-for="LoginInput.RememberMe" type="checkbox" /> Remember me
+                    </label>
+                    <button type="submit">Sign In</button>
+                </form>
+            </div>
+
+            <!-- Toggle panels -->
+            <div class="toggle-container">
+                <div class="toggle">
+                    <div class="toggle-panel toggle-left">
+                        <h1>Welcome Back!</h1>
+                        <p>Nhập thông tin cá nhân của bạn để sử dụng tất cả các tính năng của trang web</p>
+                        <button class="hidden" id="login">Sign In</button>
+                    </div>
+
+                    <div class="toggle-panel toggle-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Đăng ký thông tin cá nhân của bạn để sử dụng tất cả các tính năng của trang web</p>
+                        <button class="hidden" id="register">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Nhúng JS từ wwwroot -->
+    <script src="@(Url.Content("~/js/login.js"))" defer></script>
+</body>
+</html> *@
+
 <div class="row">
     <div class="col-md-4">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
+            <h2>Tạo tài khoản mới.</h2>
             <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating mb-3">

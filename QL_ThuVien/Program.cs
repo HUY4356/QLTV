@@ -40,7 +40,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=QLThuVien}/{action=Index}/{id?}");
+    pattern: "{controller=QLThuVien}/{action=home}/{id?}");
 app.MapRazorPages();
 
 app.Run();

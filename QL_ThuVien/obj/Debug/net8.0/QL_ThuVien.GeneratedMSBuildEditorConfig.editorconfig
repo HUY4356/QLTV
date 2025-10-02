@@ -260,6 +260,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGF0VHJ1b2NTYWNoZXNcSW5kZXgxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/DuAN_PTTKHT/QL_ThuVien/QL_ThuVien/Views/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/DuAN_PTTKHT/QL_ThuVien/QL_ThuVien/Views/NhomSaches/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhvbVNhY2hlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -286,10 +290,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/DuAN_PTTKHT/QL_ThuVien/QL_ThuVien/Views/QLThuVien/Home.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUUxUaHVWaWVuXEhvbWUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[E:/DuAN_PTTKHT/QL_ThuVien/QL_ThuVien/Views/QLThuVien/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUUxUaHVWaWVuXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/DuAN_PTTKHT/QL_ThuVien/QL_ThuVien/Views/Shared/Error.cshtml]

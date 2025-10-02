@@ -52,6 +52,9 @@ namespace QL_ThuVien.Areas.Identity.Pages.Account
         [BindProperty]
         public InputModel Input { get; set; }
 
+        [BindProperty]
+        public LoginInputModel LoginInput { get; set; }
+
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
@@ -99,6 +102,21 @@ namespace QL_ThuVien.Areas.Identity.Pages.Account
             public string ConfirmPassword { get; set; }
         }
 
+        public class LoginInputModel
+        {
+            [Required]
+            [EmailAddress]
+            [Display(Name = "Email")]
+            public string Email { get; set; }
+
+            [Required]
+            [DataType(DataType.Password)]
+            [Display(Name = "Password")]
+            public string Password { get; set; }
+
+            [Display(Name = "Remember me?")]
+            public bool RememberMe { get; set; }
+        }
 
         public async Task OnGetAsync(string returnUrl = null)
         {
@@ -106,7 +124,7 @@ namespace QL_ThuVien.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(string action, string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
