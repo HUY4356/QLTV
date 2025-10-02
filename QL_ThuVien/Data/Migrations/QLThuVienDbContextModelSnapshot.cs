@@ -10,7 +10,7 @@ using QL_ThuVien.Data;
 
 namespace QL_ThuVien.Data.Migrations
 {
-    [DbContext(typeof(QLThuVienDbContext))]
+    [DbContext(typeof(QL_ThuvienContext))]
     partial class QLThuVienDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

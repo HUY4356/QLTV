@@ -9,7 +9,7 @@ using QL_ThuVien.Data;
 
 namespace QL_ThuVien.Data.Migrations
 {
-    [DbContext(typeof(QLThuVienDbContext))]
+    [DbContext(typeof(QL_ThuvienContext))]
     [Migration("00000000000000_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {

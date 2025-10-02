@@ -11,7 +11,7 @@ using QL_ThuVien.Data;
 
 namespace QL_ThuVien.Data.Migrations
 {
-    [DbContext(typeof(QLThuVienDbContext))]
+    [DbContext(typeof(QL_ThuvienContext))]
     [Migration("20250930173011_TenMigration")]
     partial class TenMigration
     {
