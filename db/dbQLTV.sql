@@ -1,6 +1,6 @@
-﻿CREATE DATABASE ThuVienDB
+﻿CREATE DATABASE LMS
 GO
-USE ThuVienDB
+USE LMS
 GO
 
 -- 1. Nhóm sách
