@@ -1,6 +1,6 @@
-﻿CREATE DATABASE ThuVienDB;
+﻿CREATE DATABASE ThuVienDB
 GO
-USE ThuVienDB;
+USE ThuVienDB
 GO
 
 -- 1. Nhóm sách
