@@ -28,8 +28,8 @@
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  width: 80%;
-  margin: 0 auto; /* canh giữa theo chiều ngang */
+  width: 100%;
+  margin: 0 auto;
 }
 
 

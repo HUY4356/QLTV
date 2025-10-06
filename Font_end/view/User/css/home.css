@@ -13,7 +13,7 @@ body {
 
 /* ===== MAIN BOX ===== */
 .main_box {
-  width: 80%;
+  width: 60%;
   margin:auto;
   overflow: hidden;
 }
@@ -124,20 +124,20 @@ body {
   width: 100%;
   border-radius: 5px;
   margin: 2rem auto;
-  background-color: #D2C1B6;
-  padding: 3rem 2rem 2rem 2rem; /* chừa khoảng trống trên cho title */
+  background-color: #F9F3EF;
+  padding: 3rem 2rem 2rem 2rem; 
 }
 
 .featured_title {
   position: absolute;
   min-width: 180px;
-  top: -20px;                  /* cho nó nổi lên trên */
-  left: 0px;                  /* dịch sang trái */
-  padding: 10px 25px;
+  top: 20px; 
+  left: 0px; 
+  padding: 5px 25px;
   font-size: 2rem;
   font-weight: 700;
-  background: #fa2c36;
-  color: #d6ba3b;
+  background: #D2C1B6;
+  color: #1B3C53;
   border-radius: 25px 0px 25px 0px;
   box-shadow: 0px 5px 5px rgba(0,0,0,0.2);
 
@@ -155,7 +155,7 @@ body {
   overflow: hidden;
   text-align: center;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 2px;
   margin: 5px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -165,7 +165,7 @@ body {
   aspect-ratio: 3/4;       /* Giữ đúng tỉ lệ bìa sách */
   object-fit: cover;       /* Ảnh luôn lấp đầy khung, không méo */
   display: block;
-  border-radius: 5px;
+  border-radius: 2px;
   background: #fff;        /* nền phụ cho khoảng trống (nếu có) */
 }
 
@@ -183,37 +183,129 @@ body {
   z-index: 5;
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-  .main_box {
-    width:100% ;
-  }
-
-  .button {
-    margin: 0 auto;
-  }
-
-  .home_container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .home_img {
-    margin-top: 2rem;
-  }
-  .home_description {
-    display: none; /* ẩn mô tả, chỉ giữ slogan */
-  }
-  .home_title {
-    font-size: 2rem;
-  }
-  .featured_grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-
-  /* Ẩn từ cuốn thứ 5 trở đi */
-  .featured_card:nth-child(n+7) {
-    display: none;
-  }
+/* ===== RANK SECTION ===== */
+.rank-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  background-color: #F9F3EF;
+  border: 2px solid #D2C1B6;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 3rem 0;
 }
+
+/* === LEFT: Chi tiết sách === */
+.rank-left {
+  width: 60%;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  padding: 2rem;
+}
+
+.rank-left.active {
+  background-color: #D2C1B6;
+}
+
+.book-detail {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.rank-img img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.infor p {
+  margin: 0.5rem 0;
+}
+
+#detail-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1B3C53;
+}
+
+#detail-description {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* === RIGHT: Danh sách top 5 === */
+.rank-right {
+  width: 40%;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.rank-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1B3C53;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.rank-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* === Mỗi quyển sách bên phải === */
+.rank-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 2px solid #D2C1B6;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.rank-card:hover {
+  transform: translateX(5px);
+  background-color: #EAE2DD;
+}
+
+.rank-card.active {
+  background-color: #D2C1B6;
+  transform: scale(1.02);
+}
+
+.rank-card img {
+  width: 60px;
+  height: 90px;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.rank-info .rank-name {
+  font-weight: 600;
+  color: #1B3C53;
+}
+
+.rank-info .rank-desc {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.3;
+}
+
+
+
+
+
 
