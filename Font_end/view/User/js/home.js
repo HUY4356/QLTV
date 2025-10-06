@@ -1,95 +1,110 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* ==========================
+  /* =====================================================
+     ⚙️ TIỆN ÍCH CHUNG
+  ===================================================== */
+  const $ = (sel, all = false) =>
+    all ? document.querySelectorAll(sel) : document.querySelector(sel);
+
+  /* =====================================================
      1️⃣ SLIDER ẢNH TRANG HOME
-     ========================== */
-  const swiper = document.querySelector(".home_swiper");
-  const slides = document.querySelectorAll(".home_article");
-  let index = 0;
+  ===================================================== */
+  (() => {
+    const swiper = $(".home_swiper");
+    const slides = $(".home_article", true);
+    if (!swiper || slides.length === 0) return;
 
-  function showSlide(i) {
-    swiper.style.transform = `translateX(-${i * 100}%)`;
-    swiper.style.transition = "transform 1s ease";
-  }
+    let index = 0;
+    const showSlide = (i) => {
+      swiper.style.transform = `translateX(-${i * 100}%)`;
+      swiper.style.transition = "transform 1s ease";
+    };
 
-  if (swiper && slides.length > 0) {
     setInterval(() => {
       index = (index + 1) % slides.length;
       showSlide(index);
-    }, 3000); // đổi ảnh mỗi 3 giây
-  }
+    }, 3000);
+  })();
 
-  /* ==========================
+  /* =====================================================
      2️⃣ FEATURED SECTION LOOP
-     ========================== */
-  const track = document.querySelector(".featured_track");
-  if (track) {
-    track.innerHTML += track.innerHTML; // nhân đôi item để loop
-  }
-
-  /* ==========================
-     3️⃣ RANKING SECTION (TOP 5)
-     ========================== */
-
-  // Mảng lưu trữ thông tin sách
-  const books = [
-    {
-      img: "img/bia_sach_1.jpg",
-      title: "Tên Sách 1",
-      description: "Mô tả sách top 1 — tác phẩm nổi bật nhất tuần."
-    },
-    {
-      img: "img/bia_sach_2.jpg",
-      title: "Tên Sách 2",
-      description: "Sách top 2 — hành trình khám phá tri thức và cảm xúc."
-    },
-    {
-      img: "img/bia_sach_3.jpg",
-      title: "Tên Sách 3",
-      description: "Tác phẩm nhẹ nhàng, sâu lắng về tình người và thời gian."
-    },
-    {
-      img: "img/bia_sach_4.jpg",
-      title: "Tên Sách 4",
-      description: "Sách top 4 — mang hơi thở hiện đại, trẻ trung và sáng tạo."
-    },
-    {
-      img: "img/bia_sach_5.jpg",
-      title: "Tên Sách 5",
-      description: "Sách top 5 — câu chuyện truyền cảm hứng và nhân văn."
+  ===================================================== */
+  (() => {
+    const track = $(".featured_track");
+    if (track && !track.dataset.duplicated) {
+      track.innerHTML += track.innerHTML;
+      track.dataset.duplicated = "true";
     }
-  ];
+  })();
 
-  // DOM phần chi tiết bên trái
-  const bookImg = document.getElementById("book-img");
-  const bookTitle = document.getElementById("book-title");
-  const bookDesc = document.getElementById("book-description");
-  const rankLeft = document.querySelector(".rank-left");
+  /* =====================================================
+     3️⃣ RANKING SECTION (TOP 5)
+  ===================================================== */
+  (() => {
+    const books = [
+      {
+        img: "../img/bia_sach_1.jpg",
+        title: "Tên Sách 1",
+        description: "Mô tả sách top 1 — tác phẩm nổi bật nhất tuần."
+      },
+      {
+        img: "../img/bia_sach_2.jpg",
+        title: "Tên Sách 2",
+        description: "Sách top 2 — hành trình khám phá tri thức và cảm xúc."
+      },
+      {
+        img: "../img/bia_sach_3.jpg",
+        title: "Tên Sách 3",
+        description: "Tác phẩm nhẹ nhàng, sâu lắng về tình người và thời gian."
+      },
+      {
+        img: "../img/bia_sach_4.jpg",
+        title: "Tên Sách 4",
+        description: "Sách top 4 — mang hơi thở hiện đại, trẻ trung và sáng tạo."
+      },
+      {
+        img: "../img/bia_sach_5.jpg",
+        title: "Tên Sách 5",
+        description: "Sách top 5 — câu chuyện truyền cảm hứng và nhân văn."
+      }
+    ];
 
-  // DOM danh sách top 5 bên phải
-  const rankCards = document.querySelectorAll(".rank-card");
+    // DOM phần chi tiết bên trái
+    const bookImg = $("#book-img");
+    const bookTitle = $("#book-title");
+    const bookDesc = $("#book-description");
+    const rankLeft = $(".rank-left");
+    const rankCards = $(".rank-card", true);
 
-  // Hàm hiển thị chi tiết sách
-  function showDetails(index) {
-    if (!books[index]) return;
-    const book = books[index];
-    bookImg.src = book.img;
-    bookTitle.textContent = book.title;
-    bookDesc.textContent = book.description;
+    if (!bookImg || !bookTitle || !bookDesc || rankCards.length === 0) {
+      console.warn("⚠️ Không tìm thấy phần tử rank-section hoặc rank-card.");
+      return;
+    }
 
-    // Hiệu ứng đổi màu bên trái (sáng nhẹ)
-    rankLeft.classList.add("active");
-    setTimeout(() => rankLeft.classList.remove("active"), 200);
+    // Hàm hiển thị chi tiết
+    function showDetails(index) {
+      const book = books[index];
+      if (!book) return;
 
-    // Cập nhật active bên phải
-    rankCards.forEach(c => c.classList.remove("active"));
-    if (rankCards[index]) rankCards[index].classList.add("active");
-  }
+      // Thêm hiệu ứng fade
+      rankLeft.classList.add("fade");
+      setTimeout(() => {
+        bookImg.src = book.img;
+        bookTitle.textContent = book.title;
+        bookDesc.textContent = book.description;
+        rankLeft.classList.remove("fade");
+      }, 200);
 
-  // Gán sự kiện click cho từng sách top 5
-  rankCards.forEach((card, i) => {
-    card.addEventListener("click", () => showDetails(i));
-  });
+      // Cập nhật active bên phải
+      rankCards.forEach((card) => card.classList.remove("active"));
+      if (rankCards[index]) rankCards[index].classList.add("active");
+    }
 
-  // Hiển thị mặc định sách top 1
-  showDetails(0);
+    // Gán sự kiện click cho mỗi sách
+    rankCards.forEach((card, i) => {
+      card.addEventListener("click", () => showDetails(i));
+    });
+
+    // Mặc định hiển thị sách top 1
+    showDetails(0);
+  })();
 });

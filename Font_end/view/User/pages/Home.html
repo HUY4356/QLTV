@@ -73,69 +73,39 @@
 
   <section>
     <div class="rank-section">
-      <!-- BÊN TRÁI: Chi tiết sách đang chọn -->
-      <div class="rank-left" id="book-detail">
+      <div class="rank-left">
         <div class="book-detail">
-          <div class="rank-img">
-            <img src="img/bia_sach_1.jpg" alt="Sách top 1" id="detail-img">
-          </div>
-          <div class="infor">
-            <p id="detail-title">Tên Sách 1</p>
-            <p id="detail-description">Mô tả chi tiết về sách top 1 — đây là quyển nổi bật nhất.</p>
+          <img id="book-img" src="img/bia_sach_1.jpg" alt="Top 1">
+          <div class="overlay">
+            <h2 id="book-title">Tên Sách 1</h2>
+            <p id="book-description">Mô tả sách top 1 — tác phẩm nổi bật nhất tuần.</p>
           </div>
         </div>
       </div>
-
-      <!-- BÊN PHẢI: Danh sách top 5 -->
+    
       <div class="rank-right">
-        <h3 class="rank-title">Top 5 Sách</h3>
+        <h3 class="rank-title">Ngũ bộ kiệt xuất chi thư</h3>
         <div class="rank-list">
-          <div class="rank-card active" data-title="Tên Sách 1" data-desc="Mô tả chi tiết về sách top 1 — đây là quyển nổi bật nhất." data-img="img/bia_sach_1.jpg">
+          <div class="rank-card" data-index="0">
             <img src="img/bia_sach_1.jpg" alt="Top 1">
-            <div class="rank-info">
-              <p class="rank-name">Tên Sách 1</p>
-              <p class="rank-desc">Tác phẩm nổi bật nhất tuần.</p>
-            </div>
           </div>
-
-          <div class="rank-card" data-title="Tên Sách 2" data-desc="Sách top 2 nói về hành trình khám phá tri thức và cảm xúc." data-img="img/bia_sach_2.jpg">
+          <div class="rank-card" data-index="1">
             <img src="img/bia_sach_2.jpg" alt="Top 2">
-            <div class="rank-info">
-              <p class="rank-name">Tên Sách 2</p>
-              <p class="rank-desc">Hành trình khám phá tri thức.</p>
-            </div>
           </div>
-
-          <div class="rank-card" data-title="Tên Sách 3" data-desc="Một tác phẩm nhẹ nhàng, sâu lắng về tình người và thời gian." data-img="img/bia_sach_3.jpg">
+          <div class="rank-card" data-index="2">
             <img src="img/bia_sach_3.jpg" alt="Top 3">
-            <div class="rank-info">
-              <p class="rank-name">Tên Sách 3</p>
-              <p class="rank-desc">Sâu lắng và đầy cảm xúc.</p>
-            </div>
           </div>
-
-          <div class="rank-card" data-title="Tên Sách 4" data-desc="Tác phẩm mang hơi thở hiện đại, trẻ trung và sáng tạo." data-img="img/bia_sach_4.jpg">
+          <div class="rank-card" data-index="3">
             <img src="img/bia_sach_4.jpg" alt="Top 4">
-            <div class="rank-info">
-              <p class="rank-name">Tên Sách 4</p>
-              <p class="rank-desc">Hiện đại và sáng tạo.</p>
-            </div>
           </div>
-
-          <div class="rank-card" data-title="Tên Sách 5" data-desc="Sách top 5 — câu chuyện truyền cảm hứng và nhân văn." data-img="img/bia_sach_5.jpg">
+          <div class="rank-card" data-index="4">
             <img src="img/bia_sach_5.jpg" alt="Top 5">
-            <div class="rank-info">
-              <p class="rank-name">Tên Sách 5</p>
-              <p class="rank-desc">Truyền cảm hứng và nhân văn.</p>
-            </div>
           </div>
         </div>
       </div>
-    </div>
-
+    </div>    
   </section>  
 </main>
-<!-- Link script -->
 <script src="../js/home.js"></script>
 </body>
 </html>
