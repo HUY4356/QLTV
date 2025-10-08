@@ -9,53 +9,81 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Epunda+Slab:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".premium_card");
+
+  cards.forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotateX = ((y - rect.height / 2) / rect.height) * 12;
+      const rotateY = ((x - rect.width / 2) / rect.width) * -12;
+      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05) translateY(-10px)`;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1) translateY(0)";
+    });
+  });
+});
+</script>
 <body>
   <main class="premium_container">
-    <h1 class="premium_title">📚 Gói Hội Viên “Tàng Kinh Các”</h1>
-    <p class="premium_intro">
-      Lựa chọn gói phù hợp để tận hưởng trọn vẹn không gian tri thức – dịch vụ thư viện cao cấp, hiện đại và tinh tế.
-    </p>
+    <div class="blur_box_title">
+      <h1 class="premium_title">Gói Hội Viên Tàng Kinh Các</h1>
+      <p class="premium_intro">
+        Lựa chọn gói phù hợp để tận hưởng trọn vẹn không gian tri thức – dịch vụ thư viện cao cấp, hiện đại và tinh tế.
+      </p>
+    </div>
+    <div class="blur_box">
+      <div class="premium_cards">
+        <!-- Gói cơ bản -->
+        <div class="premium_card basic">
+          <div class="card_content">
+            <h2 class="card_title">Gói Cơ Bản</h2>
+            <ul class="card_benefits">
+              <li>Mượn tối đa <strong>3 cuốn/tháng</strong>.</li>
+              <li>Đặt phòng đọc <strong>2 giờ/tuần miễn phí</strong>.</li>
+              <li>Giảm <strong>5%</strong> phí thuê thêm sách/phòng.</li>
+            </ul>
+            <a href="register.html" class="card_btn">Đăng ký ngay</a>
+          </div>
+        </div>
 
-    <div class="premium_cards">
-      <!-- Gói cơ bản -->
-      <div class="premium_card basic">
-        <h2 class="card_title">Gói Cơ Bản <span>(Thư Viện Viên)</span></h2>
-        <p class="card_fee">Phí: Thấp nhất – phù hợp người đọc phổ thông</p>
-        <ul class="card_benefits">
-          <li>Mượn tối đa <strong>3 cuốn/tháng</strong>.</li>
-          <li>Đặt phòng đọc <strong>2 giờ/tuần miễn phí</strong>.</li>
-          <li>Giảm <strong>5%</strong> phí thuê thêm sách/phòng.</li>
-        </ul>
-        <a href="register.html" class="card_btn">Đăng ký ngay</a>
-      </div>
+        <!-- Gói nâng cao -->
+        <div class="premium_card advanced">
+          <div class="card_content">
+            <h2 class="card_title">Gói Nâng Cao</h2>
+            <ul class="card_benefits">
+              <li>Mượn tối đa <strong>8 cuốn/tháng</strong>.</li>
+              <li>Đặt phòng đọc <strong>6 giờ/tuần miễn phí</strong> (có thể đặt phòng nhóm).</li>
+              <li>Giảm <strong>10%</strong> phí thuê thêm.</li>
+              <li>Ưu tiên đặt trước <strong>sách hot / phòng giờ cao điểm</strong>.</li>
+            </ul>
+            <a href="register.html" class="card_btn">Đăng ký ngay</a>
+          </div>
+        </div>
 
-      <!-- Gói nâng cao -->
-      <div class="premium_card advanced">
-        <h2 class="card_title">Gói Nâng Cao <span>(Học Giả)</span></h2>
-        <p class="card_fee">Phí: Trung bình – cho người đọc thường xuyên</p>
-        <ul class="card_benefits">
-          <li>Mượn tối đa <strong>8 cuốn/tháng</strong>.</li>
-          <li>Đặt phòng đọc <strong>6 giờ/tuần miễn phí</strong> (có thể đặt phòng nhóm).</li>
-          <li>Giảm <strong>10%</strong> phí thuê thêm.</li>
-          <li>Ưu tiên đặt trước <strong>sách hot / phòng giờ cao điểm</strong>.</li>
-        </ul>
-        <a href="register.html" class="card_btn">Đăng ký ngay</a>
-      </div>
-
-      <!-- Gói cao cấp -->
-      <div class="premium_card premium">
-        <h2 class="card_title">Gói Cao Cấp <span>(Tinh Hoa)</span></h2>
-        <p class="card_fee">Phí: Cao nhất – hướng tới độc giả đam mê và nghiên cứu</p>
-        <ul class="card_benefits">
-          <li>Mượn tối đa <strong>20 cuốn/tháng</strong>.</li>
-          <li>Đặt phòng đọc <strong>không giới hạn</strong> (theo lịch trống).</li>
-          <li>Giảm <strong>20%</strong> phí thuê thêm.</li>
-          <li>Miễn phí <strong>giao sách tận nhà</strong>.</li>
-          <li>Mời tham gia <strong>sự kiện độc quyền</strong> (giao lưu, workshop).</li>
-        </ul>
-        <a href="register.html" class="card_btn">Đăng ký ngay</a>
+        <!-- Gói cao cấp -->
+        <div class="premium_card premium">
+          <div class="card_content">
+            <h2 class="card_title">Gói Cao Cấp</h2>
+            <ul class="card_benefits">
+              <li>Mượn tối đa <strong>20 cuốn/tháng</strong>.</li>
+              <li>Đặt phòng đọc <strong>không giới hạn</strong> (theo lịch trống).</li>
+              <li>Giảm <strong>20%</strong> phí thuê thêm.</li>
+              <li>Miễn phí <strong>giao sách tận nhà</strong>.</li>
+              <li>Mời tham gia <strong>sự kiện độc quyền</strong> (giao lưu, workshop).</li>
+            </ul>
+            <a href="register.html" class="card_btn">Đăng ký ngay</a>
+          </div>
+        </div>
       </div>
     </div>
+
   </main>
+  <script type="module" src="../js/premium.js"></script>
 </body>
 </html>

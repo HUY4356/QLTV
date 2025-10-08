@@ -44,7 +44,7 @@ const pageMap = {
 // Map tham số URL với CSS tương ứng
 const cssMap = {
   rent: "css/rent.css",
-  premium: "css/premium.css"
+  premium: "css/premium.css",
   Home: "css/home.css",
   category: "css/category.css",
   Login: "css/Login.css",
