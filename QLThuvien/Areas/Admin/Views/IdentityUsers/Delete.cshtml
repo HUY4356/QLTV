@@ -1,0 +1,13 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityUser
+@{
+    ViewData["Title"] = "Delete";
+    var roles = (IList<string>)ViewBag.Roles ?? new List<string>();
+}
+<h1>Xóa tài khoản</h1>
+<div class="alert alert-danger">Bạn có chắc muốn xóa tài khoản <strong>@Model.Email</strong>?</div>
+<p>Vai trò hiện tại: @string.Join(", ", roles)</p>
+<form asp-action="Delete" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-area="Admin" asp-controller="IdentityUsers" asp-action="Index" class="btn btn-link">Hủy</a>
+</form>
