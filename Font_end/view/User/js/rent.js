@@ -1,38 +1,36 @@
-let slideIndex = 0;
-const slides = document.querySelector(".slide_img");
+// ===================== SLIDE SHOW =====================
+const slide = document.querySelector(".slide_img");
 const images = document.querySelectorAll(".slide_img img");
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
+
+let currentIndex = 0;
 const totalSlides = images.length;
 
-function updateSlide() {
-  slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-  // reset animation for text
-  const slideText = document.querySelector(".slide_text");
-  slideText.style.animation = "none";
-  slideText.offsetHeight; // trigger reflow
-  slideText.style.animation = "fadeInUp 1s ease";
+// Hàm hiển thị slide theo chỉ số
+function showSlide(index) {
+  if (index < 0) {
+    currentIndex = totalSlides - 1;
+  } else if (index >= totalSlides) {
+    currentIndex = 0;
+  } else {
+    currentIndex = index;
+  }
+
+  slide.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
-// Next button
-document.querySelector(".next").addEventListener("click", () => {
-  slideIndex = (slideIndex + 1) % totalSlides;
-  updateSlide();
+// Nút điều hướng
+nextBtn.addEventListener("click", () => {
+  showSlide(currentIndex + 1);
 });
 
-// Prev button
-document.querySelector(".prev").addEventListener("click", () => {
-  slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
-  updateSlide();
+prevBtn.addEventListener("click", () => {
+  showSlide(currentIndex - 1);
 });
 
-// Auto slide every 5s
+// Tự động chuyển ảnh mỗi 5 giây
 setInterval(() => {
-  slideIndex = (slideIndex + 1) % totalSlides;
-  updateSlide();
+  showSlide(currentIndex + 1);
 }, 5000);
 
-// Rent button click event
-document.querySelectorAll(".rent").forEach(btn => {
-  btn.addEventListener("click", () => {
-    alert("📅 Booking feature coming soon!");
-  });
-});
