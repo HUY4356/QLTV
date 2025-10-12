@@ -1,0 +1,56 @@
+﻿@model QLThuvien.Models.The
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    ViewData["Title"] = "Cấp thẻ";
+    var users = (IEnumerable<dynamic>)ViewBag.Users;
+}
+<h2>@ViewData["Title"]</h2>
+
+<div id="limitBox" class="alert alert-info d-none"></div>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label class="form-label">Người dùng</label>
+        <select asp-for="UserId" class="form-select" id="UserId"
+                asp-items="@(new SelectList(users, "Id", "Name"))"></select>
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="HanThe" class="form-label">Hạn thẻ</label>
+        <input asp-for="HanThe" class="form-control" type="date" />
+        <span asp-validation-for="HanThe" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TrangThai" class="form-label"></label>
+        <select asp-for="TrangThai" class="form-select">
+            <option value="active">active</option>
+            <option value="expired">expired</option>
+            <option value="blocked">blocked</option>
+        </select>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Cấp thẻ</button>
+    <a asp-area="Admin" asp-controller="Cards" asp-action="Index" class="btn btn-link">Hủy</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        const box = document.getElementById('limitBox');
+        const userSel = document.getElementById('UserId');
+        async function refreshLimit(){
+          const id = userSel.value;
+          if(!id){ box.classList.add('d-none'); return; }
+          const res = await fetch(`/Admin/Cards/LimitOfUser?userId=${id}`);
+          const data = await res.json();
+          if(!data.ok){ box.classList.add('d-none'); return; }
+          box.textContent = `Vai trò: ${data.role} | Tối đa ${data.maxBooks} sách / ${data.maxDays} ngày | Gia hạn: ${data.maxRenewals} lần | Phạt tối đa: ${data.maxFines}`;
+          box.classList.remove('d-none');
+        }
+        userSel.addEventListener('change', refreshLimit);
+        refreshLimit();
+    </script>
+}
