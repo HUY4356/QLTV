@@ -1,0 +1,58 @@
+<div class="container">
+  <h2>Quản Lí Phòng</h2>
+
+  <div class="actions">
+    <input type="text" id="searchRoom" placeholder="Tìm kiếm phòng...">
+    <link rel="stylesheet" href="../css/phong.css">
+    <script src="phong.js"></script>
+    <button id="addRoomBtn">Thêm Phòng</button>
+  </div>
+
+  <table id="roomTable">
+    <thead>
+      <tr>
+        <th>Mã</th>
+        <th>Tên Phòng</th>
+        <th>Loại</th>
+        <th>Giá (VNĐ)</th>
+        <th>Trạng thái</th>
+        <th>Mô tả</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <!-- Form thêm/sửa -->
+  <div id="roomFormContainer" class="modal hidden">
+    <div class="modal-content">
+      <!-- <h3 id="formTitle">Thêm Phòng</h3> -->
+      <form id="roomForm">
+        <input type="hidden" id="roomId">
+        <label>Tên Phòng:</label>
+        <input type="text" id="roomName" required>
+
+        <label>Loại:</label>
+        <input type="text" id="roomType" required>
+
+        <label>Giá:</label>
+        <input type="number" id="roomPrice" required>
+
+        <label>Trạng thái:</label>
+        <select id="roomStatus">
+          <option value="Trống">Trống</option>
+          <option value="Đang thuê">Đang thuê</option>
+          <option value="Bảo trì">Bảo trì</option>
+        </select>
+
+        <label>Mô tả:</label>
+        <textarea id="roomDescription"></textarea>
+
+        <div class="form-buttons">
+          <button type="submit">Lưu</button>
+          <button type="button" id="cancelBtn">Hủy</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

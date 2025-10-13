@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý tài khoản người dùng - Admin</title>
+  <link rel="stylesheet" href="../css/account.css">
+</head>
+<body>
+  <main>
+    <div class="main_box">
+      <h1>Quản lý tài khoản người dùng</h1>
+      <button id="addUserBtn">➕ Thêm người dùng</button>
+      <table id="userTable">
+        <thead>
+          <tr>
+            <th>Tên</th>
+            <th>Email</th>
+            <th>Quyền</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+  <!-- ...existing code... -->
+<script>
+  document.getElementById('addUserBtn').onclick = function() {
+    window.location.href = "index.html?create";
+  };
+</script>
+<!-- ...existing code... -->
+</body>
+</html>

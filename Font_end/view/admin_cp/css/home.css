@@ -1,0 +1,13 @@
+    body {
+      font-family: Arial, sans-serif;
+      background: #674aaf;
+      color: rgb(203, 203, 203);
+      /* padding: 20px; */
+    }
+    h2 { color: #ececec; }
+    table {
+      width: 60%;
+      /* border-collapse: collapse; */
+      background: #EBCB90;
+      margin-top: 0px;
+    }
