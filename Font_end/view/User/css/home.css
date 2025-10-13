@@ -245,7 +245,7 @@ body {
   position: relative;
   width: 100%;
   background: #7e6e59;
-  padding: 3rem 0 0;
+  padding: 4rem 0 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -253,7 +253,7 @@ body {
 
 .author_title {
   position: absolute;
-  top: 0;
+  top: 1rem;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #A79277;
@@ -313,7 +313,7 @@ body {
 .author_name {
   padding: 1.5rem;
   height: 20%;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 800;
   color: #EAD8C0;
   background: linear-gradient(135deg, #7e6e59, #A79277);
@@ -372,8 +372,8 @@ body {
 .add_book_btn {
   position: absolute;
   z-index: 10;
-  right: 2rem;
-  bottom: 2rem;
+  right:1rem;
+  bottom: 1rem;
   background:none;
   color: #ffffffad;
   border: none;
@@ -396,9 +396,7 @@ body {
 .room_section {
   position: relative;
   width: 100%;
-  margin: 4rem auto;
   background: #7e6e59;
-  border-radius: 5px;
   padding: 2rem;
 }
 
@@ -458,3 +456,175 @@ body {
   100% { transform: translateX(0); }
 }
 
+/* =============================
+   💬 REVIEW SECTION - Ngang
+   ============================= */
+   .review_section {
+    text-align: center;
+    width: 80%;
+    margin: 4rem auto;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(174,151,120,0.1));
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+  }
+  
+  .review_title {
+    font-size: 2rem;
+    color: #3a2d21;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  }
+  
+  /* Hàng ngang 5 ô */
+  .review_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+  
+  /* Ô đánh giá bình thường */
+  .review_card {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.45); /* nền trắng mờ */
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 15px;
+    padding: 1rem;
+    height: 220px;
+    color: #2b1f15;
+    text-align: left;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Card form to hơn */
+  .review_form_card {
+    flex: 1.4;
+    background: rgba(255, 255, 255, 0.45); /* cùng nền blur */
+    backdrop-filter: blur(25px) saturate(160%);
+    -webkit-backdrop-filter: blur(25px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    color: #2b1f15;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  
+  .review_form_card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  
+  /* User info */
+  .review_user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .review_user img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255,255,255,0.4);
+  }
+  
+  .review_user h4 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  /* Sao */
+  .review_stars {
+    color: gold;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Form trong ô giữa */
+  .review_form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  
+  .review_form input,
+  .review_form textarea {
+    border: none;
+    border-radius: 10px;
+    padding: 0.7rem;
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.9);
+    outline: none;
+  }
+  
+  .review_form textarea {
+    resize: none;
+  }
+  
+  /* Sao trong form */
+  .stars_input {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 5px;
+    font-size: 1.3rem;
+  }
+  
+  .stars_input input {
+    display: none;
+  }
+  
+  .stars_input label {
+    color: #bbb;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  
+  .stars_input input:checked ~ label,
+  .stars_input label:hover,
+  .stars_input label:hover ~ label {
+    color: gold;
+  }
+  
+  /* Nút gửi */
+  .submit_btn {
+    background: #A79277;
+    color: #fff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .submit_btn:hover {
+    background: #8b715f;
+    transform: translateY(-2px);
+  }
+  
+  /* Responsive */
+  @media (max-width: 992px) {
+    .review_row {
+      flex-direction: column;
+      height: auto;
+    }
+    .review_form_card {
+      order: -1;
+    }
+  }
+  
