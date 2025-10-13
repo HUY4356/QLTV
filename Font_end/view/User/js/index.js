@@ -28,9 +28,11 @@ let page = "Home.html"; // mặc định
 // Map tham số URL với file HTML tương ứng
 const pageMap = {
   rent: "rent.html",
+  premium: "premium.html",
   Home: "Home.html",
   category: "category.html",
   Login: "Login.html",
+  Sign_up: "Sign_up.html",
   Account: "Account.html",
   Admin: "Admin.html",
   get_help: "help/get_help.html",
@@ -42,9 +44,11 @@ const pageMap = {
 // Map tham số URL với CSS tương ứng
 const cssMap = {
   rent: "css/rent.css",
+  premium: "css/premium.css",
   Home: "css/home.css",
   category: "css/category.css",
   Login: "css/Login.css",
+  Sign_up: "css/Sign_up.css",
   Account: "css/account.css",
   Admin: "css/admin.css",
   get_help: "css/help.css",
@@ -59,6 +63,7 @@ const jsMap = {
   Home: "js/home.js",
   category: "js/category.js",
   Login: "js/Login.js",
+  Sign_up: "js/Sign_up.js",
   Account: "js/account.js",
   Admin: "js/admin.js",
   get_help: "js/help.js",

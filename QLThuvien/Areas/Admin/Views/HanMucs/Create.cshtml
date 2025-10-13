@@ -1,0 +1,28 @@
+﻿@model QLThuvien.Models.HanMuc
+@using Microsoft.AspNetCore.Mvc.Rendering
+@{
+    ViewData["Title"] = "Thiết lập hạn mức";
+    var roles = (IEnumerable<QLThuvien.Models.Role>)ViewBag.Roles;
+}
+<h2>@ViewData["Title"]</h2>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form method="post">
+    <div class="mb-3">
+        <label class="form-label">Vai trò</label>
+        <select asp-for="RoleId" class="form-select" asp-items="@(new SelectList(roles, "Id", "Name"))"></select>
+        <span asp-validation-for="RoleId" class="text-danger"></span>
+    </div>
+    <div class="row">
+        <div class="col-md-3 mb-3"><label asp-for="MaxBooks" class="form-label"></label><input asp-for="MaxBooks" class="form-control" /></div>
+        <div class="col-md-3 mb-3"><label asp-for="MaxDays" class="form-label"></label><input asp-for="MaxDays" class="form-control" /></div>
+        <div class="col-md-3 mb-3"><label asp-for="MaxRenewals" class="form-label"></label><input asp-for="MaxRenewals" class="form-control" /></div>
+        <div class="col-md-3 mb-3"><label asp-for="MaxFines" class="form-label"></label><input asp-for="MaxFines" class="form-control" /></div>
+    </div>
+    <button class="btn btn-primary" type="submit">Lưu</button>
+    <a asp-area="Admin" asp-controller="HanMucs" asp-action="Index" class="btn btn-link">Hủy</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

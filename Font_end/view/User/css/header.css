@@ -7,7 +7,7 @@
 
 
 .header {
-  background-color: #D2C1B6;
+  background-color: #D1BB9E;
   padding: 10px 20px;
   height: 5rem;
   top: 0;
@@ -28,8 +28,8 @@
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  width: 80%;
-  margin: 0 auto; /* canh giữa theo chiều ngang */
+  width: 100%;
+  margin: 0 auto;
 }
 
 
@@ -40,7 +40,7 @@
   gap: 2.5rem;
   margin: 0;
   align-items: center;
-  background-color: #D2C1B6;
+  background-color: #D1BB9E;
 }
 
 .header-menu li a {
@@ -71,7 +71,7 @@
   border: 1px solid #1B3C53;
   border-radius: 20px;
   padding: 7px 35px 7px 15px;
-  background-color: #D2C1B6;
+  background-color: #D1BB9E;
   font-size: 0.9rem;
   outline: none;
   width: 155px;

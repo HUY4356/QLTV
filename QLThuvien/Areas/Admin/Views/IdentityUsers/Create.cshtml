@@ -1,0 +1,48 @@
+﻿@model QLThuvien.Areas.Admin.Controllers.IdentityUsersController.CreateUserVM
+@{
+    ViewData["Title"] = "Tạo tài khoản";
+}
+<h1>@ViewData["Title"]</h1>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label"></label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ConfirmPassword" class="form-label"></label>
+        <input asp-for="ConfirmPassword" class="form-control" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+
+    <fieldset class="mb-3">
+        <legend>Vai trò</legend>
+        @for (var i = 0; i < Model.Roles.Count; i++)
+        {
+            <div class="form-check">
+                <input class="form-check-input" asp-for="Roles[i].Selected" />
+                <label class="form-check-label">@Model.Roles[i].Name</label>
+                <input type="hidden" asp-for="Roles[i].Name" />
+            </div>
+        }
+    </fieldset>
+
+    <button type="submit" class="btn btn-primary">Tạo</button>
+    <a asp-area="Admin" asp-controller="IdentityUsers" asp-action="Index" class="btn btn-link">Hủy</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
