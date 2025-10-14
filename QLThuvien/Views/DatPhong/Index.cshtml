@@ -1,0 +1,32 @@
+﻿@model IEnumerable<QLThuvien.Models.DatPhong>
+    @{
+    ViewData["Title"] = "Danh sách đặt phòng";
+    }
+
+    <h2>Danh sách đặt phòng</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Người đặt</th>
+                <th>Phòng</th>
+                <th>Ngày đặt</th>
+                <th>Giờ bắt đầu</th>
+                <th>Giờ kết thúc</th>
+                <th>Trạng thái</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.User.Fullname</td>
+                <td>@item.Phong.TenPhong</td>
+                <td>@item.NgayDat.ToShortDateString()</td>
+                <td>@item.GioBatDau.ToShortTimeString()</td>
+                <td>@item.GioKetThuc.ToShortTimeString()</td>
+                <td>@item.TrangThai</td>
+            </tr>
+        }
+        </tbody>
+    </table>
