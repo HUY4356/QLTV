@@ -269,3 +269,4 @@ E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\refint\QLThuvien.dll
 E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\QLThuvien.pdb
 E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\QLThuvien.genruntimeconfig.cache
 E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\ref\QLThuvien.dll
+E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\QLThuvien.sourcelink.json

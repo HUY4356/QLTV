@@ -4,12 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - QLThuvien</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/QLThuvien.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Epunda+Slab:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
+    @* <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">QLThuvien</a>
@@ -30,7 +34,144 @@
                 </div>
             </div>
         </nav>
+    </header> *@
+    <header class="header">
+        <nav class="header-nav">
+            <ul class="header-menu header-left">
+                <li><a href="index.html?Home" title="home"><i class="fa-solid fa-2xl fa-book-open-reader"></i></a></li>
+                <li class="category-btn">
+                    <a href="#" title="Category">Category</a>
+                    <div class="category-menu">
+                        <!-- Cột phải -->
+                        <div class="category-right">
+                            <!-- Submenu 1 -->
+                            <div class="subcategory" id="book">
+                                <h3>Sách Trong Nước</h3>
+                                <div class="columns">
+                                    <ul>
+                                        <li>Văn Học</li>
+                                        <li>Tiểu Thuyết</li>
+                                        <li>Light Novel</li>
+                                        <li>Ngôn Tình</li>
+                                        <li><a href="#">Xem tất cả</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="subcategory" id="book">
+                                <h3>Sách Trong Nước</h3>
+                                <div class="columns">
+                                    <ul>
+                                        <li>Văn Học</li>
+                                        <li>Tiểu Thuyết</li>
+                                        <li>Light Novel</li>
+                                        <li>Ngôn Tình</li>
+                                        <li><a href="#">Xem tất cả</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="subcategory" id="book">
+                                <h3>Sách Trong Nước</h3>
+                                <div class="columns">
+                                    <ul>
+                                        <li>Văn Học</li>
+                                        <li>Tiểu Thuyết</li>
+                                        <li>Light Novel</li>
+                                        <li>Ngôn Tình</li>
+                                        <li><a href="#">Xem tất cả</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Submenu 2 -->
+                            <div class="subcategory" id="stationery">
+                                <h3>VPP - Dụng Cụ Học Sinh</h3>
+                                <div class="columns">
+                                    <ul>
+                                        <li>Bút - Viết</li>
+                                        <li>Bút Bi</li>
+                                        <li>Bút Gel</li>
+                                        <li>Bút Máy</li>
+                                        <li><a href="#">Xem tất cả</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="subcategory" id="book">
+                                <h3>Sách Trong Nước</h3>
+                                <div class="columns">
+                                    <ul>
+                                        <li>Văn Học</li>
+                                        <li>Tiểu Thuyết</li>
+                                        <li>Light Novel</li>
+                                        <li>Ngôn Tình</li>
+                                        <li><a href="#">Xem tất cả</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="subcategory" id="book">
+                                <h3>Sách Trong Nước</h3>
+                                <div class="columns">
+                                    <ul>
+                                        <li>Văn Học</li>
+                                        <li>Tiểu Thuyết</li>
+                                        <li>Light Novel</li>
+                                        <li>Ngôn Tình</li>
+                                        <li><a href="#">Xem tất cả</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="subcategory" id="book">
+                                <h3>Sách Trong Nước</h3>
+                                <div class="columns">
+                                    <ul>
+                                        <li>Văn Học</li>
+                                        <li>Tiểu Thuyết</li>
+                                        <li>Light Novel</li>
+                                        <li>Ngôn Tình</li>
+                                        <li><a href="#">Xem tất cả</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Submenu 2 -->
+                            <div class="subcategory" id="stationery">
+                                <h3>VPP - Dụng Cụ Học Sinh</h3>
+                                <div class="columns">
+                                    <ul>
+                                        <li>Bút - Viết</li>
+                                        <li>Bút Bi</li>
+                                        <li>Bút Gel</li>
+                                        <li>Bút Máy</li>
+                                        <li><a href="#">Xem tất cả</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </li>
+                <li><a href="index.html?rent" class="menu-rent" title="Rent">Rent</a></li>
+            </ul>
+            <ul class="header-menu header-right">
+                <form method="GET" action="index.html" class="header-search" role="search">
+                    <input type="text" name="search" placeholder="Tìm sản phẩm..." required />
+                    <button type="submit" title="Search" class="search-btn">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+                <li><a href="index.html?Login" title="login"><i class="fa-solid fa-user"></i></a></li>
+
+                <!--<li><a href="index.html?Account" title="account"><i class="fa-regular fa-user"></i></a></li>
+                    <li><a href="index.html?Sign_up" title="login"><i class="fa-solid fa-user"></i></a></li>
+                    <li><a href="index.html?Admin" title="admin"><i class="fa-regular fa-user"></i></a></li>-->
+            </ul>
+        </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

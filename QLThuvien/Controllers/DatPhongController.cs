@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using QLThuvien.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using QLThuvien.Data;
 
 namespace QLThuvien.Controllers
 {

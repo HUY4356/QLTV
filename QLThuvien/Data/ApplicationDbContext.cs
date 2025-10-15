@@ -16,6 +16,7 @@ namespace QLThuvien.Data
         // DbSet
         public DbSet<The> The { get; set; } = default!;
         public DbSet<HanMuc> HanMuc { get; set; } = default!;
+        public object DatPhongs { get; internal set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
