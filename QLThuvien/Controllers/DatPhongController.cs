@@ -1,81 +1,76 @@
-using Microsoft.AspNetCore.Mvc;
-using QLThuvien.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using QLThuvien.Data;
+using QLThuvien.Models;
 
 namespace QLThuvien.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class DatPhongController : ControllerBase
+    public class DatPhongController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ThuVienDbContext _context;
 
-        public DatPhongController(ApplicationDbContext context)
+        public DatPhongController(ThuVienDbContext context)
         {
             _context = context;
         }
 
-        // API đặt phòng
-        [HttpPost("dat-phong")]
-        public IActionResult DatPhong([FromBody] DatPhong model)
+        // GET: DatPhong
+        public async Task<IActionResult> Index()
         {
-            // Kiểm tra phòng đã được đặt trong khoảng thời gian này chưa
-            var trungLich = _context.DatPhongs.Any(dp =>
-                dp.PhongId == model.PhongId &&
-                dp.TrangThai != "Đã hủy" &&
-                (
-                    (model.GioBatDau >= dp.GioBatDau && model.GioBatDau < dp.GioKetThuc) ||
-                    (model.GioKetThuc > dp.GioBatDau && model.GioKetThuc <= dp.GioKetThuc) ||
-                    (model.GioBatDau <= dp.GioBatDau && model.GioKetThuc >= dp.GioKetThuc)
-                )
-            );
+            var datPhongs = await _context.DatPhongs
+                .Include(d => d.User)
+                .Include(d => d.Phong)
+                .OrderByDescending(d => d.NgayDat)
+                .ToListAsync();
 
-            if (trungLich)
+            return View(datPhongs);
+        }
+
+        // GET: DatPhong/Create
+        public IActionResult Create()
+        {
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Fullname");
+            ViewData["PhongId"] = new SelectList(_context.Phongs.Where(p => p.TrangThai == "Trống"), "Id", "TenPhong");
+            return View();
+        }
+
+        // POST: DatPhong/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("UserId,PhongId,NgayDat,GioBatDau,GioKetThuc")] DatPhong datPhong)
+        {
+            if (ModelState.IsValid)
             {
-                return BadRequest("Phòng đã được đặt trong khoảng thời gian này.");
+                datPhong.TrangThai = "Đã đặt";
+                _context.Add(datPhong);
+
+                var phong = await _context.Phongs.FindAsync(datPhong.PhongId);
+                if (phong != null)
+                {
+                    phong.TrangThai = "Đã đặt";
+                    _context.Update(phong);
+                }
+
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
 
-            model.NgayDat = DateTime.Now;
-            model.TrangThai = "Đã đặt";
-
-            _context.DatPhongs.Add(model);
-            _context.SaveChanges();
-
-            return Ok(model);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Fullname", datPhong.UserId);
+            ViewData["PhongId"] = new SelectList(_context.Phongs, "Id", "TenPhong", datPhong.PhongId);
+            return View(datPhong);
         }
 
-        // API lấy danh sách đặt phòng theo phòng hoặc user
-        [HttpGet("list")]
-        public IActionResult GetList(int? phongId = null, int? userId = null)
+        // GET: DatPhong/TrangThai/5
+        public async Task<IActionResult> TrangThai(int id)
         {
-            var query = _context.DatPhongs
-                .Include(dp => dp.Phong)
-                .Include(dp => dp.User)
-                .AsQueryable();
+            var datPhong = await _context.DatPhongs
+                .Include(d => d.Phong)
+                .FirstOrDefaultAsync(d => d.Id == id);
 
-            if (phongId.HasValue)
-                query = query.Where(dp => dp.PhongId == phongId.Value);
-
-            if (userId.HasValue)
-                query = query.Where(dp => dp.UserId == userId.Value);
-
-            return Ok(query.ToList());
-        }
-
-        // API hủy đặt phòng
-        [HttpPost("huy")]
-        public IActionResult HuyDatPhong(int id)
-        {
-            var datPhong = _context.DatPhongs.Find(id);
             if (datPhong == null)
                 return NotFound();
 
-            datPhong.TrangThai = "Đã hủy";
-            _context.SaveChanges();
-
-            return Ok(datPhong);
+            return Content($"Phòng: {datPhong.Phong.TenPhong} - Trạng thái: {datPhong.TrangThai}");
         }
     }
 }
