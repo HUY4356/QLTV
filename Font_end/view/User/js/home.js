@@ -6,26 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     all ? document.querySelectorAll(sel) : document.querySelector(sel);
 
   /* =====================================================
-     1️⃣ SLIDER ẢNH TRANG HOME
-  ===================================================== */
-  (() => {
-    const swiper = $(".home_swiper");
-    const slides = $(".home_article", true);
-    if (!swiper || slides.length === 0) return;
-
-    let index = 0;
-    const showSlide = (i) => {
-      swiper.style.transform = `translateX(-${i * 100}%)`;
-      swiper.style.transition = "transform 1s ease";
-    };
-
-    setInterval(() => {
-      index = (index + 1) % slides.length;
-      showSlide(index);
-    }, 3000);
-  })();
-
-  /* =====================================================
      2️⃣ FEATURED SECTION LOOP
   ===================================================== */
   (() => {

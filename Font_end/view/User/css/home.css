@@ -103,49 +103,60 @@ body {
   transform: translateY(-3px);
 }
 
+/* ========== OPTION B: mỗi slide = 25% track (hiện nhiều phần cùng lúc) ========= */
 .home_img {
-  position: relative;
-  max-width: 320px;
+  width: 100%;
+  max-width: 320px;           /* kích thước khung lớn hơn nếu muốn nhiều ảnh cùng thấy */
   aspect-ratio: 3/4;
   margin: auto;
   overflow: hidden;
   border-radius: 5px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(255,255,255,0.4);
-  animation: floatUp 3s ease-in-out infinite alternate;
+  border: 2px solid rgba(26, 26, 26, 0.7);
+  box-shadow: -15px 2px 17px rgba(0, 0, 0, 0.7);
 }
 
 .home_swiper {
   display: flex;
+  width: calc(4 * 25%);       /* 4 * 25% = 100% của tổng track; giữ tương tự phần Room */
+  /* nhưng để track trượt cần tính toán tương ứng; dễ nhất là dùng width:400% như trên */
   width: 400%;
   height: 100%;
-  animation: slideShow 12s infinite;
+  animation: slideHomeB 18s infinite linear;
 }
 
 .home_article {
   flex: 0 0 25%;
+  max-width: 25%;
+  height: 100%;
 }
 
 .home_article img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
-/* Animations */
-@keyframes slideShow {
-  0%   { transform: translateX(0); }
-  20%  { transform: translateX(0); }
-  25%  { transform: translateX(-25%); }
-  45%  { transform: translateX(-25%); }
-  50%  { transform: translateX(-50%); }
-  70%  { transform: translateX(-50%); }
-  75%  { transform: translateX(-75%); }
-  95%  { transform: translateX(-75%); }
-  100% { transform: translateX(0); }
+@keyframes slideHomeB {
+  0%      { transform: translateX(0); }
+  25%     { transform: translateX(0); }
+
+  31.25%  { transform: translateX(-25%); }
+  56.25%  { transform: translateX(-25%); }
+
+  62.5%   { transform: translateX(-50%); }
+  87.5%   { transform: translateX(-50%); }
+
+  93.75%  { transform: translateX(-75%); }
+  100%    { transform: translateX(-75%); }
 }
 
+/* Hover để tạm dừng */
+.home_swiper:hover {
+  animation-play-state: paused;
+}
 
+/* Hiệu ứng fade */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
@@ -194,7 +205,9 @@ body {
   overflow: hidden;
   text-align: center;
   cursor: pointer;
-  border-radius: 5px;
+  border: 2px solid rgba(26, 26, 26, 0.7);
+  border-radius: 3px;
+  box-shadow: -15px 2px 17px rgba(0, 0, 0, 0.7);
   margin: 5px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -204,7 +217,7 @@ body {
   aspect-ratio: 3/4;
   object-fit: cover;
   display: block;
-  border-radius: 5px;
+  border-radius: 2px;
   background: #fff;
 }
 
@@ -217,7 +230,7 @@ body {
 
 .featured_card:hover {
   transform: scale(1.05);
-  box-shadow: 10px 10px 5px rgba(0,0,0,0.3);
+  box-shadow: 10px 15px 25px rgba(0,0,0,0.3);
   z-index: 5;
 }
 
@@ -245,82 +258,82 @@ body {
 }
 
 /* ===============================
-   ✍️ AUTHOR SECTION
+   ✍️ AUTHOR SECTION (Responsive)
    =============================== */
 .author_section {
   position: relative;
   width: 100%;
   background: #7e6e59;
-  padding: 4rem 0 1rem;
+  padding: 0.5rem auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .author_title {
-  position: absolute;
-  top: 1rem;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   background: #A79277;
   font-family: 'Playfair Display', serif;
   color: #EAD8C0;
   font-size: 2.5rem;
   font-weight: 700;
+  top: -2rem;
   padding: 0.6rem 2rem;
   border-radius: 12px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   text-align: center;
   z-index: 15;
+
+  border:solid 3px rgba(0,0,0,0.2);
 }
 
 .author_box {
   display: grid;
-  width: 50%;
-  height: 500px;
-  margin: auto;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: 1fr 1.3fr;
   align-items: center;
+  gap: 2rem;
+  width: min(90%, 1100px);
   background: rgba(255, 254, 254, 0.35);
   backdrop-filter: blur(18px) saturate(150%);
   -webkit-backdrop-filter: blur(18px) saturate(150%);
   border-radius: 16px;
-  padding: 1rem;
+  padding: 1.5rem;
   box-shadow:
     0 8px 20px rgba(0, 0, 0, 0.4),
     0 -4px 10px rgba(255, 255, 255, 0.2),
     inset 0 1px 3px rgba(255, 255, 255, 0.3);
   transition: all 0.4s ease;
+  border:solid 3px rgba(0,0,0,0.2);
+  margin-bottom: 2rem;
 }
 
 .author_left {
   text-align: center;
-  height: 100%;
   position: relative;
   overflow: hidden;
   border-radius: 12px;
+  width: 100%;
 }
 
 .author_left img {
-  width: 95%;
+  width: 100%;
+  max-height: 480px;
   border-radius: 12px;
   object-fit: cover;
   transition: transform 0.3s ease, filter 0.3s ease;
-  position: relative;
-  z-index: 1;
 }
 
 .author_right {
   display: flex;
-  height: 100%;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
 }
 
 .author_name {
-  padding: 1.5rem;
-  height: 20%;
-  font-size: 2.5rem;
+  padding: 1rem 1.5rem;
+  font-size: clamp(1.8rem, 2.5vw, 2.5rem);
   font-weight: 800;
   font-family: 'Playfair Display', serif;
   color: #EAD8C0;
@@ -331,19 +344,20 @@ body {
     inset 3px 3px 8px rgba(0, 0, 0, 0.4),
     inset -3px -3px 8px rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
+  text-align: center;
 }
 
 .author_description {
   padding: 1rem;
-  height: 40%;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
   font-family: 'Roboto', sans-serif;
   color: #2c251c;
+  line-height: 1.6;
 }
 
 .author_books {
   display: flex;
-  height: 40%;
+  justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
   background: #7e6e59;
@@ -358,7 +372,7 @@ body {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 5px;
   overflow: hidden;
-  width: 20%;
+  width: clamp(90px, 18%, 150px);
   aspect-ratio: 3/4;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -373,32 +387,47 @@ body {
 }
 
 .book_item:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
   z-index: 5;
 }
 
 .add_book_btn {
-  position: absolute;
-  z-index: 10;
-  right:1rem;
-  bottom: 1rem;
-  background:none;
+  align-self: flex-end;
+  background: none;
   font-family: 'Roboto', sans-serif;
   color: #ffffffad;
   border: none;
   border-radius: 12px;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-top: 1rem;
 }
 
 .add_book_btn:hover {
   color: #ffffff;
   transform: translateY(-5px);
 }
+
+/* 🌐 Responsive Breakpoints */
+@media (max-width: 992px) {
+  .author_box {
+    width: 85%;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .author_right {
+    align-items: center;
+  }
+  .author_books {
+    justify-content: center;
+  }
+}
+
+
 
 /* ===============================
    🏠 ROOM SECTION
@@ -516,7 +545,7 @@ body {
     inset 0 2px 6px rgba(255, 255, 255, 0.25);
   padding: 1rem;
   font-family: 'Roboto', sans-serif;
-  color: #ffffff;
+  color: #EAD8C0;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -558,7 +587,7 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   font-family: 'Roboto', sans-serif;
-  color: #f0e6d8;
+  color: #EAD8C0;
 }
 
 /* Card form lớn hơn một chút */
@@ -574,7 +603,7 @@ body {
     inset 0 2px 6px rgba(255, 255, 255, 0.25);
   padding: 1.5rem;
   font-family: 'Roboto', sans-serif;
-  color: #A79277;
+  color: #EAD8C0;
   display: flex;
   flex-direction: column;
   justify-content: center;

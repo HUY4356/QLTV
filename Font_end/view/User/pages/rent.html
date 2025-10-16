@@ -108,6 +108,63 @@
     </div>
   </div>
 
+  <!-- ===== Modal Rent Room ===== -->
+  <div class="modal" id="rentModal">
+    <div class="modal_content">
+      <!-- Close button -->
+      <span class="close">&times;</span>
+      <!-- ===== Top 40%: User Info & Room Options ===== -->
+      <div class="modal_top">
+          <div class="user_avatar"><img src="img/bia_sach_1.jpg" alt="User Avatar"></div>
+
+          <div class="user_info">
+            <div class="user_info_df">
+              <div class="user_name">John Doe</div>
+              <div class="user_level">Gold Member</div>
+            </div>
+
+            <div class="user_select">
+              <select id="room_select">
+                <option value="solo">Solo Desk</option>
+                <option value="group">Group Table</option>
+                <option value="pc">PC Desk</option>
+                <option value="private">Private Room (8)</option>
+                <option value="window">Window Desk</option>
+                <option value="vip">VIP Soundproof Room</option>
+              </select>
+              <button type="button">Rent</button>
+            </div>
+          </div>
+      </div>
+
+      <!-- ===== Bottom 60%: Calendar ===== -->
+      <div class="modal_bottom">
+        <!-- Calendar header: Current date + week controls -->
+        <div class="calendar_top">
+          <div class="current_date">17/10/2025</div>
+          <div class="week_controls">
+            <button class="prev_week"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="next_week"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Calendar body: Time slots + booking grid -->
+        <div class="calendar_body">
+          <!-- Time slots column -->
+          <div class="time_slots">
+            <div>8:00-11:00</div>
+            <div>13:00-16:00</div>
+            <div>17:00-20:00</div>
+          </div>
+          <!-- Calendar grid -->
+          <div class="calendar_grid">
+            <!-- Các slot sẽ được JS thêm vào -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script type="module" src="../js/rent.js"></script>
 </body>
 </html>
