@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap');
+/* ===== font-family: 'Roboto', sans-serif;
+         font-family: 'Playfair Display', serif;
+===== */
 :root {
   --primary-color: #1B3C53;
   --secondary-color: #456882;
   --background-color: #F9F3EF;
   --text-color: #D2C1B6;
 }
+
 
 * {
   margin: 0;
@@ -69,17 +73,19 @@ main {
 .sign-in h1 {
   margin-bottom: 10px;
   font-size: 2rem;
+  font-family: 'Playfair Display', serif;
   color: #fff;
 }
 
 .sign-in span {
   font-size: 12px;
   color: #ddd;
+  font-family: 'Roboto', sans-serif;
   margin-bottom: 10px;
 }
 
 .sign-in input {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(155, 155, 155, 0.356);
   border: none;
   margin: 8px 0;
   padding: 12px 15px;
@@ -87,6 +93,7 @@ main {
   border-radius: 8px;
   width: 100%;
   outline: none;
+  font-family: 'Roboto', sans-serif;
   color: #fff;
 }
 
@@ -97,6 +104,7 @@ main {
 /* ===== BUTTON ===== */
 .sign-in button {
   background-color: rgba(255, 255, 255, 0.3);
+  font-family: 'Roboto', sans-serif;
   color: #fff;
   font-size: 12px;
   padding: 10px 45px;
@@ -135,7 +143,8 @@ main {
 
 /* ===== REDIRECT LINK ===== */
 .redirect-link {
-  color: #fff;
+  color: #a3a3a3;
+  font-family: 'Roboto', sans-serif;
   font-size: 13px;
   text-decoration: none;
   margin-top: 15px;
@@ -143,7 +152,7 @@ main {
 }
 
 .redirect-link:hover {
-  color: #ffdf91;
+  color:#f0f3f7;
 }
 
 /* ===== RESPONSIVE ===== */

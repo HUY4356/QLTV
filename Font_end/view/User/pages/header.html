@@ -1,27 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Header</title>
+
+  <!-- CSS -->
   <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Epunda+Slab:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Roboto:wght@400;500&display=swap" 
+        rel="stylesheet">
 </head>
+
 <body>
   <header class="header">
-    <nav class="header-nav">
+    <nav class="header-nav" aria-label="Thanh điều hướng chính">
+
+      <!-- ===== Menu Trái ===== -->
       <ul class="header-menu header-left">
-        <li><a href="index.html?Home" title="home"><i class="fa-solid fa-2xl fa-book-open-reader"></i></a></li>
+        <!-- Logo -->
+        <li><a href="index.html" title="Home" aria-label="Trang chủ"><i class="fa-solid fa-book-open-reader fa-2xl"></i></a></li>
+        <li><a href="index.html" class="menu-home" title="Home">Home</a></li>
+
+        <!-- Category Mega Menu -->
         <li class="category-btn">
-          <a href="#" title="Category">Category</a>
-          <div class="category-menu">
+          <a href="#" title="Category" aria-haspopup="true" aria-expanded="false">Category</a>
+
+          <div class="category-menu" role="menu">
+            <!-- Cột trái -->
+            <div class="category-left">
+              <ul>
+                <li data-target="domestic"><i class="fa-solid fa-book"></i> Sách Trong Nước</li>
+                <li data-target="foreign"><i class="fa-solid fa-globe"></i> Sách Ngoại Văn</li>
+                <li data-target="stationery"><i class="fa-solid fa-pen"></i> Văn Phòng Phẩm</li>
+                <li data-target="gifts"><i class="fa-solid fa-gift"></i> Quà Tặng</li>
+                <li data-target="tech"><i class="fa-solid fa-microchip"></i> Thiết Bị Công Nghệ</li>
+              </ul>
+            </div>
+
             <!-- Cột phải -->
             <div class="category-right">
-              <!-- Submenu 1 -->
-              <div class="subcategory" id="book">
+              
+              <!-- Sách Trong Nước -->
+              <div class="subcategory active" id="domestic">
                 <h3>Sách Trong Nước</h3>
                 <div class="columns">
                   <ul>
@@ -34,119 +60,81 @@
                 </div>
               </div>
 
-                            <div class="subcategory" id="book">
-                <h3>Sách Trong Nước</h3>
+              <!-- Sách Ngoại Văn -->
+              <div class="subcategory" id="foreign">
+                <h3>Sách Ngoại Văn</h3>
                 <div class="columns">
                   <ul>
-                    <li>Văn Học</li>
-                    <li>Tiểu Thuyết</li>
-                    <li>Light Novel</li>
-                    <li>Ngôn Tình</li>
+                    <li>English Books</li>
+                    <li>Japanese Books</li>
+                    <li>Children’s Books</li>
+                    <li>Comics & Manga</li>
                     <li><a href="#">Xem tất cả</a></li>
                   </ul>
                 </div>
               </div>
 
-                            <div class="subcategory" id="book">
-                <h3>Sách Trong Nước</h3>
-                <div class="columns">
-                  <ul>
-                    <li>Văn Học</li>
-                    <li>Tiểu Thuyết</li>
-                    <li>Light Novel</li>
-                    <li>Ngôn Tình</li>
-                    <li><a href="#">Xem tất cả</a></li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- Submenu 2 -->
+              <!-- Văn Phòng Phẩm -->
               <div class="subcategory" id="stationery">
-                <h3>VPP - Dụng Cụ Học Sinh</h3>
+                <h3>Văn Phòng Phẩm</h3>
                 <div class="columns">
                   <ul>
-                    <li>Bút - Viết</li>
-                    <li>Bút Bi</li>
-                    <li>Bút Gel</li>
-                    <li>Bút Máy</li>
+                    <li>Bút Viết</li>
+                    <li>Sổ Tay</li>
+                    <li>Bìa Hồ Sơ</li>
+                    <li>Giấy In</li>
                     <li><a href="#">Xem tất cả</a></li>
                   </ul>
                 </div>
               </div>
 
-              <div class="subcategory" id="book">
-                <h3>Sách Trong Nước</h3>
+              <!-- Quà Tặng -->
+              <div class="subcategory" id="gifts">
+                <h3>Quà Tặng</h3>
                 <div class="columns">
                   <ul>
-                    <li>Văn Học</li>
-                    <li>Tiểu Thuyết</li>
-                    <li>Light Novel</li>
-                    <li>Ngôn Tình</li>
+                    <li>Thiệp</li>
+                    <li>Đồ Trang Trí</li>
+                    <li>Đồ Lưu Niệm</li>
+                    <li>Đồ Handmade</li>
                     <li><a href="#">Xem tất cả</a></li>
                   </ul>
                 </div>
               </div>
 
-              <div class="subcategory" id="book">
-                <h3>Sách Trong Nước</h3>
+              <!-- Thiết Bị Công Nghệ -->
+              <div class="subcategory" id="tech">
+                <h3>Thiết Bị Công Nghệ</h3>
                 <div class="columns">
                   <ul>
-                    <li>Văn Học</li>
-                    <li>Tiểu Thuyết</li>
-                    <li>Light Novel</li>
-                    <li>Ngôn Tình</li>
-                    <li><a href="#">Xem tất cả</a></li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="subcategory" id="book">
-                <h3>Sách Trong Nước</h3>
-                <div class="columns">
-                  <ul>
-                    <li>Văn Học</li>
-                    <li>Tiểu Thuyết</li>
-                    <li>Light Novel</li>
-                    <li>Ngôn Tình</li>
-                    <li><a href="#">Xem tất cả</a></li>
-                  </ul>
-                </div>
-              </div>
-
-              <!-- Submenu 2 -->
-              <div class="subcategory" id="stationery">
-                <h3>VPP - Dụng Cụ Học Sinh</h3>
-                <div class="columns">
-                  <ul>
-                    <li>Bút - Viết</li>
-                    <li>Bút Bi</li>
-                    <li>Bút Gel</li>
-                    <li>Bút Máy</li>
+                    <li>Tai Nghe</li>
+                    <li>Bàn Phím</li>
+                    <li>Chuột Máy Tính</li>
+                    <li>Cáp Sạc</li>
                     <li><a href="#">Xem tất cả</a></li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-
         </li>
+
         <li><a href="index.html?rent" class="menu-rent" title="Rent">Rent</a></li>
       </ul>
+
+      <!-- ===== Menu Phải ===== -->
       <ul class="header-menu header-right">
         <form method="GET" action="index.html" class="header-search" role="search">
-          <input type="text" name="search" placeholder="Tìm sản phẩm..." required />
-          <button type="submit" title="Search" class="search-btn">
+          <input type="text" name="search" placeholder="Tìm sản phẩm..." required>
+          <button type="submit" title="Search" class="search-btn" aria-label="Tìm kiếm">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </form>
-        <li><a href="index.html?Login" title="login"><i class="fa-solid fa-user"></i></a></li>
-        
-        <!--<li><a href="index.html?Account" title="account"><i class="fa-regular fa-user"></i></a></li>
-            <li><a href="index.html?Sign_up" title="login"><i class="fa-solid fa-user"></i></a></li>
-            <li><a href="index.html?Admin" title="admin"><i class="fa-regular fa-user"></i></a></li>-->
+        <li><a href="index.html?Login" title="Login"><i class="fa-solid fa-user"></i></a></li>
       </ul>
     </nav>
   </header>
+
   <script src="../js/header.js"></script>
 </body>
 </html>
