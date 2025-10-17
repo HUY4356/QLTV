@@ -262,7 +262,6 @@ E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\staticwebassets.build.json
 E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\staticwebassets.build.json.cache
 E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\staticwebassets.development.json
 E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\QLThuvien.csproj.Up2Date
 E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\QLThuvien.dll
 E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\refint\QLThuvien.dll
@@ -270,3 +269,5 @@ E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\QLThuvien.pdb
 E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\QLThuvien.genruntimeconfig.cache
 E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\ref\QLThuvien.dll
 E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\QLThuvien.sourcelink.json
+E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\scopedcss\Areas\Admin\Views\Shared\_Layout.cshtml.rz.scp.css
+E:\DuAN_PTTKHT\QLThuvien\QLThuvien\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

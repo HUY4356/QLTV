@@ -115,7 +115,17 @@ namespace QLThuvien.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+
+                    // Ưu tiên chuyển Admin vào giao diện quản trị (Area Admin)
+                    var user = await _signInManager.UserManager.FindByEmailAsync(Input.Email);
+                    if (user != null && await _signInManager.UserManager.IsInRoleAsync(user, "Admin"))
+                    {
+                        // "/Admin" sẽ đi đến Admin/Home/Index theo route area mặc định
+                        return LocalRedirect(Url.Content("~/Admin"));
+                    }
+
+                    // Người dùng thường -> về returnUrl (hoặc trang chủ nếu null)
+                    return LocalRedirect(returnUrl ?? Url.Content("~/"));
                 }
                 if (result.RequiresTwoFactor)
                 {

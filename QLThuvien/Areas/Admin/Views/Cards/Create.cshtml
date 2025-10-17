@@ -1,10 +1,10 @@
-﻿@model QLThuvien.Models.The
+﻿@model QLThuvien.Areas.Admin.Controllers.CardsController.CreateCardVM
 @using Microsoft.AspNetCore.Mvc.Rendering
 @{
     ViewData["Title"] = "Cấp thẻ";
-    var users = (IEnumerable<dynamic>)ViewBag.Users;
+    var users = (IEnumerable<object>)ViewBag.IdentityUsers;
 }
-<h2>@ViewData["Title"]</h2>
+<h1>@ViewData["Title"]</h1>
 
 <div id="limitBox" class="alert alert-info d-none"></div>
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -12,9 +12,9 @@
 <form asp-action="Create" method="post">
     <div class="mb-3">
         <label class="form-label">Người dùng</label>
-        <select asp-for="UserId" class="form-select" id="UserId"
+        <select asp-for="IdentityUserId" class="form-select" id="IdentityUserId"
                 asp-items="@(new SelectList(users, "Id", "Name"))"></select>
-        <span asp-validation-for="UserId" class="text-danger"></span>
+        <span asp-validation-for="IdentityUserId" class="text-danger"></span>
     </div>
 
     <div class="mb-3">
@@ -40,17 +40,18 @@
     <partial name="_ValidationScriptsPartial" />
     <script>
         const box = document.getElementById('limitBox');
-        const userSel = document.getElementById('UserId');
-        async function refreshLimit(){
-          const id = userSel.value;
-          if(!id){ box.classList.add('d-none'); return; }
-          const res = await fetch(`/Admin/Cards/LimitOfUser?userId=${id}`);
-          const data = await res.json();
-          if(!data.ok){ box.classList.add('d-none'); return; }
-          box.textContent = `Vai trò: ${data.role} | Tối đa ${data.maxBooks} sách / ${data.maxDays} ngày | Gia hạn: ${data.maxRenewals} lần | Phạt tối đa: ${data.maxFines}`;
-          box.classList.remove('d-none');
+        const sel = document.getElementById('IdentityUserId');
+        async function refreshLimit() {
+            const id = sel.value;
+            if (!id) { box.classList.add('d-none'); return; }
+            const res = await fetch(`/Admin/Cards/LimitOfIdentityUser?id=${id}`);
+            const data = await res.json();
+            if (!data.ok) { box.classList.add('d-none'); return; }
+            box.textContent =
+              `Vai trò: ${data.role} | Tối đa ${data.maxBooks} sách / ${data.maxDays} ngày | Gia hạn: ${data.maxRenewals} lần | Phạt tối đa: ${data.maxFines}`;
+            box.classList.remove('d-none');
         }
-        userSel.addEventListener('change', refreshLimit);
+        sel.addEventListener('change', refreshLimit);
         refreshLimit();
     </script>
 }

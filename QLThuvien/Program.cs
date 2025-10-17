@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using QLThuvien.Data;
 using QLThuvien.Models;
@@ -17,7 +17,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ThuVienDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("ThuVienDBConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ThuVienDbContext")));
 
 var app = builder.Build();
 
@@ -36,8 +36,15 @@ else
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseRouting();
+var culture = "vi-VN";
+var locOptions = new RequestLocalizationOptions()
+    .SetDefaultCulture(culture)
+    .AddSupportedCultures(culture)
+    .AddSupportedUICultures(culture);
 
+app.UseRequestLocalization(locOptions);
+
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -52,4 +59,20 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 await IdentitySeeder.SeedAsync(app.Services);
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ThuVienDbContext>();
+    await db.Database.MigrateAsync();
+
+    if (!await db.Roles.AnyAsync())
+    {
+        db.Roles.AddRange(
+            new Role { Name = "Admin" },
+            new Role { Name = "ThuThu" },
+            new Role { Name = "DocGia" }
+        );
+        await db.SaveChangesAsync();
+    }
+}
 app.Run();
