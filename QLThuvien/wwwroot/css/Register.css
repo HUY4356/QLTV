@@ -20,11 +20,12 @@ body {
     color: var(--primary-color);
 }
 
+/* ---- chỉ áp dụng cho trang Register ---- */
 .auth-main {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 96px); 
+    min-height: calc(100vh - 96px); /* tránh đè header */
     padding: 1.5rem 1rem 3rem;
 }
 
@@ -68,19 +69,20 @@ body {
 
 .auth-signin span {
     font-size: 12px;
-    color: #fff;
+    color: #ddd;
     font-family: 'Roboto',sans-serif;
     margin-bottom: 10px;
 }
 
 .auth-signin input {
+    display: block;
+    width: 100%;
     background-color: rgba(155,155,155,.36);
     border: none;
     margin: 8px 0;
     padding: 12px 15px;
     font-size: 13px;
     border-radius: 8px;
-    width: 100%;
     outline: none;
     font-family: 'Roboto',sans-serif;
     color: #fff;
@@ -88,21 +90,6 @@ body {
 
     .auth-signin input::placeholder {
         color: rgba(255,255,255,.7);
-    }
-
-/* Remember me */
-.auth-remember {
-    width: 100%;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    margin: 6px 0 4px;
-}
-
-    .auth-remember input {
-        width: auto;
-        margin: 0;
     }
 
 .auth-signin button {

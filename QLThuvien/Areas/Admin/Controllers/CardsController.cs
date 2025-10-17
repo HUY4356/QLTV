@@ -34,7 +34,7 @@ namespace QLThuvien.Areas.Admin.Controllers
             public string TrangThai { get; set; } = "active";
         }
 
-        // Danh sách + auto mark hết hạn (giữ nguyên nếu bạn đã có)
+        // Danh sách + auto mark hết hạn
         public async Task<IActionResult> Index()
         {
             var today = DateTime.Today;

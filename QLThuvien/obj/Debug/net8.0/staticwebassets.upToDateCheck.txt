@@ -2,8 +2,8 @@ wwwroot\admincss\sidebar.css
 wwwroot\css\Header.css
 wwwroot\css\Home.css
 wwwroot\css\Login.css
-wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\img\Tàng thư các.jpg
 wwwroot\js\Header.js
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
@@ -63,3 +63,4 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\css\Register.css

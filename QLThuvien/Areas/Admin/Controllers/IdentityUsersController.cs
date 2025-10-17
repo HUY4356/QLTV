@@ -197,13 +197,12 @@ namespace QLThuvien.Areas.Admin.Controllers
             if (!update.Succeeded) { AddErrors(update); model.Roles = _roleManager.Roles.Select(r => new RoleSelection { Name = r.Name! }).ToList(); return View(model); }
 
             // Cập nhật tên (claim)
-            await SetFullNameAsync(user, model.Name);            // nếu chưa có hàm này, thêm ở dưới
+            await SetFullNameAsync(user, model.Name);
 
             // Cập nhật số điện thoại
             var phoneRes = await _userManager.SetPhoneNumberAsync(user, model.PhoneNumber ?? "");
             if (!phoneRes.Succeeded) { AddErrors(phoneRes); model.Roles = _roleManager.Roles.Select(r => new RoleSelection { Name = r.Name! }).ToList(); return View(model); }
 
-            // Giữ đúng 1 vai trò
             var current = await _userManager.GetRolesAsync(user);
             if (current.Any()) await _userManager.RemoveFromRolesAsync(user, current);
             if (!string.IsNullOrEmpty(model.SelectedRole) && await _roleManager.RoleExistsAsync(model.SelectedRole))
@@ -220,7 +219,6 @@ namespace QLThuvien.Areas.Admin.Controllers
             return View(new ResetPasswordVM { Id = id });
         }
 
-        // POST: /Admin/IdentityUsers/ResetPassword
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetPassword(ResetPasswordVM model)
         {
