@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản Lí Mượn Sách</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Quản Lí Mượn Sách</h2>
+
+    <!-- Thanh tìm kiếm và nút thêm -->
+    <div class="actions">
+      <input type="text" id="searchBorrow" placeholder="🔍 Tìm kiếm phiếu mượn hoặc người mượn...">
+    </div>
+
+    <!-- Bảng thêm / cập nhật phiếu mượn -->
+    <div id="addBorrowTableContainer" class="add-section">
+      <h3>➕ Thêm / Cập Nhật Phiếu Mượn</h3>
+      <table class="table-add">
+        <thead>
+          <tr>
+            <th>Mã Phiếu</th>
+            <th>Tên Người Mượn</th>
+            <th>Mã Sách</th>
+            <th>Tên Sách</th>
+            <th>Ngày Mượn</th>
+            <th>Ngày Trả</th>
+            <th>Trạng Thái</th>
+            <th>Thao Tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text" id="borrowId" placeholder="PM001"></td>
+            <td><input type="text" id="borrowerName" placeholder="Nguyễn Văn A"></td>
+            <td><input type="text" id="bookCode" placeholder="VH001"></td>
+            <td><input type="text" id="bookName" placeholder="Truyện Kiều"></td>
+            <td><input type="date" id="borrowDate"></td>
+            <td><input type="date" id="returnDate"></td>
+            <td>
+              <select id="borrowStatus">
+                <option value="Đang mượn">Đang mượn</option>
+                <option value="Đã trả">Đã trả</option>
+                <option value="Quá hạn">Quá hạn</option>
+              </select>
+            </td>
+            <td>
+              <button id="saveBorrowBtn" class="btn-save">💾</button>
+              <button id="cancelBorrowBtn" class="btn-cancel">✖</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bảng danh sách phiếu mượn -->
+    <div class="table">
+      <h3>📚 Danh Sách Phiếu Mượn</h3>
+      <table id="borrowTable" class="table-list">
+        <thead>
+          <tr>
+            <th>Mã Phiếu</th>
+            <th>Tên Người Mượn</th>
+            <th>Mã Sách</th>
+            <th>Tên Sách</th>
+            <th>Ngày Mượn</th>
+            <th>Trạng Thái</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>PM001</td>
+            <td>Nguyễn Văn A</td>
+            <td>VH001</td>
+            <td>Truyện Kiều</td>
+            <td>15/10/2025</td>
+            <td><span class="status borrowing">Đang mượn</span></td>
+          </tr>
+          <tr>
+            <td>PM002</td>
+            <td>Trần Thị B</td>
+            <td>TN012</td>
+            <td>Doraemon Tập 5</td>
+            <td>10/10/2025</td>
+            <td><span class="status returned">Đã trả</span></td>
+          </tr>
+          <tr>
+            <td>PM003</td>
+            <td>Phạm Minh C</td>
+            <td>KH007</td>
+            <td>Vũ Trụ Trong Vỏ Hạt Dẻ</td>
+            <td>01/10/2025</td>
+            <td><span class="status overdue">Quá hạn</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="../js/product.js"></script>
+</body>
+</html>

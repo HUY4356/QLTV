@@ -3,19 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <title>Quản Lí Người Dùng</title>
-  <link rel="stylesheet" href="../css/phong.css">
+  <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
   <div class="container">
     <h2>Quản Lí Người Dùng</h2>
 
+    <!-- Thanh tìm kiếm và nút thêm -->
     <div class="actions">
-      <input type="text" id="searchRoom" placeholder="🔍 Tìm kiếm người dùng...">
-      <button id="addRoomBtn">+ Thêm Người Dùng</button>
+      <input type="text" id="searchUser" placeholder="🔍 Tìm kiếm người dùng...">
     </div>
 
+    <!-- Bảng thêm / cập nhật người dùng -->
+    <div id="addUserTableContainer" class="add-section">
+      <h3>➕ Thêm / Cập nhật Người Dùng</h3>
+      <table id="addUserTable" class="table-add">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Số Điện Thoại</th>
+            <th>Mật Khẩu</th>
+            <th>Trạng Thái</th>
+            <th>Thao Tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text" id="userId"></td>
+            <td><input type="email" id="userEmail"></td>
+            <td><input type="text" id="userPhone"></td>
+            <td><input type="password" id="userPassword"></td>
+            <td>
+              <select id="userStatus">
+                <option value="active">Hoạt động</option>
+                <option value="inactive">Đã khóa</option>
+                <option value="pending">Chờ xác nhận</option>
+              </select>
+            </td>
+            <td>
+              <button id="saveUserBtn" class="btn-save">💾</button>
+              <button id="cancelUserBtn" class="btn-cancel">✖</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bảng danh sách người dùng -->
     <div class="table">
-      <table id="roomTable">
+      <h3>👥 Danh Sách Người Dùng</h3>
+      <table id="userTable" class="table-list">
         <thead>
           <tr>
             <th>ID</th>
@@ -47,3 +85,7 @@
       </table>
     </div>
   </div>
+
+  <script src="../js/account.js"></script>
+</body>
+</html>

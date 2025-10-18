@@ -2,84 +2,108 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Quản Lí Phòng</title>
-  <link rel="stylesheet" href="../css/phong.css">
+  <title>Quản Lí Danh Mục</title>
+  <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
   <div class="container">
-    <h2>Quản Lí Danh Mục Sách</h2>
+    <h2>Quản Lí Danh Mục</h2>
 
+    <!-- Thanh tìm kiếm -->
     <div class="actions">
-      <input type="text" id="searchRoom" placeholder="🔍 Tìm kiếm sách hoặc nhóm...">
-      <button id="addRoomBtn">+ Thêm Sách</button>
+      <input type="text" id="searchCategory" placeholder="🔍 Tìm kiếm danh mục, thể loại hoặc tác giả...">
     </div>
 
-    <div class="table">
-      <table id="roomTable">
+    <!-- Bảng thêm / cập nhật danh mục -->
+    <div id="addCategoryTableContainer" class="add-section">
+      <h3>➕ Thêm / Cập Nhật Danh Mục</h3>
+      <table class="table-add">
         <thead>
           <tr>
-            <th>(ID)</th>
-            <th>Nhóm Sách</th>
-            <th>Mã Sách</th>
-            <th>Tên Sách</th>
-            <th>Tác Giả</th>
-            <th>Đơn Giá (VNĐ)</th>
-            <th>Số Lượng Tồn</th>
-            <th>Vị Trí Kệ</th>
+            <th>ID</th>
+            <th>Tên Danh Mục</th>
+            <th>Loại Danh Mục</th>
+            <th>Mô Tả</th>
+            <th>Ngày Tạo</th>
+            <th>Thao Tác</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>1</td>
+            <td><input type="text" id="categoryId"></td>
+            <td><input type="text" id="categoryName"></td>
+            <td>
+              <select id="categoryType">
+                <option value="Thể Loại">Thể Loại</option>
+                <option value="Tác Giả">Tác Giả</option>
+                <option value="Khuyến Mãi">Khuyến Mãi</option>
+              </select>
+            </td>
+            <td><input type="text" id="categoryDesc"></td>
+            <td><input type="date" id="categoryDate"></td>
+            <td>
+              <button id="saveCategoryBtn" class="btn-save">💾</button>
+              <button id="cancelCategoryBtn" class="btn-cancel">✖</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bảng danh sách danh mục -->
+    <div class="table">
+      <h3>📚 Danh Sách Danh Mục</h3>
+      <table id="categoryTable" class="table-list">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tên Danh Mục</th>
+            <th>Loại Danh Mục</th>
+            <th>Mô Tả</th>
+            <th>Ngày Tạo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>DM001</td>
             <td>Văn Học</td>
-            <td>VH001</td>
-            <td>Truyện Kiều</td>
-            <td>Nguyễn Du</td>
-            <td>65,000</td>
-            <td>15</td>
-            <td>Kệ A1</td>
+            <td>Thể Loại</td>
+            <td>Sách văn học cổ điển Việt Nam và nước ngoài</td>
+            <td>01/10/2025</td>
           </tr>
           <tr>
-            <td>2</td>
-            <td>Thiếu Nhi</td>
-            <td>TN012</td>
-            <td>Doraemon Tập 5</td>
+            <td>DM002</td>
             <td>Fujiko F. Fujio</td>
-            <td>30,000</td>
-            <td>40</td>
-            <td>Kệ B2</td>
+            <td>Tác Giả</td>
+            <td>Tác giả nổi tiếng với bộ truyện Doraemon</td>
+            <td>05/10/2025</td>
           </tr>
           <tr>
-            <td>3</td>
+            <td>DM003</td>
+            <td>Sale Tháng 10</td>
+            <td>Khuyến Mãi</td>
+            <td>Giảm giá 20% cho tất cả sách thiếu nhi</td>
+            <td>10/10/2025</td>
+          </tr>
+          <tr>
+            <td>DM004</td>
             <td>Khoa Học</td>
-            <td>KH007</td>
-            <td>Vũ Trụ Trong Vỏ Hạt Dẻ</td>
-            <td>Stephen Hawking</td>
-            <td>120,000</td>
-            <td>10</td>
-            <td>Kệ C3</td>
+            <td>Thể Loại</td>
+            <td>Sách kiến thức, nghiên cứu, vật lý, thiên văn</td>
+            <td>15/10/2025</td>
           </tr>
           <tr>
-            <td>4</td>
-            <td>Lịch Sử</td>
-            <td>LS004</td>
-            <td>Đại Việt Sử Ký Toàn Thư</td>
-            <td>Ngô Sĩ Liên</td>
-            <td>95,000</td>
-            <td>8</td>
-            <td>Kệ D1</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Tin Học</td>
-            <td>IT001</td>
-            <td>Lập Trình Python Cơ Bản</td>
-            <td>Trần Minh Đức</td>
-            <td>150,000</td>
-            <td>25</td>
-            <td>Kệ E2</td>
+            <td>DM005</td>
+            <td>Nguyễn Nhật Ánh</td>
+            <td>Tác Giả</td>
+            <td>Tác giả sách tuổi học trò Việt Nam nổi tiếng</td>
+            <td>18/10/2025</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
+
+  <script src="../js/danhmuc.js"></script>
+</body>
+</html>

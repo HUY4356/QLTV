@@ -3,23 +3,17 @@
    ===================== */
 
 body {
-     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    gap: 8px;
-             /* Dùng flexbox chia layout ngang */
-  min-height: 100vh;           /* Chiều cao toàn màn hình */
-  margin: 0;
+    display: grid;
+grid-template-columns: repeat(7, 1fr);
+grid-template-rows: repeat(5, 1fr);
   background-color: #f4f6fa;
   font-family: "Segoe UI", sans-serif;
-  color: #2c3e50;
+  color:#397bff;
   
 }
 .sidebar_index {
     grid-row: span 5 / span 5;    /* Chiếm toàn bộ hàng */
-    background: linear-gradient(180deg, #2c3e50, #34495e);
     color: #fff;
-    border: solid #2c3e50;
     box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -27,9 +21,7 @@ body {
 .main_index {
      grid-column: span 6 / span 6;
     grid-row: span 5 / span 5;
-    grid-column-start: 3;       /* Chiếm toàn bộ hàng */
-    
-    background-color: #f8f9fa;
+    grid-column-start: 2;
 }
 
 

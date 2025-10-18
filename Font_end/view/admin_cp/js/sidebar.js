@@ -1,38 +1,3 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <title>Danh Mục Tìm Kiếm</title>
-  <link rel="stylesheet" href="../css/sidebar.css">
-</head>
-
-<body>
-  <div class="sidebar">
-    <h2>Quản Lí Thư Viện</h2>
-
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="🔍 Tìm kiếm...">
-    </div>
-
-    <div class="khung">
-      <ul id="menuList">
-        <li><a class="hehe" href="index.html?danhmuc">Danh mục</a></li>
-        <li><a class="hehe" href="index.html?account">Account</a></li>
-        <li><a class="hehe" href="index.html?phong">Phòng</a></li>
-        <li><a class="hehe" href="index.html?product_renting">Sản phẩm đang mượn</a></li>
-        <li><a class="hehe" href="index.html?product">Sản phẩm</a></li>
-      </ul>
-    </div>
-
-    <div class="bottom-links">
-      <a href="index.html?home" class="bottom-link">Trang chủ</a>
-      <a href="logout.html" class="bottom-link">Đăng xuất</a>
-    </div>
-  </div>
-
-
-
-  <script>
     // --- Tìm kiếm trong sidebar ---
     const searchInput = document.getElementById("searchInput");
     const items = document.querySelectorAll("#menuList li");
@@ -65,6 +30,3 @@
         }
       });
     }
-  </script>
-</body>
-</html>

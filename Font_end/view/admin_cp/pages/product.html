@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản Lí Sách Cho Mượn</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Quản Lí Sách Cho Mượn</h2>
+
+    <!-- Thanh tìm kiếm -->
+    <div class="actions">
+      <input type="text" id="searchProduct" placeholder="🔍 Tìm kiếm sách, tác giả hoặc thể loại...">
+    </div>
+
+    <!-- Bảng thêm / cập nhật sách -->
+    <div id="addProductTableContainer" class="add-section">
+      <h3>➕ Thêm / Cập Nhật Sách</h3>
+      <table class="table-add">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tên Sách</th>
+            <th>Tác Giả</th>
+            <th>Thể Loại</th>
+            <th>Mô Tả</th>
+            <th>Ảnh Bìa</th>
+            <th>Tình Trạng</th>
+            <th>Thao Tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="text" id="productId"></td>
+            <td><input type="text" id="productName"></td>
+            <td><input type="text" id="productAuthor"></td>
+            <td><input type="text" id="productCategory"></td>
+            <td><input type="text" id="productDesc"></td>
+            <td><input type="file" id="productImage" accept="image/*"></td>
+            <td>
+              <select id="productStatus">
+                <option value="Có sẵn">Có sẵn</option>
+                <option value="Đang mượn">Đang mượn</option>
+                <option value="Hỏng / Mất">Hỏng / Mất</option>
+              </select>
+            </td>
+            <td>
+              <button id="saveProductBtn" class="btn-save">💾</button>
+              <button id="cancelProductBtn" class="btn-cancel">✖</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bảng danh sách sách -->
+    <div class="table">
+      <h3>📚 Danh Sách Sách Cho Mượn</h3>
+      <table id="productTable" class="table-list">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tên Sách</th>
+            <th>Tác Giả</th>
+            <th>Thể Loại</th>
+            <th>Mô Tả</th>
+            <th>Ảnh Bìa</th>
+            <th>Tình Trạng</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>BK001</td>
+            <td>Harry Potter và Hòn Đá Phù Thủy</td>
+            <td>J.K. Rowling</td>
+            <td>Giả Tưởng</td>
+            <td>Tập đầu tiên trong loạt truyện nổi tiếng về cậu bé phù thủy.</td>
+            <td><img src="img/bia_sach_1.jpg" alt="Harry Potter" width="60"></td>
+            <td><span class="status empty">Có sẵn</span></td>
+          </tr>
+          <tr>
+            <td>BK002</td>
+            <td>Dế Mèn Phiêu Lưu Ký</td>
+            <td>Tô Hoài</td>
+            <td>Thiếu Nhi</td>
+            <td>Tác phẩm kinh điển dành cho thiếu nhi Việt Nam.</td>
+            <td><img src="img/bia_sach_2.jpg" alt="Dế Mèn" width="60"></td>
+            <td><span class="status using">Đang mượn</span></td>
+          </tr>
+          <tr>
+            <td>BK003</td>
+            <td>Nhà Giả Kim</td>
+            <td>Paulo Coelho</td>
+            <td>Triết Lý - Cuộc Sống</td>
+            <td>Câu chuyện truyền cảm hứng về hành trình theo đuổi ước mơ.</td>
+            <td><img src="img/bia_sach_3.jpg" alt="Nhà Giả Kim" width="60"></td>
+            <td><span class="status booked">Hỏng / Mất</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="../js/product.js"></script>
+</body>
+</html>
