@@ -2,82 +2,84 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Quản lý danh mục</title>
-    <link rel="stylesheet" href="../css/danhmuc.css">
-    <script src="../js/danhmuc.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Epunda+Slab:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <title>Quản Lí Phòng</title>
+  <link rel="stylesheet" href="../css/phong.css">
 </head>
-
 <body>
+  <div class="container">
+    <h2>Quản Lí Danh Mục Sách</h2>
 
-  <h2>Danh Mục Sách</h2>
-  <button class="btn btn-add" onclick="showForm()">+ Thêm sản phẩm</button>
-  
-  <table id="productTable">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Tên sản phẩm</th>
-        <th>Mô tả</th>
-        <th>Tác giả</th>
-        <th>Tồn kho</th>
-        <th>Thể loại</th>
-        <th>Hình ảnh</th>
-        <th>Thao tác</th>
-      </tr>
-    </thead>
-    <tbody>
-        <!-- Dữ liệu sản phẩm sẽ được thêm vào đây bởi JavaScript -->
-    </tbody>
-  </table>
-
-    <!-- Form thêm/sửa sản phẩm -->
-  <div class="form-container" id="formContainer">
-    <h3 id="formTitle">Thêm sản phẩm</h3>
-    <input type="hidden" id="editIndex">
-    <div>
-        <label>Tên sản phẩm</label>
-        <input type="text" id="name">
+    <div class="actions">
+      <input type="text" id="searchRoom" placeholder="🔍 Tìm kiếm sách hoặc nhóm...">
+      <button id="addRoomBtn">+ Thêm Sách</button>
     </div>
-    <div>
-        <label>Mô tả</label>
-        <input type="text" id="desc">
+
+    <div class="table">
+      <table id="roomTable">
+        <thead>
+          <tr>
+            <th>(ID)</th>
+            <th>Nhóm Sách</th>
+            <th>Mã Sách</th>
+            <th>Tên Sách</th>
+            <th>Tác Giả</th>
+            <th>Đơn Giá (VNĐ)</th>
+            <th>Số Lượng Tồn</th>
+            <th>Vị Trí Kệ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Văn Học</td>
+            <td>VH001</td>
+            <td>Truyện Kiều</td>
+            <td>Nguyễn Du</td>
+            <td>65,000</td>
+            <td>15</td>
+            <td>Kệ A1</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Thiếu Nhi</td>
+            <td>TN012</td>
+            <td>Doraemon Tập 5</td>
+            <td>Fujiko F. Fujio</td>
+            <td>30,000</td>
+            <td>40</td>
+            <td>Kệ B2</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Khoa Học</td>
+            <td>KH007</td>
+            <td>Vũ Trụ Trong Vỏ Hạt Dẻ</td>
+            <td>Stephen Hawking</td>
+            <td>120,000</td>
+            <td>10</td>
+            <td>Kệ C3</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Lịch Sử</td>
+            <td>LS004</td>
+            <td>Đại Việt Sử Ký Toàn Thư</td>
+            <td>Ngô Sĩ Liên</td>
+            <td>95,000</td>
+            <td>8</td>
+            <td>Kệ D1</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Tin Học</td>
+            <td>IT001</td>
+            <td>Lập Trình Python Cơ Bản</td>
+            <td>Trần Minh Đức</td>
+            <td>150,000</td>
+            <td>25</td>
+            <td>Kệ E2</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div>
-        <label>Tác giả</label>
-        <input type="text" id="price">
-    </div>
-    <div>
-        <label>Tồn kho</label>
-        <input type="number" id="stock">
-    </div>
-    <div>
-        <label>Thể loại</label>
-         <select id="category">
-      <option value="Tiểu Thuyết">Tiểu Thuyết</option>
-      <option value="Huyền Huyễn">Huyền Huyễn</option>
-      <option value="Khác">Tu Tiên</option>
-      <option value="Khác">Võ Hiệp</option>
-      <option value="Khác">Ngôn Tình</option>
-      <option value="Khác">Khác</option>
-    </select>
-    </div>
-    <label for="image">Hình ảnh (URL)</label>
-    <input type="file" id="image" accept="img/*">
-  <div></div>
-   
-
-    <button class="btn btn-add" onclick="saveProduct()">Lưu</button>
-    <button class="btn" onclick="hideForm()">Hủy</button>
-<html>
-
-    <div class="product-grid">
-    
-</main>
-
-
-
-</body>
-</html>
+  </div>

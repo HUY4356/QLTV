@@ -1,58 +1,97 @@
-<div class="container">
-  <h2>Quản Lí Phòng</h2>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản Lí Phòng</title>
+  <link rel="stylesheet" href="../css/phong.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Quản Lí Phòng</h2>
 
-  <div class="actions">
-    <input type="text" id="searchRoom" placeholder="Tìm kiếm phòng...">
-    <link rel="stylesheet" href="../css/phong.css">
-    <script src="phong.js"></script>
-    <button id="addRoomBtn">Thêm Phòng</button>
-  </div>
+    <!-- Thanh hành động -->
+    <div class="actions">
+      <input type="text" id="searchRoom" placeholder="🔍 Tìm kiếm phòng...">
+      <button id="addRoomBtn" class="btn-add">+ Thêm Phòng</button>
+    </div>
 
-  <table id="roomTable">
-    <thead>
-      <tr>
-        <th>Mã</th>
-        <th>Tên Phòng</th>
-        <th>Loại</th>
-        <th>Giá (VNĐ)</th>
-        <th>Trạng thái</th>
-        <th>Mô tả</th>
-        <th>Hành động</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+    <!-- Form cập nhật / thêm phòng -->
+    <div id="roomForm" class="form hidden">
+      <h3>Thêm / Cập nhật Phòng</h3>
+      <div class="form-group">
+        <label for="roomId">Mã Phòng:</label>
+        <input type="text" id="roomId" placeholder="Nhập mã phòng...">
+      </div>
 
-  <!-- Form thêm/sửa -->
-  <div id="roomFormContainer" class="modal hidden">
-    <div class="modal-content">
-      <!-- <h3 id="formTitle">Thêm Phòng</h3> -->
-      <form id="roomForm">
-        <input type="hidden" id="roomId">
-        <label>Tên Phòng:</label>
-        <input type="text" id="roomName" required>
+      <div class="form-group">
+        <label for="roomDate">Ngày Đặt:</label>
+        <input type="date" id="roomDate">
+      </div>
 
-        <label>Loại:</label>
-        <input type="text" id="roomType" required>
+      <div class="form-group">
+        <label for="startTime">Giờ Bắt Đầu:</label>
+        <input type="time" id="startTime">
+      </div>
 
-        <label>Giá:</label>
-        <input type="number" id="roomPrice" required>
+      <div class="form-group">
+        <label for="endTime">Giờ Kết Thúc:</label>
+        <input type="time" id="endTime">
+      </div>
 
-        <label>Trạng thái:</label>
-        <select id="roomStatus">
+      <div class="form-group">
+        <label for="status">Trạng Thái:</label>
+        <select id="status">
           <option value="Trống">Trống</option>
-          <option value="Đang thuê">Đang thuê</option>
-          <option value="Bảo trì">Bảo trì</option>
+          <option value="Đang dùng">Đang dùng</option>
+          <option value="Đã đặt">Đã đặt</option>
         </select>
+      </div>
 
-        <label>Mô tả:</label>
-        <textarea id="roomDescription"></textarea>
+      <div class="form-actions">
+        <button id="saveRoomBtn" class="btn-save">💾 Lưu</button>
+        <button id="cancelBtn" class="btn-cancel">✖ Hủy</button>
+      </div>
+    </div>
 
-        <div class="form-buttons">
-          <button type="submit">Lưu</button>
-          <button type="button" id="cancelBtn">Hủy</button>
-        </div>
-      </form>
+    <!-- Bảng danh sách phòng -->
+    <div class="table">
+      <table id="roomTable">
+        <thead>
+          <tr>
+            <th>Phòng (ID)</th>
+            <th>Ngày Đặt</th>
+            <th>Giờ Bắt Đầu</th>
+            <th>Giờ Kết Thúc</th>
+            <th>Trạng Thái</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>P101</td>
+            <td>18/10/2025</td>
+            <td>08:00</td>
+            <td>10:00</td>
+            <td><span class="status using">Đang dùng</span></td>
+          </tr>
+          <tr>
+            <td>P102</td>
+            <td>18/10/2025</td>
+            <td>10:00</td>
+            <td>12:00</td>
+            <td><span class="status empty">Trống</span></td>
+          </tr>
+          <tr>
+            <td>P201</td>
+            <td>17/10/2025</td>
+            <td>13:00</td>
+            <td>15:00</td>
+            <td><span class="status booked">Đã đặt</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-</div>
+
+  <script src="../js/phong.js"></script>
+</body>
+</html>

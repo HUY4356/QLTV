@@ -19,12 +19,11 @@ function includeHTML(id, filePath) {
 }
 
 // Nhúng header và footer vào index.html
-includeHTML("header-placeholder", "pages/Header.html");
-includeHTML("footer-placeholder", "pages/Footer.html");
+includeHTML("sidebar-placeholder", "pages/sidebar.html");
 
 // Xác định nội dung chính cần nhúng dựa trên tham số URL
 const params = new URLSearchParams(window.location.search);
-let page = "Home.html"; // mặc định
+let page = "danhmuc.html"; // mặc định
 
 // Map tham số URL với file HTML tương ứng
 const pageMap = {
@@ -37,12 +36,12 @@ const pageMap = {
 
 // Map tham số URL với CSS tương ứng
 const cssMap = {
-  danhmuc: "css/danhmuc.css",
-  account: "css/account.css",
+  danhmuc: "css/phong.css",
+  account: "css/phong.css",
   create: "css/create.css",
   phong: "css/phong.css",
   // rent: "css/rent.css",
-   Home: "css/home.css",
+   Home: "css/phong.css",
   // category: "css/category.css",
   // Login: "css/Login.css",
   // Account: "css/account.css",

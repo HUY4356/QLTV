@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh Mục Tìm Kiếm</title>
+  <link rel="stylesheet" href="../css/header.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Quản Lí Thư Viện</h2>
+
+    <!-- Thanh tìm kiếm -->
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="🔍 Tìm kiếm...">
+    </div>
+
+    <div class="khung">
+      <ul id="menuList">
+        <li><a class="hehe" href="index.html?danhmuc" title="danhmuc">Danh mục</a></li>
+        <li><a class="hehe" href="index.html?account" title="account">Account</a></li>
+        <li><a class="hehe" href="index.html?phong" title="phong">Phòng</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // --- Chức năng tìm kiếm trong sidebar ---
+    const searchInput = document.getElementById("searchInput");
+    const items = document.querySelectorAll("#menuList li");
+
+    searchInput.addEventListener("keyup", () => {
+      const keyword = searchInput.value.toLowerCase();
+      items.forEach(li => {
+        const text = li.textContent.toLowerCase();
+        li.style.display = text.includes(keyword) ? "block" : "none";
+      });
+    });
+  </script>
+</body>
+</html>

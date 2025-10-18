@@ -2,33 +2,48 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quản lý tài khoản người dùng - Admin</title>
-  <link rel="stylesheet" href="../css/account.css">
+  <title>Quản Lí Người Dùng</title>
+  <link rel="stylesheet" href="../css/phong.css">
 </head>
 <body>
-  <main>
-    <div class="main_box">
-      <h1>Quản lý tài khoản người dùng</h1>
-      <button id="addUserBtn">➕ Thêm người dùng</button>
-      <table id="userTable">
+  <div class="container">
+    <h2>Quản Lí Người Dùng</h2>
+
+    <div class="actions">
+      <input type="text" id="searchRoom" placeholder="🔍 Tìm kiếm người dùng...">
+      <button id="addRoomBtn">+ Thêm Người Dùng</button>
+    </div>
+
+    <div class="table">
+      <table id="roomTable">
         <thead>
           <tr>
-            <th>Tên</th>
+            <th>ID</th>
             <th>Email</th>
-            <th>Quyền</th>
+            <th>Số Điện Thoại</th>
+            <th>Trạng Thái</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          <tr>
+            <td>ND001</td>
+            <td>nguyenvana@gmail.com</td>
+            <td>0912345678</td>
+            <td><span class="status active">Hoạt động</span></td>
+          </tr>
+          <tr>
+            <td>ND002</td>
+            <td>tranthib@gmail.com</td>
+            <td>0987654321</td>
+            <td><span class="status inactive">Đã khóa</span></td>
+          </tr>
+          <tr>
+            <td>ND003</td>
+            <td>phamminhc@example.com</td>
+            <td>0901122334</td>
+            <td><span class="status pending">Chờ xác nhận</span></td>
+          </tr>
+        </tbody>
       </table>
     </div>
-  </main>
-  <!-- ...existing code... -->
-<script>
-  document.getElementById('addUserBtn').onclick = function() {
-    window.location.href = "index.html?create";
-  };
-</script>
-<!-- ...existing code... -->
-</body>
-</html>
+  </div>
