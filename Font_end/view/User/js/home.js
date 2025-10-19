@@ -85,3 +85,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   })();
 });
+
+// FORM ĐẶT PHÒNG
+document.addEventListener("DOMContentLoaded", () => {
+  const bookingForm = document.getElementById("bookingForm");
+  if (!bookingForm) return;
+
+  bookingForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const roomType = document.getElementById("roomType").value;
+    const date = document.getElementById("date").value;
+    const session = document.getElementById("session").value;
+
+    if (!roomType || !date || !session) {
+      alert("⚠️ Vui lòng điền đầy đủ thông tin!");
+      return;
+    }
+
+    alert(`✅ Đặt phòng thành công!\n\nPhòng: ${roomType}\nNgày: ${date}\nBuổi: ${session}`);
+    bookingForm.reset();
+  });
+});
+

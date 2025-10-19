@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const html = await response.text();
       target.innerHTML = html;
 
-      if (typeof callback === "function") callback(); // gọi sau khi load xong
+      if (typeof callback === "function") callback(); // Gọi sau khi load xong
     } catch (err) {
       console.error(`Lỗi khi include ${filePath}:`, err);
       target.innerHTML = `<p style="color:red;">Không thể tải nội dung từ ${filePath}</p>`;
@@ -24,8 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
      🧱 NHÚNG HEADER & FOOTER
   ===================================================== */
   includeHTML("header-placeholder", "pages/Header.html", () => {
-    // Sau khi header được load => nạp script header
-    addJS("js/header.js");
+    addJS("js/header.js", () => {
+      if (typeof initHeaderScripts === "function") initHeaderScripts();
+    });
   });
 
   includeHTML("footer-placeholder", "pages/Footer.html");
@@ -55,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
     rent: "css/rent.css",
     premium: "css/premium.css",
     Home: "css/home.css",
-    Header: "css/header.css",
     category: "css/category.css",
     Login: "css/Login.css",
     Sign_up: "css/Sign_up.css",
@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const jsMap = {
     rent: "js/rent.js",
     Home: "js/home.js",
-    Header: "js/header.js",
     category: "js/category.js",
     Login: "js/Login.js",
     Sign_up: "js/Sign_up.js",
@@ -84,24 +83,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Kiểm tra tham số URL
   let matched = false;
+  let currentKey = "Home";
   for (const key in pageMap) {
     if (params.has(key)) {
       matched = true;
+      currentKey = key;
       page = pageMap[key];
-      if (cssMap[key]) addCSS(cssMap[key]);
-      if (jsMap[key]) addJS(jsMap[key]);
       break;
     }
   }
 
-  // Nếu không có tham số nào => load Home mặc định
-  if (!matched) {
-    addCSS(cssMap.Home);
-    addJS(jsMap.Home);
-  }
+  // Thêm CSS & JS tương ứng
+  addCSS(cssMap[currentKey]);
 
-  // Nhúng nội dung chính
-  includeHTML("main-placeholder", `pages/${page}`);
+  includeHTML("main-placeholder", `pages/${page}`, () => {
+    addJS(jsMap[currentKey]);
+  });
 
   /* =====================================================
      🧩 HÀM THÊM CSS/JS AN TOÀN
@@ -115,12 +112,13 @@ document.addEventListener("DOMContentLoaded", () => {
     document.head.appendChild(link);
   }
 
-  function addJS(src) {
+  function addJS(src, callback) {
     const exists = [...document.scripts].some(script => script.src && script.src.includes(src));
-    if (exists) return;
+    if (exists) return callback && callback();
     const script = document.createElement("script");
     script.src = src;
     script.defer = true;
+    if (callback) script.onload = callback;
     document.body.appendChild(script);
   }
 

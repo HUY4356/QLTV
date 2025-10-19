@@ -34,7 +34,7 @@ main {
   width: 450px;
   height: 550px;
 
-  margin: 2rem 0 4rem 0;
+  margin: 2rem 0 8rem 0;
 
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(14px) saturate(160%);

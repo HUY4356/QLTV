@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trang chủ</title>
+  <title>Trang chủ - Lạc Hồng Thư</title>
   <link rel="stylesheet" href="../css/home.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,10 +14,11 @@
 <body>
 <main class="main_box">
 
-  <!-- SLOGAN (TRANG CHỦ) -->
+  <!-- ===========================
+        🏠 SLOGAN TRANG CHỦ
+  ============================ -->
   <section class="home_wrapper">
     <div class="home_container">
-      <!-- SLOGAN -->
       <div class="home_data">
         <h1 class="home_title">Lạc Hồng Thư</h1>
         <p class="home_description">
@@ -26,7 +27,6 @@
         <a href="index.html?premium" class="button">Đăng ký ngay</a>
       </div>
 
-      <!-- HÌNH ẢNH TRƯNG BÀY -->
       <div class="home_img">
         <div class="home_swiper">
           <article class="home_article"><img src="img/bia_sach_1.jpg" alt="Bìa sách 1"></article>
@@ -34,7 +34,6 @@
           <article class="home_article"><img src="img/bia_sach_3.jpg" alt="Bìa sách 3"></article>
           <article class="home_article"><img src="img/bia_sach_4.jpg" alt="Bìa sách 4"></article>
         </div>
-        <!-- Nút điều khiển -->
         <div class="slider-controls">
           <button class="prev"><i class="fa-solid fa-chevron-left"></i></button>
           <button class="next"><i class="fa-solid fa-chevron-right"></i></button>
@@ -43,7 +42,9 @@
     </div>
   </section>
 
-  <!-- TÁC PHẨM NỔI BẬT -->
+  <!-- ===========================
+        📚 TÁC PHẨM NỔI BẬT
+  ============================ -->
   <section>
     <div class="featured_section">
       <h2 class="featured_title">Tác phẩm nổi bật</h2>
@@ -56,14 +57,15 @@
         <div class="featured_card"><img src="img/bia_sach_9.jpg" alt="Sách 6"></div>
       </div>
 
-      <!-- Nút thêm tác phẩm -->
       <button class="add_book_btn_section">
         <i class="fa-solid fa-plus"></i> Thêm tác phẩm
       </button>
     </div>
   </section>
 
-  <!-- TÁC PHẨM MỚI -->
+  <!-- ===========================
+        🆕 TÁC PHẨM MỚI
+  ============================ -->
   <section>
     <div class="featured_section">
       <h2 class="featured_title">Tác phẩm mới</h2>
@@ -76,14 +78,15 @@
         <div class="featured_card"><img src="img/bia_sach_9.jpg" alt="Sách 6"></div>
       </div>
 
-      <!-- Nút thêm tác phẩm -->
       <button class="add_book_btn_section">
         <i class="fa-solid fa-plus"></i> Thêm tác phẩm
       </button>
     </div>
   </section>
 
-  <!-- TÁC GIẢ NỔI BẬT -->
+  <!-- ===========================
+        ✍️ TÁC GIẢ NỔI BẬT
+  ============================ -->
   <section>
     <div class="author_section">
       <h2 class="author_title">Tác giả nổi bật</h2>
@@ -104,7 +107,7 @@
             <div class="book_item"><img src="img/Ngày xưa có một chuyện tình.jpg" alt="Ngày xưa có một chuyện tình"></div>
             <div class="book_item"><img src="img/matkengdom.jpg" alt="Mắt kính đom đóm"></div>
           </div>
-          <button class="add_book_btn" title="Thêm tác phẩm">
+          <button class="add_book_btn">
             <i class="fa-solid fa-plus"></i> Thêm tác phẩm
           </button>
         </div>
@@ -170,89 +173,192 @@
     </div>
   </section>
 
-  <!-- SÁCH ĐANG MƯỢN -->
+  <!-- ===========================
+        🏡 THẺ PHÒNG ĐỌC (Glass Blur)
+  ============================ -->
   <section>
-    <div class="featured_section"  style="border:solid 4px #7e6e59; background-color:#A79277">
-      <h2 class="featured_title">Sách đang được mượn</h2>
-      <div class="featured_grid">
-        <div class="featured_card"><img src="img/bia_sach_4.jpg" alt="Sách 1"></div>
-        <div class="featured_card"><img src="img/bia_sach_5.jpg" alt="Sách 2"></div>
+    <div class="room_card_section">
+      <h2 class="room_card_title">Thẻ phòng đọc</h2>
+
+      <div class="room_card_grid">
+        <!-- CARD -->
+        <div class="room_card_item">
+          <h3>Phòng cá nhân</h3>
+          <img src="img/solo desk.jpg" alt="Phòng cá nhân">
+          <div class="room_overlay">
+            
+            <p>Không gian yên tĩnh, phù hợp cho người muốn tập trung.</p>
+            <a href="#" class="room_card_btn">Đặt ngay</a>
+          </div>
+        </div>
+
+        <div class="room_card_item">
+          <h3>Phòng nhóm</h3>
+          <img src="img/Group Table.jpg" alt="Phòng nhóm">
+          <div class="room_overlay">
+            
+            <p>Không gian thảo luận và làm việc nhóm tiện nghi.</p>
+            <a href="#" class="room_card_btn">Đặt ngay</a>
+          </div>
+        </div>
+
+        <div class="room_card_item">
+          <h3>Phòng riêng</h3>
+          <img src="img/Private Room (8).jpg" alt="Phòng riêng">
+          <div class="room_overlay">
+            
+            <p>Dành cho bạn đọc cần sự riêng tư và yên tĩnh tuyệt đối.</p>
+            <a href="#" class="room_card_btn">Đặt ngay</a>
+          </div>
+        </div>
+
+        <div class="room_card_item">
+          <h3>Bàn cửa sổ</h3>
+          <img src="img/Window Desk.jpg" alt="Bàn cửa sổ">
+          <div class="room_overlay">
+            
+            <p>Hưởng trọn ánh sáng tự nhiên, ngắm nhìn khung cảnh bên ngoài.</p>
+            <a href="#" class="room_card_btn">Đặt ngay</a>
+          </div>
+        </div>
+
+        <div class="room_card_item">
+          <h3>Phòng PC</h3>
+          <img src="img/PC Desk.jpg" alt="Phòng PC">
+          <div class="room_overlay">
+            
+            <p>Trang bị máy tính cấu hình mạnh, kết nối internet tốc độ cao.</p>
+            <a href="#" class="room_card_btn">Đặt ngay</a>
+          </div>
+        </div>
+
+        <div class="room_card_item">
+          <h3>Phòng VIP</h3>
+          <img src="img/VIP Soundproof Room.jpg" alt="Phòng VIP">
+          <div class="room_overlay">
+            <p>Không gian cao cấp, cách âm hoàn hảo, phục vụ chuyên nghiệp.</p>
+            <a href="#" class="room_card_btn">Đặt ngay</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-<!-- ĐÁNH GIÁ NGƯỜI DÙNG -->
-<section>
-  <div class="review_section">
-    <h2 class="review_title">Đánh giá từ độc giả</h2>
+<!-- ===========================
+      🗓️ ĐẶT PHÒNG
+=========================== -->
+<section class="booking_section_room">
+  <h2 class="booking_room_title">Đặt phòng đọc</h2>
 
-    <div class="review_row">
-      <!-- Card 1 -->
-      <div class="review_card glass">
-        <div class="review_user">
-          <img src="img/user1.jpg" alt="Người dùng 1">
-          <h4>Minh Anh</h4>
-        </div>
-        <div class="review_stars">★★★★★</div>
-        <p>Không gian đọc sách rất yên tĩnh và thoải mái, nhân viên thân thiện!</p>
-      </div>
+  <div class="booking_room_container">
+    <!-- Thông tin có sẵn -->
+    <div class="booking_user_info">
+      <h3>Thông tin của bạn</h3>
+      <p><strong>Tên:</strong> Nguyễn Văn A</p>
+      <p><strong>Số điện thoại:</strong> 0987 654 321</p>
+      <p><strong>Cấp độ thẻ:</strong> Thẻ Vàng</p>
+    </div>
 
-      <!-- Card 2 -->
-      <div class="review_card glass">
-        <div class="review_user">
-          <img src="img/user2.jpg" alt="Người dùng 2">
-          <h4>Hải Đăng</h4>
-        </div>
-        <div class="review_stars">★★★★☆</div>
-        <p>Phòng nhóm rộng rãi, ánh sáng đẹp. Sẽ quay lại lần sau!</p>
-      </div>
+    <!-- Form đặt phòng -->
+    <div class="booking_room_form">
+      <h3>Thông tin đặt phòng</h3>
+      <form id="bookingForm">
+        <label for="roomType">Loại phòng:</label>
+        <select id="roomType" name="roomType" required>
+          <option value="">-- Chọn loại phòng --</option>
+          <option value="phong-ca-nhan">Phòng cá nhân</option>
+          <option value="phong-nhom">Phòng nhóm</option>
+          <option value="phong-rieng">Phòng riêng</option>
+          <option value="ban-cua-so">Bàn cửa sổ</option>
+          <option value="phong-pc">Phòng PC</option>
+          <option value="phong-vip">Phòng VIP</option>
+        </select>
 
-      <!-- Card giữa (Form) -->
-      <div class="review_form_card glass">
-        <h3>Gửi đánh giá của bạn</h3>
-        <form class="review_form">
-          <input type="text" placeholder="Tên của bạn..." required>
-          <textarea placeholder="Chia sẻ cảm nhận..." rows="3" required></textarea>
+        <label for="date">Ngày:</label>
+        <input type="date" id="date" name="date" required>
 
-          <div class="stars_input">
-            <input type="radio" name="rating" id="star5"><label for="star5">★</label>
-            <input type="radio" name="rating" id="star4"><label for="star4">★</label>
-            <input type="radio" name="rating" id="star3"><label for="star3">★</label>
-            <input type="radio" name="rating" id="star2"><label for="star2">★</label>
-            <input type="radio" name="rating" id="star1"><label for="star1">★</label>
-          </div>
+        <label for="session">Buổi:</label>
+        <select id="session" name="session" required>
+          <option value="">-- Chọn buổi --</option>
+          <option value="sang">Sáng (8:00 - 11:00)</option>
+          <option value="trua">Trưa (13:00 - 16:00)</option>
+          <option value="chieu">Chiều (17:00 - 20:00)</option>
+        </select>
 
-          <button type="submit" class="submit_btn">
-            <i class="fa-solid fa-paper-plane"></i> Gửi
-          </button>
-        </form>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="review_card glass">
-        <div class="review_user">
-          <img src="img/user3.jpg" alt="Người dùng 3">
-          <h4>Thu Hà</h4>
-        </div>
-        <div class="review_stars">★★★★★</div>
-        <p>Kho sách phong phú, hệ thống mượn trả rất tiện lợi. Yêu thích nơi này!</p>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="review_card glass">
-        <div class="review_user">
-          <img src="img/user4.jpg" alt="Người dùng 4">
-          <h4>Quốc Bảo</h4>
-        </div>
-        <div class="review_stars">★★★★☆</div>
-        <p>Phòng VIP thật tuyệt vời, yên tĩnh và sang trọng!</p>
-      </div>
+        <button type="submit" class="booking_room_btn">Xác nhận đặt phòng</button>
+      </form>
     </div>
   </div>
 </section>
 
-</main>
 
+  <!-- ===========================
+        ⭐ ĐÁNH GIÁ NGƯỜI DÙNG
+  ============================ -->
+  <section>
+    <div class="review_section">
+      <h2 class="review_title">Đánh giá từ độc giả</h2>
+      <div class="review_row">
+
+        <div class="review_card glass">
+          <div class="review_user">
+            <img src="img/user1.jpg" alt="Người dùng 1">
+            <h4>Minh Anh</h4>
+          </div>
+          <div class="review_stars">★★★★★</div>
+          <p>Không gian đọc sách rất yên tĩnh và thoải mái, nhân viên thân thiện!</p>
+        </div>
+
+        <div class="review_card glass">
+          <div class="review_user">
+            <img src="img/user2.jpg" alt="Người dùng 2">
+            <h4>Hải Đăng</h4>
+          </div>
+          <div class="review_stars">★★★★☆</div>
+          <p>Phòng nhóm rộng rãi, ánh sáng đẹp. Sẽ quay lại lần sau!</p>
+        </div>
+
+        <div class="review_form_card glass">
+          <h3>Gửi đánh giá của bạn</h3>
+          <form class="review_form">
+            <input type="text" placeholder="Tên của bạn..." required>
+            <textarea placeholder="Chia sẻ cảm nhận..." rows="3" required></textarea>
+
+            <div class="stars_input">
+              <input type="radio" name="rating" id="star5"><label for="star5">★</label>
+              <input type="radio" name="rating" id="star4"><label for="star4">★</label>
+              <input type="radio" name="rating" id="star3"><label for="star3">★</label>
+              <input type="radio" name="rating" id="star2"><label for="star2">★</label>
+              <input type="radio" name="rating" id="star1"><label for="star1">★</label>
+            </div>
+
+            <button type="submit" class="submit_btn">
+              <i class="fa-solid fa-paper-plane"></i> Gửi
+            </button>
+          </form>
+        </div>
+
+        <div class="review_card glass">
+          <div class="review_user">
+            <img src="img/user3.jpg" alt="Người dùng 3">
+            <h4>Thu Hà</h4>
+          </div>
+          <div class="review_stars">★★★★★</div>
+          <p>Kho sách phong phú, hệ thống mượn trả rất tiện lợi. Yêu thích nơi này!</p>
+        </div>
+
+        <div class="review_card glass">
+          <div class="review_user">
+            <img src="img/user4.jpg" alt="Người dùng 4">
+            <h4>Quốc Bảo</h4>
+          </div>
+          <div class="review_stars">★★★★☆</div>
+          <p>Phòng VIP thật tuyệt vời, yên tĩnh và sang trọng!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 <script src="../js/home.js"></script>
 </body>
 </html>
