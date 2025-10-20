@@ -107,3 +107,32 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Khi trang tải xong
+document.addEventListener("DOMContentLoaded", () => {
+  const bookButtons = document.querySelectorAll(".room_card_btn");
+  const roomSelect = document.getElementById("roomType");
+  const bookingSection = document.querySelector(".booking_section_room");
+  const bookingForm = document.querySelector(".booking_room_form");
+
+  bookButtons.forEach(button => {
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const roomValue = button.getAttribute("data-room");
+
+      // Cuộn xuống phần đặt phòng
+      bookingSection.scrollIntoView({ behavior: "smooth" });
+
+      // Gán giá trị tương ứng cho select
+      if (roomSelect) {
+        roomSelect.value = roomValue;
+      }
+
+      // Thêm hiệu ứng highlight
+      bookingForm.classList.add("highlight-form");
+      setTimeout(() => bookingForm.classList.remove("highlight-form"), 1500);
+    });
+  });
+});
+
+

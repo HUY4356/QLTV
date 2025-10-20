@@ -50,6 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
     returns: "help/returns.html",
     payment_options: "help/payment_options.html",
     contact_us: "help/contact_us.html",
+    product: "product.html",
+    inforbook: "inforbook.html",
   };
 
   const cssMap = {
@@ -65,6 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
     returns: "css/help.css",
     payment_options: "css/help.css",
     contact_us: "css/help.css",
+    product: "css/product.css",
+    inforbook: "css/inforbook.css",
   };
 
   const jsMap = {
@@ -79,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     returns: "js/help.js",
     payment_options: "js/help.js",
     contact_us: "js/help.js",
+    product: "js/product.js",
   };
 
   // Kiểm tra tham số URL

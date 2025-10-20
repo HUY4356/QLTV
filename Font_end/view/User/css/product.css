@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap');
+/* ===== font-family: 'Roboto', sans-serif;
+         font-family: 'Playfair Display', serif;
+===== */
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Epunda Slab", serif;
+ background: #ffffff;
+  
+}
+
+
+/* ===== MAIN BOX ===== */
+.main_box {
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  background: #F9F3EF;
+}
+
+    /* --- GALLERY --- */
+    .book-gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* tăng từ 5 lên 7 */
+  gap: 25px;
+  width: 80%;
+  margin: 2rem auto;
+  justify-items: center;
+  background: #EAD8C0;
+}
+
+/* .book-gallery::before,
+.book-gallery::after {
+  content: "";
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  height: auto;
+} */
+
+
+    /* --- MỖI CARD --- */
+    .book-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      text-align: center;
+      cursor: pointer;
+      width: 100%;
+      max-width: 200px;
+    }
+
+    .book-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    /* --- ẢNH --- */
+    .book-card img {
+      width: 100%;
+      aspect-ratio: 2 / 3; /* tỷ lệ 1 : 1.5 */
+      object-fit: cover;
+    }
+
+    /* --- TÊN TÁC PHẨM --- */
+    .book-card h3 {
+      font-size: 16px;
+      color: #2c3e50;
+      margin: 10px 0 12px;
+      padding: 0 6px;
+      text-align: center;
+    }
+
+    /* --- PHÂN TRANG --- */
+    .gallery-container {
+      width: 100%;
+      text-align: center;
+      margin-top: 40px;
+      margin-bottom: 80px;
+    }
+
+    .pagination {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .pagination button {
+      border: none;
+      background: #3498db;
+      color: white;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition:  0.3s;
+    }
+
+    .pagination button:hover {
+      background: #2176bd;
+    }
+
+    .page-numbers {
+      display: flex;
+      gap: 4px;
+    }
+.page-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.page-numbers button {
+  border: none;
+  background: #f0f0f0;
+  color: #2c3e50;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.page-numbers button:hover {
+  background: #3498db;
+  color: white;
+}
+
+.page-numbers button.active {
+  background: #2176bd;
+  color: white;
+}
