@@ -9,45 +9,48 @@
   <div class="container">
     <h2>Quản Lí Phòng</h2>
 
-    <!-- Thanh tìm kiếm -->
+    <!-- Thanh hành động -->
     <div class="actions">
       <input type="text" id="searchRoom" placeholder="🔍 Tìm kiếm phòng...">
+      <button id="addRoomBtn" class="btn-add">+ Thêm Phòng</button>
     </div>
 
-    <!-- Bảng thêm / cập nhật phòng -->
-    <div id="addRoomTableContainer" class="add-section">
-      <h3>➕ Thêm / Cập nhật Phòng</h3>
-      <table id="addRoomTable" class="table-add">
-        <thead>
-          <tr>
-            <th>Mã Phòng</th>
-            <th>Ngày Đặt</th>
-            <th>Giờ Bắt Đầu</th>
-            <th>Giờ Kết Thúc</th>
-            <th>Trạng Thái</th>
-            <th>Thao Tác</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><input type="text" id="roomId" placeholder="VD: P101, P202..."></td>
-            <td><input type="date" id="roomDate"></td>
-            <td><input type="time" id="startTime"></td>
-            <td><input type="time" id="endTime"></td>
-            <td>
-              <select id="status">
-                <option value="Trống">Trống</option>
-                <option value="Đang dùng">Đang dùng</option>
-                <option value="Đã đặt">Đã đặt</option>
-              </select>
-            </td>
-            <td>
-              <button id="saveRoomBtn" class="btn-save">💾</button>
-              <button id="cancelRoomBtn" class="btn-cancel">✖</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- Form cập nhật / thêm phòng -->
+    <div id="roomForm" class="form hidden">
+      <h3>Thêm / Cập nhật Phòng</h3>
+      <div class="form-group">
+        <label for="roomId">Mã Phòng:</label>
+        <input type="text" id="roomId" placeholder="Nhập mã phòng...">
+      </div>
+
+      <div class="form-group">
+        <label for="roomDate">Ngày Đặt:</label>
+        <input type="date" id="roomDate">
+      </div>
+
+      <div class="form-group">
+        <label for="startTime">Giờ Bắt Đầu:</label>
+        <input type="time" id="startTime">
+      </div>
+
+      <div class="form-group">
+        <label for="endTime">Giờ Kết Thúc:</label>
+        <input type="time" id="endTime">
+      </div>
+
+      <div class="form-group">
+        <label for="status">Trạng Thái:</label>
+        <select id="status">
+          <option value="Trống">Trống</option>
+          <option value="Đang dùng">Đang dùng</option>
+          <option value="Đã đặt">Đã đặt</option>
+        </select>
+      </div>
+
+      <div class="form-actions">
+        <button id="saveRoomBtn" class="btn-save">💾 Lưu</button>
+        <button id="cancelBtn" class="btn-cancel">✖ Hủy</button>
+      </div>
     </div>
 
     <!-- Bảng danh sách phòng -->

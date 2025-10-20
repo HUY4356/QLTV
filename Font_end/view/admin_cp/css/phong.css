@@ -1,0 +1,148 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 30px auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 25px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.actions input {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.actions button {
+  background-color: #27ae60;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  margin-left: 15px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.actions button:hover {
+  background-color: #2ecc71;
+}
+
+/* FORM UPDATE */
+.form {
+  background: #ecf0f1;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.form.hidden {
+  display: none;
+}
+
+.form h3 {
+  margin-top: 0;
+  color: #34495e;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  font-size: 14px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#saveRoomBtn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#saveRoomBtn:hover {
+  background: #2980b9;
+}
+
+.cancel {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.cancel:hover {
+  background: #c0392b;
+}
+
+/* BẢNG PHÒNG */
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th, .table td {
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 10px;
+}
+.table th {
+  background-color: #2c3e50;
+  color: white;
+}
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* TRẠNG THÁI */
+.status {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #fff;
+}
+.status.using { background: #e67e22; }
+.status.empty { background: #27ae60; }
+.status.booked { background: #9b59b6; }

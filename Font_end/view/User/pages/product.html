@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Tất Cả Tác Phẩm Văn Học</title>
+<<<<<<< Updated upstream
   <link rel="stylesheet" href="../css/product.css">
+=======
+  <link rel="stylesheet" href="../css/sanpham.css">
+>>>>>>> Stashed changes
 </head>
 <body>
 
@@ -11,17 +15,29 @@
     <!-- 20 TÁC PHẨM VĂN HỌC & TIỂU THUYẾT NỔI TIẾNG -->
     
     <div class="book-card">
+<<<<<<< Updated upstream
       <img src="img/kieu.jpg" alt="">
+=======
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg" alt="">
+>>>>>>> Stashed changes
       <h3>Truyện Kiều</h3>
     </div>
 
     <div class="book-card">
+<<<<<<< Updated upstream
       <img src="img/oke.jpg" alt="">
+=======
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Les_Miserables_%281862%29_-_01.jpg" alt="">
+>>>>>>> Stashed changes
       <h3>Những người khốn khổ</h3>
     </div>
 
     <div class="book-card">
+<<<<<<< Updated upstream
       <img src="img/bia_sach_2.jpg" alt="">
+=======
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f4/Romeo_and_Juliet_title_page.jpg" alt="">
+>>>>>>> Stashed changes
       <h3>Romeo và Juliet</h3>
     </div>
 
@@ -112,6 +128,7 @@
   </main>
 
   <main class="gallery-container">
+<<<<<<< Updated upstream
   <div class="pagination">
     <button id="prevBtn">⬅ Trước</button>
     <div id="pageNumbers" class="page-numbers"></div>
@@ -121,5 +138,27 @@
 
 
 
+=======
+    <div class="pagination">
+      <button id="prevBtn">⬅ Trước</button>
+      <div id="pageNumbers" class="page-numbers"></div>
+      <button id="nextBtn">Sau ➡</button>
+    </div>
+  </main>
+
+  <script>
+    // Khi click vào mỗi card -> chuyển sang trang chi tiết
+    document.querySelectorAll('.book-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const data = {
+          img: card.querySelector('img').src,
+          name: card.querySelector('h3').innerText
+        };
+        localStorage.setItem('bookDetail', JSON.stringify(data));
+        window.location.href = 'inforbook.html';
+      });
+    });
+  </script>
+>>>>>>> Stashed changes
 </body>
 </html>
