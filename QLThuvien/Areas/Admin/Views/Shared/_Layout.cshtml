@@ -1,0 +1,77 @@
+﻿@* Areas/Admin/Views/Shared/_Layout.cshtml — Layout dành riêng cho Admin *@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - Quản trị</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/admincss/sidebar.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Quản Lí Thư Viện</h2>
+        <ul>
+            <li>
+                <a class="hehe" asp-area="Admin" asp-controller="Home" asp-action="Index" title="Home">Bảng điều khiển</a>
+            </li>
+
+            <!-- Quản trị tài khoản (Identity) -->
+            <li>
+                <a class="hehe" asp-area="Admin" asp-controller="IdentityUsers" asp-action="Index" title="Tài khoản">👤 Tài khoản</a>
+            </li>
+
+            <!-- Thẻ thư viện -->
+            <li>
+                <a class="hehe" asp-area="Admin" asp-controller="Cards" asp-action="Index" title="Thẻ thư viện">🎫 Thẻ thư viện</a>
+            </li>
+
+            <!-- Hạn mức mượn -->
+            <li>
+                <a class="hehe" asp-area="Admin" asp-controller="HanMucs" asp-action="Index" title="Hạn mức mượn">📏 Hạn mức mượn</a>
+            </li>
+
+            
+            <li>
+                <a class="hehe" asp-area="Admin" asp-controller="DanhMucSaches" asp-action="Index">📂 Danh mục</a>
+            </li>
+
+            <li>
+                <a class="hehe" asp-area="Admin" asp-controller="Books" asp-action="Index">📚 Sách</a>
+            </li>
+
+            <li>
+                <a class="hehe" asp-area="Admin" asp-controller="Phongs" asp-action="Index">🏠 Phòng</a>
+            </li>
+
+            <li>
+                <a class="hehe" asp-area="" asp-controller="Home" asp-action="Index" title="home">🏠 Home</a>
+            </li>
+            
+        </ul>
+
+        <!-- Nút đăng xuất (về giao diện người dùng) -->
+        <form class="mt-3 px-2" method="post"
+              asp-area="Identity" asp-page="/Account/Logout"
+              asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button class="btn btn-sm btn-outline-light w-100" type="submit">Đăng xuất</button>
+        </form>
+    </div>
+
+    <div class="content">
+        @* Thông báo thành công *@
+        @if (TempData["Ok"] != null)
+        {
+            <div class="alert alert-success">@TempData["Ok"]</div>
+        }
+
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

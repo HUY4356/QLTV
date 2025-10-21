@@ -27,6 +27,9 @@ namespace QLThuvien.Areas.Admin.Controllers
             if (!await _db.Roles.AnyAsync(r => r.Id == m.RoleId))
                 ModelState.AddModelError(nameof(m.RoleId), "Vai trò không tồn tại.");
 
+            //if (await _db.HanMucs.AnyAsync(x => x.RoleId == m.RoleId))
+            //    ModelState.AddModelError(string.Empty, "Vai trò này đã có hạn mức.");
+
             if (!ModelState.IsValid)
             {
                 ViewBag.Roles = await _db.Roles.ToListAsync();

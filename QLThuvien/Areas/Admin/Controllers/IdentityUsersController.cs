@@ -32,26 +32,38 @@ namespace QLThuvien.Areas.Admin.Controllers
             public string Id { get; set; } = "";
             public string? Name { get; set; }
             public string? Email { get; set; }
+            public string? PhoneNumber { get; set; }
             public IList<string> Roles { get; set; } = new List<string>();
         }
 
+
         public class CreateUserVM
         {
-            [Required] public string Name { get; set; } = "";
             [Required, EmailAddress] public string Email { get; set; } = "";
             [Required, StringLength(100, MinimumLength = 6), DataType(DataType.Password)]
             public string Password { get; set; } = "";
             [DataType(DataType.Password), Compare("Password")]
             public string ConfirmPassword { get; set; } = "";
+
+            [Required] public string Name { get; set; } = "";
+            [Phone] public string? PhoneNumber { get; set; }
+
+            [Required(ErrorMessage = "Chọn 1 vai trò")]
+            public string? SelectedRole { get; set; }
             public List<RoleSelection> Roles { get; set; } = new();
         }
+
 
         public class EditUserVM
         {
             [Required] public string Id { get; set; } = "";
-            [Required] public string Name { get; set; } = "";
             [Required, EmailAddress] public string Email { get; set; } = "";
+
+            [Required] public string Name { get; set; } = "";
             [Phone] public string? PhoneNumber { get; set; }
+
+            [Required(ErrorMessage = "Chọn 1 vai trò")]
+            public string? SelectedRole { get; set; }
             public List<RoleSelection> Roles { get; set; } = new();
         }
 
@@ -81,6 +93,7 @@ namespace QLThuvien.Areas.Admin.Controllers
                     Id = u.Id,
                     Name = string.IsNullOrWhiteSpace(name) ? "(Chưa có tên)" : name,
                     Email = u.Email,
+                    PhoneNumber = u.PhoneNumber,
                     Roles = roles
                 });
             }
@@ -102,36 +115,45 @@ namespace QLThuvien.Areas.Admin.Controllers
         public IActionResult Create()
         {
             var allRoles = _roleManager.Roles.Select(r => r.Name!).ToList();
-            var vm = new CreateUserVM
+            return View(new CreateUserVM
             {
-                Roles = allRoles.Select(r => new RoleSelection { Name = r, Selected = false }).ToList()
-            };
-            return View(vm);
+                Roles = allRoles.Select(r => new RoleSelection { Name = r }).ToList(),
+                SelectedRole = allRoles.FirstOrDefault()
+            });
         }
+
 
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CreateUserVM model)
         {
             if (!ModelState.IsValid)
-                return View(await FillRoles(model));
+            {
+                model.Roles = _roleManager.Roles.Select(r => new RoleSelection { Name = r.Name! }).ToList();
+                return View(model);
+            }
 
             var user = new IdentityUser { UserName = model.Email, Email = model.Email, EmailConfirmed = true };
             var result = await _userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
             {
                 AddErrors(result);
-                return View(await FillRoles(model));
+                model.Roles = _roleManager.Roles.Select(r => new RoleSelection { Name = r.Name! }).ToList();
+                return View(model);
             }
+            if (!string.IsNullOrWhiteSpace(model.PhoneNumber))
+                await _userManager.SetPhoneNumberAsync(user, model.PhoneNumber);
 
-            //await SetFullNameAsync(user, model.Name);
+            await _userManager.AddClaimAsync(user, new Claim("full_name", model.Name));
 
-            var selectedRoles = model.Roles.Where(x => x.Selected).Select(x => x.Name);
-            foreach (var role in selectedRoles)
-                if (await _roleManager.RoleExistsAsync(role))
-                    await _userManager.AddToRoleAsync(user, role);
+            if (!string.IsNullOrEmpty(model.SelectedRole) &&
+                await _roleManager.RoleExistsAsync(model.SelectedRole))
+            {
+                await _userManager.AddToRoleAsync(user, model.SelectedRole);
+            }
 
             return RedirectToAction(nameof(Index));
         }
+
 
         public async Task<IActionResult> Edit(string id)
         {
@@ -141,22 +163,21 @@ namespace QLThuvien.Areas.Admin.Controllers
             var allRoles = _roleManager.Roles.Select(r => r.Name!).ToList();
             var userRoles = await _userManager.GetRolesAsync(user);
             var claims = await _userManager.GetClaimsAsync(user);
-            var name = GetFullNameClaim(claims) ?? "";
+            var nameClaim = claims.FirstOrDefault(c => c.Type == "full_name")?.Value ?? "";
 
             var vm = new EditUserVM
             {
                 Id = user.Id,
                 Email = user.Email ?? "",
-                Name = name,
+                Name = nameClaim,
                 PhoneNumber = user.PhoneNumber,
-                Roles = allRoles.Select(r => new RoleSelection
-                {
-                    Name = r,
-                    Selected = userRoles.Contains(r)
-                }).ToList()
+                Roles = allRoles.Select(r => new RoleSelection { Name = r }).ToList(),
+                SelectedRole = userRoles.FirstOrDefault()
             };
             return View(vm);
         }
+
+
 
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(EditUserVM model)
@@ -165,41 +186,31 @@ namespace QLThuvien.Areas.Admin.Controllers
             if (user is null) return NotFound();
 
             if (!ModelState.IsValid)
-                return View(await FillRoles(model));
+            {
+                model.Roles = _roleManager.Roles.Select(r => new RoleSelection { Name = r.Name! }).ToList();
+                return View(model);
+            }
 
             user.Email = model.Email;
             user.UserName = model.Email;
             var update = await _userManager.UpdateAsync(user);
+            if (!update.Succeeded) { AddErrors(update); model.Roles = _roleManager.Roles.Select(r => new RoleSelection { Name = r.Name! }).ToList(); return View(model); }
+
+            // Cập nhật tên (claim)
             await SetFullNameAsync(user, model.Name);
 
-            if (!update.Succeeded)
-            {
-                AddErrors(update);
-                return View(await FillRoles(model));
-            }
+            // Cập nhật số điện thoại
+            var phoneRes = await _userManager.SetPhoneNumberAsync(user, model.PhoneNumber ?? "");
+            if (!phoneRes.Succeeded) { AddErrors(phoneRes); model.Roles = _roleManager.Roles.Select(r => new RoleSelection { Name = r.Name! }).ToList(); return View(model); }
 
-            await SetFullNameAsync(user, model.Name);
-
-            var phoneResult = await _userManager.SetPhoneNumberAsync(user, model.PhoneNumber ?? "");
-            if (!phoneResult.Succeeded)
-            {
-                AddErrors(phoneResult);
-                return View(await FillRoles(model));
-            }
-
-            var currentRoles = await _userManager.GetRolesAsync(user);
-            var selectedRoles = (model.Roles ?? new()).Where(x => x.Selected).Select(x => x.Name).ToArray();
-
-            // Thêm vai trò mới
-            var toAdd = selectedRoles.Except(currentRoles);
-            if (toAdd.Any()) await _userManager.AddToRolesAsync(user, toAdd);
-
-            // Gỡ vai trò bỏ chọn
-            var toRemove = currentRoles.Except(selectedRoles);
-            if (toRemove.Any()) await _userManager.RemoveFromRolesAsync(user, toRemove);
+            var current = await _userManager.GetRolesAsync(user);
+            if (current.Any()) await _userManager.RemoveFromRolesAsync(user, current);
+            if (!string.IsNullOrEmpty(model.SelectedRole) && await _roleManager.RoleExistsAsync(model.SelectedRole))
+                await _userManager.AddToRoleAsync(user, model.SelectedRole);
 
             return RedirectToAction(nameof(Index));
         }
+
 
         public async Task<IActionResult> ResetPassword(string id)
         {
@@ -208,7 +219,6 @@ namespace QLThuvien.Areas.Admin.Controllers
             return View(new ResetPasswordVM { Id = id });
         }
 
-        // POST: /Admin/IdentityUsers/ResetPassword
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> ResetPassword(ResetPasswordVM model)
         {

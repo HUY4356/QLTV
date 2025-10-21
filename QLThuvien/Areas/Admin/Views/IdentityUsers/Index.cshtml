@@ -11,6 +11,7 @@
         <tr>
             <th>Name</th>
             <th>Email</th>
+            <th>Số ĐT</th>
             <th>Vai trò</th>
             <th style="width:220px"></th>
         </tr>
@@ -21,6 +22,7 @@
             <tr>
                 <td>@u.Name</td>
                 <td>@u.Email</td>
+                <td>@(string.IsNullOrWhiteSpace(u.PhoneNumber) ? "-" : u.PhoneNumber)</td>
                 <td>@string.Join(", ", u.Roles)</td>
                 <td>
                     <a class="btn btn-sm btn-outline-secondary" asp-area="Admin" asp-controller="IdentityUsers" asp-action="Edit" asp-route-id="@u.Id">Sửa</a>
