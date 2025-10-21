@@ -19,13 +19,16 @@ public partial class User
 
     public int RoleId { get; set; }
 
+    // --- KHỞI TẠO CÁC DANH SÁCH ĐỂ SỬA LỖI ---
     public virtual ICollection<DatPhong> DatPhongs { get; set; } = new List<DatPhong>();
 
     public virtual ICollection<DatTruocSach> DatTruocSaches { get; set; } = new List<DatTruocSach>();
 
-    public virtual Role Role { get; set; } = null!;
-
     public virtual ICollection<The> Thes { get; set; } = new List<The>();
 
     public virtual ICollection<ViPhamUser> ViPhamUsers { get; set; } = new List<ViPhamUser>();
+    // ------------------------------------------
+
+    public virtual Role Role { get; set; } = null!;
 }
+

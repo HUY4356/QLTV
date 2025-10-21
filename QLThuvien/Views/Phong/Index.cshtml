@@ -1,0 +1,299 @@
+﻿@model QLThuvien.ViewModels.PhongViewModel
+@{
+    ViewData["Title"] = "Đặt phòng";
+}
+@* ... (Toàn bộ phần <style> giữ nguyên không đổi) ... *@
+<style>
+    /* ----- General Styling ----- */
+    body {
+        background: linear-gradient(to right, #ece9e6, #ffffff);
+        font-family: 'Epunda Slab', serif; /* Sử dụng font từ layout của bạn */
+    }
+
+    .container {
+        max-width: 1200px;
+    }
+    /* ----- Page Header ----- */
+    .page-header {
+        background-color: transparent;
+        padding: 2.5rem 1rem;
+        margin-bottom: 3rem;
+        border-bottom: 2px solid #e0e0e0;
+    }
+
+        .page-header h1 {
+            font-weight: 700;
+            color: #343a40;
+        }
+    /* ----- Room Card Styling ----- */
+    .room-card {
+        background-color: #fff;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+
+        .room-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .room-card .card-header {
+            font-weight: 600;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+            padding: 1rem 1.25rem;
+            font-size: 1.1rem;
+            border-bottom: none;
+        }
+
+        .room-card .card-body {
+            padding: 1.5rem;
+        }
+
+        .room-card .card-title {
+            font-weight: 500;
+        }
+
+        .room-card .list-group-item {
+            border-left: none;
+            border-right: none;
+            padding: 0.85rem 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+            .room-card .list-group-item strong {
+                margin-right: auto;
+            }
+
+        .room-card .card-footer {
+            background-color: #f8f9fa;
+            padding: 1.25rem;
+            border-top: 1px solid #f0f0f0;
+        }
+    /* ----- Status Colors & Gradients ----- */
+    .status-trong {
+        background: linear-gradient(45deg, #28a745, #218838);
+    }
+
+    .status-duocthue {
+        background: linear-gradient(45deg, #dc3545, #c82333);
+    }
+
+    .status-baotri {
+        background: linear-gradient(45deg, #6c757d, #5a6268);
+    }
+
+    .badge {
+        padding: 0.5em 0.75em;
+        font-size: 0.8rem;
+    }
+    /* ----- Button Styling ----- */
+    .btn-primary {
+        background: linear-gradient(45deg, #007bff, #0056b3);
+        border: none;
+        transition: transform 0.2s ease;
+        font-weight: 600;
+    }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+    /* ----- Modal Styling ----- */
+    .modal-content {
+        border-radius: 10px;
+        border: none;
+    }
+
+    .modal-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .modal-title .text-primary {
+        font-weight: 600;
+    }
+</style>
+
+<div class="container my-5">
+    <div class="page-header text-center">
+        <h1 class="display-5">Chọn Phòng & Đặt Lịch</h1>
+        <p class="lead text-muted">Xem danh sách các phòng có sẵn và chọn thời gian phù hợp với bạn.</p>
+    </div>
+
+    @if (Model != null && Model.DanhSachPhong.Any())
+    {
+        @if (Model.CurrentUserId == null)
+        {
+            <div class="alert alert-info text-center">
+                Vui lòng <a asp-area="Identity" asp-page="/Account/Login" class="alert-link">đăng nhập</a> để có thể đặt phòng.
+            </div>
+        }
+
+        <div class="row g-4">
+            @foreach (var phong in Model.DanhSachPhong)
+            {
+                <div class="col-md-6 col-lg-4 d-flex">
+                    <div class="card room-card h-100 w-100">
+                        @* ... (Phần hiển thị card-header, card-body, list-group giữ nguyên không đổi) ... *@
+                        @{
+                            string statusClass = ""; string statusText = ""; string statusGradientClass = "";
+                            switch (phong.TrangThai)
+                            {
+                                case QLThuvien.Models.RoomStatus.Trong: statusClass = "bg-success"; statusText = "Còn Trống"; statusGradientClass = "status-trong"; break;
+                                case QLThuvien.Models.RoomStatus.DuocThue: statusClass = "bg-danger"; statusText = "Đang được thuê"; statusGradientClass = "status-duocthue"; break;
+                                case QLThuvien.Models.RoomStatus.BaoTri: statusClass = "bg-secondary"; statusText = "Đang bảo trì"; statusGradientClass = "status-baotri"; break;
+                            }
+                        }
+                        <div class="card-header @statusGradientClass"> @phong.TenPhong </div>
+                        <div class="card-body"> <h5 class="card-title text-primary">@phong.LoaiPhong.ToString()</h5> <p class="card-text text-muted">Nơi lý tưởng cho các buổi học tập và làm việc nhóm hiệu quả.</p> </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Trạng thái:</strong> <span class="badge rounded-pill @statusClass">@statusText</span></li>
+                            <li class="list-group-item"><strong>Sức chứa:</strong> <span class="fw-bold text-dark">@phong.SucChua người</span></li>
+                            <li class="list-group-item"><strong>Diện tích:</strong> <span class="fw-bold text-dark">@phong.DienTich m²</span></li>
+                        </ul>
+                        <div class="card-footer text-center">
+                            @if (phong.TrangThai == QLThuvien.Models.RoomStatus.Trong && Model.CurrentUserId != null)
+                            {
+                                <button class="btn btn-primary px-4 py-2"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#bookingModal"
+                                        data-room-id="@phong.Id"
+                                        data-room-name="@phong.TenPhong">
+                                    <i class="fa-regular fa-calendar-check me-2"></i> Đặt lịch ngay
+                                </button>
+                            }
+                            else
+                            {
+                                <button class="btn btn-secondary" disabled>
+                                    @(Model.CurrentUserId == null ? "Đăng nhập để đặt" : "Không có sẵn")
+                                </button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        @* ... (Phần alert khi không có phòng giữ nguyên) ... *@
+        <div class="alert alert-warning text-center"> <h4 class="alert-heading">Rất tiếc!</h4> <p>Hiện tại không có phòng nào trong hệ thống hoặc không thể tải được dữ liệu.</p> </div>
+    }
+</div>
+
+@* ... (Phần Modal giữ nguyên, chỉ xóa ô nhập UserId) ... *@
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel">Đặt lịch cho phòng: <span id="modalRoomName" class="text-primary"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="bookingForm">
+                    <input type="hidden" id="modalRoomId" />
+                    @* Ô UserID đã được xóa khỏi đây *@
+                    <div class="mb-3">
+                        <label for="modalStartTime" class="form-label">Thời gian bắt đầu</label>
+                        <input type="datetime-local" class="form-control" id="modalStartTime" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="modalEndTime" class="form-label">Thời gian kết thúc</label>
+                        <input type="datetime-local" class="form-control" id="modalEndTime" required>
+                    </div>
+                    <div id="modal-message" class="mt-3"></div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" id="confirmBookingBtn">Xác nhận đặt lịch</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // ... (phần code JavaScript không thay đổi, vì UserId sẽ được lấy từ server) ...
+            const bookingModal = document.getElementById('bookingModal');
+            const confirmBookingBtn = document.getElementById('confirmBookingBtn');
+            const modalMessage = document.getElementById('modal-message');
+
+            bookingModal.addEventListener('show.bs.modal', function (event) {
+                const button = event.relatedTarget;
+                const roomId = button.getAttribute('data-room-id');
+                const roomName = button.getAttribute('data-room-name');
+                document.getElementById('modalRoomId').value = roomId;
+                document.getElementById('modalRoomName').textContent = roomName;
+                modalMessage.innerHTML = '';
+                document.getElementById('modalStartTime').value = '';
+                document.getElementById('modalEndTime').value = '';
+            });
+
+            confirmBookingBtn.addEventListener('click', async function() {
+                // UserId đã được xóa khỏi đây, API sẽ tự xử lý
+                const roomId = document.getElementById('modalRoomId').value;
+                const startTime = document.getElementById('modalStartTime').value;
+                const endTime = document.getElementById('modalEndTime').value;
+
+                if (!roomId || !startTime || !endTime) {
+                    showMessage('Vui lòng điền đầy đủ thông tin thời gian.', 'danger');
+                    return;
+                }
+                if (new Date(startTime) >= new Date(endTime)) {
+                    showMessage('Thời gian kết thúc phải sau thời gian bắt đầu.', 'danger');
+                    return;
+                }
+
+                const bookingRequest = {
+                    phongId: parseInt(roomId),
+                    gioBatDau: startTime,
+                    gioKetThuc: endTime
+                };
+
+                confirmBookingBtn.disabled = true;
+                confirmBookingBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Đang xử lý...';
+
+                try {
+                    const response = await fetch('/api/datphong', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', },
+                        body: JSON.stringify(bookingRequest)
+                    });
+
+                    if (response.ok) {
+                        showMessage('Đặt phòng thành công! Trang sẽ được tải lại sau 3 giây.', 'success');
+                        setTimeout(() => window.location.reload(), 3000);
+                    } else if (response.status === 401) { // Lỗi chưa đăng nhập
+                        showMessage('Bạn cần đăng nhập để thực hiện chức năng này. <a href="/Identity/Account/Login">Đăng nhập ngay</a>', 'warning');
+                    }
+                    else {
+                        const errorData = await response.json();
+                        const errorMessage = errorData.message || `Lỗi ${response.status}: Yêu cầu không thành công.`;
+                        showMessage(errorMessage, 'danger');
+                    }
+                } catch (error) {
+                    console.error('Lỗi khi gọi API:', error);
+                    showMessage('Đã có lỗi kết nối xảy ra. Vui lòng thử lại.', 'danger');
+                } finally {
+                    confirmBookingBtn.disabled = false;
+                    confirmBookingBtn.textContent = 'Xác nhận đặt lịch';
+                }
+            });
+
+            function showMessage(message, type) {
+                modalMessage.innerHTML = `<div class="alert alert-${type}" role="alert">${message}</div>`;
+            }
+        });
+    </script>
+}

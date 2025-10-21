@@ -19,7 +19,9 @@ public partial class DatPhong
 
     public string TrangThai { get; set; } = null!;
 
+    // --- SỬA LỖI: THÊM `= null!` ---
     public virtual Phong Phong { get; set; } = null!;
 
     public virtual User User { get; set; } = null!;
+    // -----------------------------
 }

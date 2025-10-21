@@ -258,10 +258,10 @@ public partial class ThuVienDbContext : DbContext
             entity.ToTable("Phong");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.DienTich).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.DienTich).HasColumnType("decimal(18, 2)");
             entity.Property(e => e.TenPhong)
                 .HasMaxLength(50)
-                .HasColumnName("Ten_Phong");
+                .HasColumnName("TenPhong");
         });
 
         modelBuilder.Entity<Role>(entity =>

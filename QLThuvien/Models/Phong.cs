@@ -13,5 +13,10 @@ public partial class Phong
 
     public int SucChua { get; set; }
 
+    public RoomType LoaiPhong { get; set; }
+
+    public RoomStatus TrangThai { get; set; }
+
     public virtual ICollection<DatPhong> DatPhongs { get; set; } = new List<DatPhong>();
 }
+

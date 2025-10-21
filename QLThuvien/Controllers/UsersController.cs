@@ -14,18 +14,21 @@ namespace QLThuvien.Controllers
     [Authorize(Roles = "Admin,ThuThu")]
     public class UsersController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        // --- SỬA LỖI: THAY ĐỔI DbContext ---
+        private readonly ThuVienDbContext _context;
 
-        public UsersController(ApplicationDbContext context)
+        public UsersController(ThuVienDbContext context) // Thay ApplicationDbContext bằng ThuVienDbContext
         {
             _context = context;
         }
+        // ------------------------------------
 
         // GET: Users
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.User.Include(u => u.Role);
-            return View(await applicationDbContext.ToListAsync());
+            // Sử dụng _context (ThuVienDbContext) để truy cập Users (bảng User)
+            var thuVienDbContext = _context.Users.Include(u => u.Role);
+            return View(await thuVienDbContext.ToListAsync());
         }
 
         // GET: Users/Details/5
@@ -36,7 +39,7 @@ namespace QLThuvien.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
+            var user = await _context.Users
                 .Include(u => u.Role)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)
@@ -50,13 +53,12 @@ namespace QLThuvien.Controllers
         // GET: Users/Create
         public IActionResult Create()
         {
-            ViewData["RoleId"] = new SelectList(_context.Set<Role>(), "Id", "Name");
+            // Lấy danh sách Role từ ThuVienDbContext
+            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Name");
             return View();
         }
 
         // POST: Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Fullname,Email,Phone,Password,CreatedAt,RoleId")] User user)
@@ -67,7 +69,7 @@ namespace QLThuvien.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RoleId"] = new SelectList(_context.Set<Role>(), "Id", "Name", user.RoleId);
+            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Name", user.RoleId);
             return View(user);
         }
 
@@ -79,18 +81,16 @@ namespace QLThuvien.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User.FindAsync(id);
+            var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
-            ViewData["RoleId"] = new SelectList(_context.Set<Role>(), "Id", "Id", user.RoleId);
+            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Name", user.RoleId);
             return View(user);
         }
 
         // POST: Users/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Fullname,Email,Phone,Password,CreatedAt,RoleId")] User user)
@@ -120,7 +120,7 @@ namespace QLThuvien.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["RoleId"] = new SelectList(_context.Set<Role>(), "Id", "Id", user.RoleId);
+            ViewData["RoleId"] = new SelectList(_context.Roles, "Id", "Name", user.RoleId);
             return View(user);
         }
 
@@ -133,7 +133,7 @@ namespace QLThuvien.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
+            var user = await _context.Users
                 .Include(u => u.Role)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)
@@ -150,10 +150,10 @@ namespace QLThuvien.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var user = await _context.User.FindAsync(id);
+            var user = await _context.Users.FindAsync(id);
             if (user != null)
             {
-                _context.User.Remove(user);
+                _context.Users.Remove(user);
             }
 
             await _context.SaveChangesAsync();
@@ -162,7 +162,7 @@ namespace QLThuvien.Controllers
 
         private bool UserExists(int id)
         {
-            return _context.User.Any(e => e.Id == id);
+            return _context.Users.Any(e => e.Id == id);
         }
     }
 }
