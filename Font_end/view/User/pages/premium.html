@@ -9,35 +9,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Epunda+Slab:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".premium_card");
-
-  cards.forEach((card) => {
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const rotateX = ((y - rect.height / 2) / rect.height) * 12;
-      const rotateY = ((x - rect.width / 2) / rect.width) * -12;
-      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05) translateY(-10px)`;
-    });
-
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1) translateY(0)";
-    });
-  });
-});
-</script>
 <body>
   <main class="premium_container">
-    <div class="blur_box_title">
+    <div class="blur_box">
       <h1 class="premium_title">Gói Hội Viên Lạc Hồng Thư</h1>
       <p class="premium_intro">
         Lựa chọn gói phù hợp để tận hưởng trọn vẹn không gian tri thức – dịch vụ thư viện cao cấp, hiện đại và tinh tế.
       </p>
-    </div>
-    <div class="blur_box">
+      
       <div class="premium_cards">
         <!-- Gói cơ bản -->
         <div class="premium_card basic">
