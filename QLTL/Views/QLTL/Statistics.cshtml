@@ -1,0 +1,57 @@
+﻿@model IEnumerable<DocumentManager.Models.Document>
+
+@{
+    ViewBag.Title = "Thống kê tài liệu";
+}
+
+<h2>📊 Thống kê tài liệu</h2>
+
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card p-3 bg-light shadow-sm">
+            <h4>Tổng số tài liệu: <strong>@ViewBag.TotalDocuments</strong></h4>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card p-3 bg-light shadow-sm">
+            <h4>Tài liệu tải hôm nay: <strong>@ViewBag.TodayDocuments</strong></h4>
+        </div>
+    </div>
+</div>
+
+<h4 class="mt-4">📂 Danh sách tài liệu gần nhất</h4>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-info">Chưa có tài liệu nào.</div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>Tên tài liệu</th>
+                <th>Mô tả</th>
+                <th>File</th>
+                <th>Ngày tải lên</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var doc in Model.OrderByDescending(d => d.UploadDate))
+            {
+                <tr>
+                    <td>@doc.Id</td>
+                    <td>@doc.Title</td>
+                    <td>@doc.Description</td>
+                    <td><a href="@doc.FilePath" target="_blank">Xem file</a></td>
+                    <td>@doc.UploadDate.ToString("dd/MM/yyyy HH:mm")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<p>
+    <a href="@Url.Action("Index", "Documents")" class="btn btn-secondary mt-3">⬅ Quay lại danh sách</a>
+</p>
