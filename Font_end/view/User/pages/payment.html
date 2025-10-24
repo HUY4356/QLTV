@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thanh Toán Hội Viên - Lạc Hồng Thư</title>
+  <link rel="stylesheet" href="../css/payment.css">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main class="payment-container">
+    <div class="payment-box">
+      <h1>Thanh Toán Gói Hội Viên</h1>
+      <p class="subtitle">Hoàn tất thông tin bên dưới để kích hoạt quyền lợi hội viên của bạn.</p>
+
+      <section class="plan-info">
+        <h2 id="planName">Gói Hội Viên</h2>
+        <p id="planPrice">Giá: <strong>0đ / tháng</strong></p>
+      </section>
+
+      <form class="payment-form">
+        <label>Phương thức thanh toán:</label>
+        <select id="paymentMethod" required>
+          <option value="">-- Chọn phương thức --</option>
+          <option value="momo">Ví Momo</option>
+          <option value="bank">Chuyển khoản ngân hàng</option>
+          <option value="card">Thẻ tín dụng / Ghi nợ</option>
+        </select>
+
+        <button type="submit" class="confirm-btn">Xác nhận thanh toán</button>
+      </form>
+    </div>
+
+    <!-- QR bên phải -->
+    <div class="qr-box" id="qrBox">
+      <h3 id="qrTitle"></h3>
+      <img id="qrImage" src="" alt="QR thanh toán">
+    </div>
+  </main>
+
+  <script>
+    // --- Hiển thị thông tin gói ---
+    const params = new URLSearchParams(window.location.search);
+    const plan = params.get("plan");
+    const planName = document.getElementById("planName");
+    const planPrice = document.getElementById("planPrice");
+
+    if (plan === "basic") {
+      planName.textContent = "Gói Cơ Bản";
+      planPrice.innerHTML = "Giá: <strong>49.000đ / tháng</strong>";
+    } else if (plan === "advanced") {
+      planName.textContent = "Gói Nâng Cao";
+      planPrice.innerHTML = "Giá: <strong>99.000đ / tháng</strong>";
+    } else if (plan === "premium") {
+      planName.textContent = "Gói Cao Cấp";
+      planPrice.innerHTML = "Giá: <strong>199.000đ / tháng</strong>";
+    }
+    
+
+    // --- Hiển thị QR khi chọn ---
+    const paymentSelect = document.getElementById("paymentMethod");
+    const qrBox = document.getElementById("qrBox");
+    const qrImage = document.getElementById("qrImage");
+    const qrTitle = document.getElementById("qrTitle");
+
+    paymentSelect.addEventListener("change", () => {
+      const value = paymentSelect.value;
+      if (value === "momo") {
+        qrBox.classList.add("active");
+        qrTitle.textContent = "Quét mã QR để thanh toán qua Momo:";
+        qrImage.src = "../img/momo-qr.png";
+      } else if (value === "bank") {
+        qrBox.classList.add("active");
+        qrTitle.textContent = "Quét mã QR để thanh toán qua Ngân hàng:";
+        qrImage.src = "../img/bank-qr.png";
+      } else {
+        qrBox.classList.remove("active");
+      }
+    });
+
+    // --- Xử lý gửi form ---
+    document.querySelector(".payment-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("Thanh toán thành công! Cảm ơn bạn đã đăng ký gói hội viên.");
+      window.location.href = `ty.html?plan=${plan}`;
+    });
+  </script>
+</body>
+</html>

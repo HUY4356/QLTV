@@ -1,340 +1,235 @@
 /* ===== FONT & RESET ===== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* ===== BIẾN MÀU CHỦ ĐẠO ===== */
-:root {
-    --text-main: #ffffff;
-    --text-sub: rgba(255, 255, 255, 0.85);
-    --card-bg: rgba(255, 255, 255, 0.12);
-    --border-light: rgba(255, 255, 255, 0.3);
-    --highlight: #EAD8C0;
+.parent {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  width: 60vw;
+  margin: auto;
+  margin-bottom: 4rem;
+  background: linear-gradient(to right, #0084ffd9, #00d0dfbb);
+  border-radius: 0 0 32px 32px;
 }
 
-/* ===== BODY ===== */
-body {
-    background: url("../img/Tàng thư các.jpg") no-repeat center center/cover;
-    color: var(--text-main);
+.div1 {
+  aspect-ratio: 4 / 3;
+  width: 88%;
+  max-width: 1200px;
+  min-width: 320px;
+  grid-area: 1 / 1 / 4 / 6;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  margin: 20px auto;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(25px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 2px solid rgba(255, 255, 255, 0.377);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);  
+  border-radius: 25px;
 }
 
-/* ===== CONTAINER CHÍNH ===== */
-.account_container {
-    max-width: 1200px;
-    margin: 50px auto;
-    padding: 2rem;
-    border-radius: 16px;
-    background: var(--card-bg);
-    backdrop-filter: blur(14px) saturate(160%);
-    -webkit-backdrop-filter: blur(14px) saturate(160%);
-    border: 1px solid var(--border-light);
-    box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.4),
-        inset 0 2px 6px rgba(255, 255, 255, 0.25);
+.div1-1 {
+  grid-area: 1 / 1 / 4 / 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto;
+  border-radius: 50%;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  width: 80%;
+  height: 80%;
+
+  border: solid #ff0000;
 }
 
-/* ===== TIÊU ĐỀ CHÍNH ===== */
-.account_title {
-    font-family: 'Playfair Display', serif;
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.5rem;
-    color: var(--text-main);
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  border: 3px solid #1B3C53;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-/* ===== BỐ CỤC CHÍNH (GRID) ===== */
-.account_content {
-    display: grid;
-    grid-template-columns: 350px 1fr;
-    gap: 40px;
-    align-items: flex-start;
+.div1-2 {
+  grid-area: 1 / 4 / 4 / 9;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 30% 10% 30% 1fr; /* Sửa lại để các phần tử theo % chiều cao */
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  border: solid #00ff00;
 }
 
-.section_title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    color: var(--text-main);
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--highlight);
-    padding-bottom: 5px;
+.info {
+  grid-area: 1 / 1 / 2 / 7; /* Dòng 1, chiếm 30% chiều cao div1-2 */
+  display: flex;
+  align-items: center;
+  font-size: clamp(1.2rem, 4vw, 2.5rem);
+  font-weight: 600;
+  color: #1B3C53;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
-/* ===== STYLE THẺ THƯ VIỆN (Premium Card) ===== */
-.premium_card {
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    min-height: 350px;
-    position: relative;
-    z-index: 2;
-    overflow: hidden;
-    color: #000;
+.email {
+  grid-area: 2 / 1 / 3 / 7; /* Dòng 2, chiếm 10% chiều cao div1-2 */
+  display: flex;
+  align-items: center;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 200;
+  color: #f5f5f5;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
-.library_card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 15px;
-    border: 3px solid transparent;
-    background: 
-        linear-gradient(white, white) padding-box,
-        linear-gradient(135deg, #FFECB3, #ffffff) border-box;
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    z-index: 1;
+.div1-4 {
+  grid-area: 4 / 8 / 7 / 9;
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  padding: 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Đẩy nút xuống dưới */
+  align-items: flex-end;     /* Đẩy nút sang phải */
+  height: 100%;
+  gap: 0.5em;
+  padding-bottom: 3rem ;
+
+  border: solid #0000ff;
 }
 
-.library_card .card_header,
-.library_card .card_details {
-    position: relative;
-    z-index: 2;
-    text-align: center;
+.logout{
+  width: 160px;         /* Kích thước bằng nhau */
+  height: 48px;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #1B3C53;
+  font-size: 1rem;
+  padding: auto;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ===== AVATAR NGƯỜI DÙNG ===== */
-.user_avatar {
-    width: 180px;
-    height: 180px;
-    background-color: #EAD8C0;
-    border-radius: 50%;
-    margin: 0 auto 15px;
-    line-height: 80px;
-    font-size: 12px;
-    border: 1px solid #ffffff;
+.logout:hover{
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #1B3C53;
 }
 
-.user_avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+.div1-3 {
+  grid-area: 4 / 1 / 8 / 8; 
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  padding: 1vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3em;
+  overflow-y: auto;
+
+  border: solid #ffff00;
 }
 
-/* ===== THÔNG TIN NGƯỜI DÙNG ===== */
-.user_name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    margin-bottom: 5px;
-    color: #ffffff;
-    text-shadow: 
-        0px 1px 0px rgba(255, 255, 255, 0.6),
-        0px -1px 0px #333,
-        0px 2px 2px rgba(0, 0, 0, 0.3);
+
+
+/* Tag example */
+.tag {
+  font-size: clamp(0.45rem, 1vw, 0.6rem);
+  padding: 5px 16px;
+  color: #1B3C53;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-right: 0.3rem;
+  transition: 0.3s;
+  display: inline-block;
+  background: var(--tag-bg, #eee); /* dùng biến CSS cho màu nền */
 }
 
-.member_id {
-    font-size: 0.9rem;
-    color: rgba(0, 0, 0, 0.6);
-    margin-bottom: 20px;
+.favorites {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* luôn 4 cột cho 4 sách */
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  gap: 1rem;
 }
 
-.card_details p {
-    margin: 8px 0;
-    font-size: 1rem;
-    color: #000;
+.book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  transition: box-shadow 0.2s;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.card_level_text {
-    font-weight: 700;
-    color: #000;
+.book-img {
+  width: 95%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  height: auto; /* giữ tỉ lệ hình ảnh */
+  max-height: 95%;
+  display: block;
 }
 
-/* ===== DANH SÁCH DỮ LIỆU ===== */
-.account_data_wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+.div2 {
+  grid-area: 4 / 1 / 6 / 4;
+  border: solid #ffd900;
+  min-height: 4rem;
+  margin-top: 4rem;
 }
 
-.data_list {
-    list-style: none;
-    padding: 0;
+.div3 {
+  grid-area: 4 / 4 / 6 / 6;
+  border: solid #00ff22;
+  min-height: 4rem;
+  margin-top: 4rem;
 }
 
-.data_item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    margin-bottom: 10px;
-    background-color: rgba(230, 230, 230, 0.35);
-    color: var(--text-main);
-    border-left: 5px solid var(--highlight);
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.item_title {
-    font-weight: 700;
-}
-
-.item_status {
-    font-size: 0.9rem;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-weight: 500;
-}
-
-.status_due {
-    background-color: #ffe0e0;
-    color: #D32F2F;
-}
-
-.status_normal {
-    background-color: #e0f2f1;
-    color: #00796B;
-}
-
-.view_all_link {
-    display: block;
-    text-align: right;
-    margin-top: 10px;
-    color: #ffffffcc;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.view_all_link:hover {
-    color: #ffffff;
-    text-decoration: underline;
-}
-
-/* ===== THANH CUỘN ===== */
-.scrollable_list {
-    max-height: 180px;
-    overflow-y: auto;
-    padding-right: 8px;
-}
-
-.scrollable_list::-webkit-scrollbar {
-    width: 6px;
-}
-
-.scrollable_list::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 4px;
-}
-
-.scrollable_list::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.6);
-}
-.cancel_btn {
-    flex-shrink: 0; 
-    
-    display: inline-block;
-    padding: 6px 15px;
-    background: #D32F2F; 
-    color: #fff; 
-    text-decoration: none;
-    border-radius: 4px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 0.85rem;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    border: none;
-    cursor: pointer;
-    margin-left: 15px;
-}
-
-.cancel_btn:hover {
-    background: #b71c1c;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
-}
-
-.card-gold {
-    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
-                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
-    color: #000;
-}
-
-.card-silver {
-    background: radial-gradient(circle at 30% 30%, #f8f8f8 0%, #d9d9d9 25%, #a9a9a9 60%, #7a7a7a 100%);
-    color: #000;
-}
-
-.card-bronze {
-    background: radial-gradient(circle at 40% 40%, #f6d6b8 0%, #d49b6a 40%, #8b5e34 80%);
-    color: #000;
-}
-
-.card-black {
-    background: linear-gradient(145deg, #2b2b2b, #1a1a1a);
-    color: #fff; /* Đổi thành trắng cho thẻ đen */
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
-}
-
-/* ===== THẺ DIAMOND (HOLOGRAPHIC) - Chuyển sang chữ sáng cho dễ đọc ===== */
-.card-diamond {
-    background: url(../img/holo.jpg) center center/cover no-repeat;
-    color: #fff;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), inset 0 0 10px rgba(255, 255, 255, 0.1); 
-    position: relative; 
-    overflow: hidden; 
-    transition: transform 0.3s ease; 
-    filter: brightness(1.1) contrast(1.1);
-}
-
-/* Hiệu ứng ánh sáng lướt qua giữ nguyên */
-.card-diamond::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 100%;
-    background: linear-gradient(
-        105deg,
-        transparent 40%,
-        rgba(255, 255, 255, 0.3) 50%,
-        rgba(255, 255, 255, 0.5) 55%,
-        transparent 60%
-    );
-    transform: translateX(-100%);
-    transition: transform 0.8s ease;
-    mix-blend-mode: overlay;
-    z-index: 10;
-}
-
-/* Định dạng chữ sáng, nổi bật trên nền holo */
-.card-diamond .user_name {
-    color: #ffffff; /* Màu xanh cyan sáng */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8), 0 0 10px #000000;
-}
-
-.card-diamond .member_id,
-.card-diamond .card_details p {
-    color: #ffffff;
-    z-index: 11;
-    position: relative;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8), 0 0 10px #000000;
-}
-
-.card-diamond .card_level_text {
-    color: #ffffff;
-    text-shadow: 0 0 3px #000;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8), 0 0 10px #000000;
-}
-
-/* ===== RESPONSIVE ===== */
+/* Responsive: nhỏ hơn thì thu nhỏ lại */
 @media (max-width: 900px) {
-    .account_content {
-        grid-template-columns: 1fr;
-    }
-
-    .account_card_wrapper {
-        order: -1;
-        max-width: 350px;
-        margin: 0 auto;
-    }
+  .favorites {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .book-img {
+    width: 90%;
+  }
 }

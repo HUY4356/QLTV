@@ -1,21 +1,17 @@
-<<<<<<< Updated upstream
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap');
 /* ===== font-family: 'Roboto', sans-serif;
          font-family: 'Playfair Display', serif;
 ===== */
 /* ===== RESET ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 body {
   font-family: "Epunda Slab", serif;
  background: #ffffff;
   
 }
+
 
 
 /* ===== MAIN BOX ===== */
@@ -46,14 +42,14 @@ body {
   height: auto;
 } */
 
-=======
+
 
     body {
       font-family: "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(120deg, #f0e9df, #e8f1fa);
-      margin: 0;
-      padding: 40px 0;
-      display: flex;
+      /* background: linear-gradient(120deg, #f0e9df, #e8f1fa); */
+      margin-top: 0px;
+      padding: 0px;
+      
       flex-direction: column;
       align-items: center;
     }
@@ -64,13 +60,15 @@ body {
       grid-template-columns: repeat(5, 1fr);
       gap: 25px;
       width: 80%;
-      margin: 0 auto;
+    
       justify-items: center;
     }
->>>>>>> Stashed changes
+
 
     /* --- MỖI CARD --- */
     .book-card {
+      margin-top: 20px;
+      margin-bottom: 20px;
       background: white;
       border-radius: 12px;
       overflow: hidden;
@@ -108,10 +106,10 @@ body {
       width: 100%;
       text-align: center;
       margin-top: 40px;
-<<<<<<< Updated upstream
+
       margin-bottom: 80px;
-=======
->>>>>>> Stashed changes
+
+
     }
 
     .pagination {
@@ -132,11 +130,9 @@ body {
       padding: 8px 14px;
       border-radius: 6px;
       cursor: pointer;
-<<<<<<< Updated upstream
+
       transition:  0.3s;
-=======
-      /* transition: background 0.3s; */
->>>>>>> Stashed changes
+
     }
 
     .pagination button:hover {
@@ -147,7 +143,7 @@ body {
       display: flex;
       gap: 4px;
     }
-<<<<<<< Updated upstream
+
 .page-numbers {
   display: flex;
   align-items: center;
@@ -175,5 +171,3 @@ body {
   background: #2176bd;
   color: white;
 }
-=======
->>>>>>> Stashed changes
