@@ -87,9 +87,7 @@ body {
   padding-bottom: 6rem; /* chừa chỗ cho nút */
 }
 
-.premium-card::hover {
 
-}
 
 .premium_card::before {
     content: '';
