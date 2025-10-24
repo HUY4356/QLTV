@@ -1,0 +1,34 @@
+﻿@model QLTV_Backend.Models.BaoCaoVongQuaySach
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BaoCaoVongQuaySach</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DanhMucSach_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DanhMucSach_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThongKeLuotMuon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThongKeLuotMuon)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
