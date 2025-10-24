@@ -194,8 +194,8 @@ body {
     text-decoration: none;
     border-radius: 10px;
     font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 1.1rem;
+    font-weight: 700;
+    font-size: 1.4rem;
     transition: all 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     position: absolute;
@@ -250,7 +250,7 @@ body {
     Gói Cao Cấp (DIAMOND/HOLOGRAPHIC, class 'premium')
 ============================================== */
 .premium_card.premium {
-    background: url(../img/holo.jpg) center center/cover no-repeat;
+    background: url(../img/holo2.jpg) center center/cover no-repeat;
     /* Đặt màu chữ mặc định của thẻ Diamond là ĐEN */
     color: #000; 
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
@@ -283,7 +283,6 @@ body {
 }
 
 .premium_card.premium .card_benefits li {
-    /* Đặt màu chữ lợi ích là ĐEN */
     color: #ffffff;
 }
 
