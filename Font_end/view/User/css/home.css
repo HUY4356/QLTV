@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap');
 /* ===== font-family: 'Roboto', sans-serif;
-         font-family: 'Playfair Display', serif;
+			font-family: 'Playfair Display', serif;
 ===== */
 /* ===== RESET ===== */
 * {
@@ -15,6 +15,11 @@ body {
   background: #EAD8C0;
 }
 
+/* Căn giữa section đặt phòng khi cuộn tới */
+#booking-room-section {
+    scroll-margin-top: 30vh; 
+}
+
 /* ===== MAIN BOX ===== */
 .main_box {
   width: 100%;
@@ -24,8 +29,8 @@ body {
 }
 
 /* ===============================
-   🏛 HOME (SLOGAN) SECTION
-   =============================== */
+  	🏛 HOME (SLOGAN) SECTION
+  	=============================== */
 .home_wrapper {
   width: 100%;
   margin: 0 auto;
@@ -106,7 +111,7 @@ body {
 /* ========== OPTION B: mỗi slide = 25% track (hiện nhiều phần cùng lúc) ========= */
 .home_img {
   width: 100%;
-  max-width: 320px;           /* kích thước khung lớn hơn nếu muốn nhiều ảnh cùng thấy */
+  max-width: 320px; 
   aspect-ratio: 3/4;
   margin: auto;
   overflow: hidden;
@@ -117,8 +122,6 @@ body {
 
 .home_swiper {
   display: flex;
-  width: calc(4 * 25%);       /* 4 * 25% = 100% của tổng track; giữ tương tự phần Room */
-  /* nhưng để track trượt cần tính toán tương ứng; dễ nhất là dùng width:400% như trên */
   width: 400%;
   height: 100%;
   animation: slideHomeB 18s infinite linear;
@@ -140,15 +143,13 @@ body {
 @keyframes slideHomeB {
   0%      { transform: translateX(0); }
   25%     { transform: translateX(0); }
-
   31.25%  { transform: translateX(-25%); }
   56.25%  { transform: translateX(-25%); }
-
   62.5%   { transform: translateX(-50%); }
   87.5%   { transform: translateX(-50%); }
-
   93.75%  { transform: translateX(-75%); }
   100%    { transform: translateX(-75%); }
+
 }
 
 /* Hover để tạm dừng */
@@ -168,8 +169,8 @@ body {
 }
 
 /* ===============================
-   ✨ FEATURED SECTION
-   =============================== */
+  	✨ FEATURED SECTION
+  	=============================== */
 .featured_section {
   position: relative;
   width: 80%;
@@ -258,8 +259,8 @@ body {
 }
 
 /* ===============================
-   ✍️ AUTHOR SECTION (Responsive)
-   =============================== */
+  	✍️ AUTHOR SECTION (Responsive)
+  	=============================== */
 .author_section {
   position: relative;
   width: 100%;
@@ -415,8 +416,8 @@ body {
 
 
 /* ===============================
-   🏠 ROOM SECTION
-   =============================== */
+  	🏠 ROOM SECTION
+  	=============================== */
 .room_section {
   position: relative;
   width: 100%;
@@ -480,47 +481,24 @@ body {
   95%  { transform: translateX(-75%); }
   100% { transform: translateX(0); }
 }
-
 /* ===== THẺ PHÒNG (ĐỒNG BỘ VỚI WEB CHÍNH) ===== */
+
 .room_card_section {
   width: 80%;
-  margin: 4rem auto;
-  background: #F9F3EF; /* cùng tone nền */
   border-radius: 12px;
   text-align: center;
-  box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.2),
-    inset 0 2px 4px rgba(255, 255, 255, 0.3);
-  border: solid 3px rgba(0,0,0,0.15);
+  margin:2rem auto 6rem auto;
 }
-
-.room_card_title {
-  position: relative;
-  background: #A79277;
-  font-family: 'Playfair Display', serif;
-  color: #EAD8C0;
-  font-size: 2.5rem;
-  font-weight: 700;
-  padding: 0.6rem 2rem;
-  border-radius: 12px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  z-index: 15;
-  border: solid 3px rgba(0, 0, 0, 0.2);
-  display: inline-block;
-  margin: -3rem auto 2rem auto;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
 
 /* Grid 3 cột (2 hàng) */
 .room_card_grid {
   display: grid;
+  width: 80%;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   justify-content: center;
   align-items: stretch;
+  margin: 0 auto;
 }
 
 /* Card từng phòng */
@@ -529,11 +507,11 @@ body {
   border-radius: 16px;
   border: 2px solid rgba(0,0,0,0.2);
   box-shadow: -10px 4px 15px rgba(0,0,0,0.3);
-  padding: 1.5rem;
+  padding: 1rem;
   transition: all 0.3s ease;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-direction: column; /* Quan trọng: Xếp các phần tử theo cột */
+  height: 100%; /* Giúp card co giãn đồng bộ */
 }
 
 .room_card_item:hover {
@@ -551,11 +529,28 @@ body {
 }
 
 .room_card_item h3 {
-  font-size: 1.3rem;
-  color: #1B3C53;
+  font-size: 1.7rem;
+  color: #2c251c;
   margin: 0.5rem 0;
   font-weight: 700;
   font-family: 'Playfair Display', serif;
+}
+
+
+.card_content_wrapper {
+  display: flex;
+  flex-direction: row; /* Căn ngang mô tả (p) và nút (a) */
+  align-items: flex-end; /* Căn nút và đoạn văn bản xuống dưới cùng */
+  margin-top: auto; /* Đẩy wrapper này xuống dưới cùng của flex container chính (.room_card_item) */
+  flex-grow: 1; /* Cho phép wrapper chiếm hết không gian còn lại */
+}
+
+
+.room_overlay {
+  display: flex; 
+  align-items: flex-end; 
+  justify-content: space-between; 
+  width: 100%;
 }
 
 .room_card_item p {
@@ -563,8 +558,9 @@ body {
   color: #2c251c;
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
-  margin-bottom: 1rem;
-  flex-grow: 1;
+  margin-bottom: 0; /* Loại bỏ margin-bottom để căn chỉnh với nút */
+  flex-grow: 1; 
+  margin-right: 1rem; /* Khoảng cách giữa mô tả và nút */
 }
 
 .room_card_btn {
@@ -574,10 +570,13 @@ body {
   text-decoration: none;
   padding: 0.6rem 1.5rem;
   border-radius: 10px;
-  font-weight: 600;
+  font-weight: 400;
   transition: all 0.3s ease;
   font-family: 'Roboto', sans-serif;
   box-shadow: 3px 3px 6px rgba(0,0,0,0.25);
+  /* Thuộc tính Flexbox để căn chỉnh nút */
+  flex-shrink: 0; /* Đảm bảo nút không bị co lại */
+  align-self: flex-end; /* Căn nút xuống cuối cùng */
 }
 
 .room_card_btn:hover {
@@ -587,12 +586,13 @@ body {
 }
 
 /* ===========================
-   🏡 ĐẶT PHÒNG (giống section tác giả)
+    🏡 ĐẶT PHÒNG (giống section tác giả)
 =========================== */
 .booking_section_room {
   position: relative;
   width: 100%;
-  background: #7e6e59; /* nền nâu nhẹ như section tác giả */
+  margin: 8rem auto 0rem auto;
+  background: #7e6e59;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -621,7 +621,7 @@ body {
   flex-wrap: wrap;
   gap: 2rem;
   width: min(90%, 1100px);
-  background: rgba(255, 254, 254, 0.35);
+  background: #A79277;
   backdrop-filter: blur(18px) saturate(150%);
   -webkit-backdrop-filter: blur(18px) saturate(150%);
   border-radius: 16px;
@@ -635,8 +635,6 @@ body {
   margin-bottom: 2rem;
 }
 
-/* Hai khối con */
-.booking_user_info,
 .booking_room_form {
   flex: 1 1 350px;
   background: rgba(255,255,255,0.25);
@@ -648,37 +646,45 @@ body {
   border: solid 1px rgba(255,255,255,0.4);
 }
 
-.booking_user_info h3,
 .booking_room_form h3 {
   font-family: 'Playfair Display', serif;
-  color: #1B3C53;
-  font-size: 1.5rem;
+  color: #1f180e;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
   text-align: center;
 }
 
-.booking_user_info p {
-  margin-bottom: 10px;
-  font-size: 1rem;
-  color: #2c251c;
-  font-family: 'Roboto', sans-serif;
+.booking_room_form .form_row_inline {
+    display: flex;
+    gap: 1rem;
+    margin-top: 15px; /* Khoảng cách giữa các hàng */
+    margin-bottom: 15px;
 }
 
-/* Form nhập */
+.booking_room_form .form_group {
+    flex: 1 1 30%; /* Cho 3 trường chia đều không gian */
+    display: flex;
+    flex-direction: column; /* Xếp label lên trên input/select */
+}
+
+
 .booking_room_form label {
-  display: block;
-  margin-top: 10px;
-  font-weight: 600;
-  color: #2c251c;
+  display: block; /* Chuyển về block để label chiếm hàng trong form_group */
+  margin-top: 0;
+  margin-bottom: 4px;
+  font-weight: 700;
+  color: #1f180e;
   font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .booking_room_form select,
 .booking_room_form input[type="date"] {
-  width: 100%;
+  width: 100%; /* Đặt lại 100% để lấp đầy form_group */
   padding: 10px 12px;
-  margin-top: 6px;
+  margin-top: 0; /* Loại bỏ margin-top dư thừa */
   border-radius: 10px;
   border: 1px solid rgba(0,0,0,0.2);
   background: rgba(255,255,255,0.9);
@@ -689,7 +695,7 @@ body {
 .booking_room_form select:focus,
 .booking_room_form input[type="date"]:focus {
   border-color: #A79277;
-  box-shadow: 0 0 6px rgba(167, 146, 119, 0.5);
+  box-shadow: 0 0 8px rgba(167, 146, 119, 0.7);
 }
 
 /* Nút gửi */
@@ -716,8 +722,8 @@ body {
 }
 
 /* =============================
-   💬 REVIEW SECTION - Ngang
-   ============================= */
+  	💬 REVIEW SECTION - Ngang
+  	============================= */
 .review_section {
   text-align: center;
   width: 100%;
@@ -727,7 +733,7 @@ body {
   backdrop-filter: blur(10px);
   box-shadow:
     inset 0 10px 30px rgba(0, 0, 0, 0.6),
-    inset 0 -10px 20px rgba(255, 255, 255, 0.15); /* 👈 hiệu ứng lõm */
+    inset 0 -10px 20px rgba(255, 255, 255, 0.15); 
   border-top: 3px solid rgba(255, 255, 255, 0.2);
   border-bottom: 3px solid rgba(0, 0, 0, 0.4);
   padding: 3rem 2rem;
@@ -961,4 +967,3 @@ body {
     transform: translateY(0) scale(1);
   }
 }
-

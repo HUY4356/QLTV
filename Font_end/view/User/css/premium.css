@@ -1,185 +1,353 @@
-/* ==== Cài đặt chung ==== */
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600;700&display=swap');
-
-/* ==== Khung chính ==== */
-body {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap');
+/* ===== font-family: 'Roboto', sans-serif;
+			font-family: 'Playfair Display', serif;
+===== */
+/* ===== RESET ===== */
+* {
   margin: 0;
   padding: 0;
-  backdrop-filter: blur(5px);
-  background: url("../img/mium.jpg") no-repeat center center fixed;
-  background-size: cover;
-  font-family: 'EB Garamond', serif;
-  /* 🔹 Lớp phủ làm mờ nền nhẹ (nếu muốn nổi thẻ hơn) */
-  position: relative;
-}
-.premium_container {
-  text-align: center;
-  width: 100%;
-  max-width: 1200px;
-  position: relative;
- 
-  
-  /* 🔹 Căn giữa trên trang */
-  margin: 0 auto;            /* Căn giữa ngang */
-  display: flex;             /* Dùng flex để căn giữa dọc + ngang */
-  flex-direction: column;    /* Sắp xếp theo cột */
-  align-items: center;       /* Căn giữa ngang */
-  justify-content: center;   /* Căn giữa dọc */
-  min-height: 100vh;         /* Chiều cao toàn màn hình */
+  box-sizing: border-box;
 }
 
-/* ==== Tiêu đề ==== */
-.blur_box_title {
-  backdrop-filter: blur(10px);
-  background: rgba(138, 223, 232, 0.25);
-  border-radius: 20px;
-  padding: 30px;
-  margin-bottom: 40px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  
+body {
+  font-family: "Epunda Slab", serif;
+  background: #EAD8C0;
+  color: #1B3C53;
+  line-height: 1.6;
+}
+
+.premium_container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("../img/Tàng\ thư\ các.jpg") center/cover no-repeat fixed;
+  position: relative;
+  z-index: 1;
+}
+
+.blur_box {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 2rem 3rem;
+    text-align: center;
+    max-width: 80%;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 2px 8px rgba(255, 255, 255, 0.2);
+    color: #ffe2bd;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
 }
 
 .premium_title {
-  font-size: 2.6rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
   font-weight: 700;
-  color: #f56016;
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
 }
 
 .premium_intro {
+  font-family: 'Roboto', sans-serif;
   font-size: 1.1rem;
-  color: #f6fa11;
+  line-height: 1.8;
+  max-width: 90%;
+  margin: 0 auto;
+  margin-bottom:4rem;
 }
 
-/* ==== Vùng chứa các thẻ ==== */
 .premium_cards {
-  
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  width: 100%;
 }
 
-/* ==== Thẻ hội viên ==== */
 .premium_card {
-  font-family: 'Playfair Display', serif;
-  width: 320px;
-  height: 440px;
-  border-radius: 25px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  position: relative;
-}
-
-.card_content {
-  padding: 30px 25px;
-  height: 100%;
+  border-radius: 20px;
+  padding: 2.5rem;
+  text-align: center;
+  color: #1B3C53;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  color: #ffffffca;
-  backdrop-filter: blur(6px);
+  justify-content: flex-start;
+  box-shadow: 15px 15px 16px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 450px;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 6rem; /* chừa chỗ cho nút */
+}
+
+.premium-card::hover {
+
+}
+
+.premium_card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    border: 3px solid transparent; /* Viền trong suốt mặc định */
+    background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(to right, #ccc, #eee) border-box; /* Nền viền mặc định */
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 1; /* Đảm bảo viền nằm trên nền */
+}
+
+
+.premium_card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg);
+  transition: all 0.8s ease;
+  z-index: 3; /* nằm trên tất cả nội dung */
+  pointer-events: none;
+}
+
+.premium_card:hover::after {
+  left: 140%;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.premium_card:not(:hover)::after {
+  left: -75%;
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.card_title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #1B3C53; /* Màu chữ tiêu đề chung */
+  position: relative;
+  z-index: 2;
+}
+
+.card_benefits {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+  flex-grow: 1; /* Đẩy nút xuống dưới */
+  position: relative;
+  z-index: 2;
   text-align: left;
 }
 
-/* ==== Tên gói ==== */
-/* ==== Vùng chứa thẻ ==== */
-.premium_cards {
-  
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px;
-}
-
-/* ==== Thẻ chung ==== */
-.premium_card {
+.card_benefits li {
   font-family: 'Roboto', sans-serif;
-  width: 300px;
-  height: 420px;
-  padding: 25px;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  text-align: center;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+  color: #f3dbdbd8;
 }
 
-/* ==== Viền phát sáng động ==== */
-.premium_card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-  padding: 2px;
-  background: linear-gradient(45deg, #ff9100, #ff0057, #00ff99);
-  background-size: 300% 300%;
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  animation: borderGlow 5s linear infinite;
+.card_benefits strong {
+  font-weight: 700;
+  color: #ffffffe1; /* Màu nhấn cho các số liệu quan trọng */
 }
 
-/* ==== Hiệu ứng chuyển động màu viền ==== */
-@keyframes borderGlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* ==== Hover sáng hơn ==== */
-.premium_card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 40px rgba(255,255,255,0.25);
-}
-
-/* ==== Nút ==== */
 .card_btn {
-  text-align: center;
-  background: #ffffff7e;
-  color: #fdfdfd;
-  font-weight: bold;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: 0.3s;
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background: #756754;
+  color: #fffefe;
+  text-decoration: none;
+  border-radius: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 450;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  z-index: 2;
 }
+
 .card_btn:hover {
-  background: #f6ff;
-  color: #909090;
-  
+  background: #7e6e59;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* ==== Màu riêng từng gói ==== */
-.basic::before {
-  background: linear-gradient(45deg, #f4f4f4, #edeaea, #e7e6e2);
+/* ============================
+    Màu sắc và nền kim loại cho từng gói
+============================ */
+
+/* Gói Cơ Bản (Đồng - Bronze) */
+.premium_card.basic {
+  /* Nền màu kim loại Đồng */
+    background: radial-gradient(ellipse farthest-corner at right bottom, #D2A679 0%, #B8860B 8%, #8B4513 30%, #703C11 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #FFE4B5 0%, #F5DEB3 8%, #CD853F 25%, #6E4A2F 62.5%, #6E4A2F 100%);
 }
-.advanced::before {
-  background: linear-gradient(45deg, #ff00cc, #6600ff, #aa00ff);
+.premium_card.basic::before {
+    background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(135deg, #CD853F, #8B4513) border-box; /* Viền Đồng */
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
 }
-.premium::before {
-  background: linear-gradient(45deg, #00ffff, #00ff99, #00ff33);
+.premium_card.basic .card_title {
+  color: #ffffff86;
+}
+.premium_card.basic .card_btn {
+  background: #8f5f2f80;
+}
+.premium_card.basic .card_btn:hover {
+  background:none;
 }
 
-/* ==== Tiêu đề và mô tả ==== */
-.card_title {
-  font-size: 1.6rem;
-  font-weight: bold;
-  margin-bottom: 15px;
+
+/* Gói Nâng Cao (Vàng - Gold) */
+.premium_card.advanced {
+  /* Nền màu kim loại Vàng */
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
 }
-.card_text {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #eeeeee;
-  margin-bottom: 20px;
+.premium_card.advanced::before {
+    background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(135deg, #FFECB3, #FFD700) border-box; /* Viền Vàng */
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+.premium_card.advanced .card_title {
+  color: #ffffff86;
+}
+.premium_card.advanced .card_btn {
+  background: #d8b80048;
+}
+.premium_card.advanced .card_btn:hover {
+  background: none;
+}
+
+
+/* Gói Cao Cấp (Bạc - Silver) */
+.premium_card.premium {
+  /* Nền màu kim loại Bạc */
+    background: radial-gradient(ellipse farthest-corner at right bottom, #F0F0F0 0%, #D8D8D8 8%, #A8A8A8 30%, #909090 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #F5F5F5 8%, #BDBDBD 25%, #757575 62.5%, #757575 100%);
+}
+.premium_card.premium::before {
+    background:
+        linear-gradient(white, white) padding-box,
+        linear-gradient(135deg, #E0E0E0, #C0C0C0) border-box; /* Viền Bạc */
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+.premium_card.premium .card_title {
+  color: #ffffff86;
+}
+.premium_card.premium .card_btn {
+  background: #bbbbbb8f;
+}
+.premium_card.premium .card_btn:hover {
+  background: none;
+}
+
+/* ============================
+    Responsive design
+============================ */
+@media (max-width: 1024px) {
+  .premium_cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .blur_box_title {
+    padding: 1.5rem 2rem;
+  }
+
+  .premium_title {
+    font-size: 2.5rem;
+  }
+
+  .premium_intro {
+    font-size: 1rem;
+  }
+
+  .blur_box {
+    padding: 2rem;
+  }
+
+  .premium_cards {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .premium_card {
+    min-height: auto; /* Reset min-height for smaller screens */
+  }
+
+  .card_title {
+    font-size: 1.8rem;
+  }
+
+  .card_benefits li {
+    font-size: 1rem;
+  }
+
+  .card_btn {
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .premium_container {
+    padding: 2rem 1rem;
+  }
+  .premium_title {
+    font-size: 2rem;
+  }
+  .premium_intro {
+    font-size: 0.9rem;
+  }
+  .blur_box_title {
+    padding: 1rem 1.5rem;
+  }
+  .blur_box {
+    padding: 1.5rem;
+  }
 }

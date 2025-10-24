@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     contact_us: "help/contact_us.html",
     product: "product.html",
     inforbook: "inforbook.html",
+    payment: "payment.html",
   };
 
   const cssMap = {
@@ -69,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     contact_us: "css/help.css",
     product: "css/product.css",
     inforbook: "css/inforbook.css",
+    payment: "css/payment.css",
   };
 
   const jsMap = {
