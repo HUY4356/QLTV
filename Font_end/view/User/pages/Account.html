@@ -1,63 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="../css/account.css">
+    <title>Tài Khoản Hội Viên - Tàng Kinh Các</title>
+    <link rel="stylesheet" href="account.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <main>
-        <div class="main_box">
-            <div class="parent">
-                <div class="div1">
-                    <div class="avatar div1-1">
-                        <img src="img/user_avatar.jpg" alt="Avatar" class="avatar-img">
-                    </div>
-                    <div class="div1-2">
-                        <div class="info">Money D Dragon</div>
-                        <div class="email">TKC_library@gmail.com</div>
-                        <div class="number">+84 09 090 909</div>
-                        <div class="adr">456 Knowledge Avenue, Ninh kieu, CT 10001</div>                     
-                    </div>
-                    <div class="div1-3">
-                        <div class="tags">
-                            <span class="tag">ci-fi</span>
-                            <span class="tag">novel</span>
-                            <span class="tag">seg</span>
-                            <!-- ... -->
+    <main class="account_container">
+        <h1 class="account_title">Thông Tin Tài Khoản</h1>
+
+        <div class="account_content">
+
+            <div class="account_card_wrapper">
+                <h2 class="section_title">Thẻ Hội Viên</h2>
+                <div class="premium_card card-diamond library_card">
+                    <div class="card_header">
+                        <div class="user_avatar">
+                            <img src="img/user.jpg" alt="Ảnh đại diện người dùng">
                         </div>
-                        <div class="favorites">
-                            <div class="book">
-                            <img src="img/bia_sach_1.jpg" alt="Book 1" class="book-img">
-                            </div>
-                            <div class="book">
-                            <img src="img/bia_sach_2.jpg" alt="Book 2" class="book-img">
-                            </div>
-                            <div class="book">
-                            <img src="img/bia_sach_3.jpg" alt="Book 2" class="book-img">
-                            </div>
-                            <div class="book">
-                            <img src="img/bia_sach_4.jpg" alt="Book 2" class="book-img">
-                            </div>
-                        </div>
+                        <h3 class="user_name">Nguyễn Văn A</h3>
+                        <p class="member_id">ID: LACHONG-00123</p>
                     </div>
-                    <div class="actions div1-4">
-                        <button class="btn logout">Edit</button>
-                        <button class="btn logout">Log out</button>
+                    <div class="card_details">
+                        <p><strong>Cấp độ:</strong> <span class="card_level_text">Vàng</span></p>
+                        <p><strong>Ngày hết hạn:</strong> 31/12/2026</p>
                     </div>
                 </div>
-                <div class="div2"> </div>
-                <div class="div3"> </div>
-            </div>             
+            </div>
+
+            <div class="account_data_wrapper">
+                
+                <div class="borrowed_books">
+                    <h2 class="section_title">Sách Đang Mượn (6/20)</h2>
+                    <ul class="data_list scrollable_list">
+                        <li class="data_item book_item">
+                            <span class="item_title">Đại Việt Sử Ký Toàn Thư</span>
+                        </li>
+                        <li class="data_item book_item">
+                            <span class="item_title">Thiên Chúa, Thần Thoại và Lịch Sử</span>
+                        </li>
+                        <li class="data_item book_item">
+                            <span class="item_title">Truyện Kiều (Bản Phục Chế)</span>
+                        </li>
+                        <li class="data_item book_item">
+                            <span class="item_title">Một Thoáng Ta Rực Rỡ Ở Thế Gian</span>
+                        </li>
+                        <li class="data_item book_item">
+                            <span class="item_title">Quốc Văn Giáo Khoa Thư (Tập 1)</span>
+                        </li>
+                        <li class="data_item book_item">
+                            <span class="item_title">Lược Sử Thời Gian</span>
+                        </li>
+                        <li class="data_item book_item">
+                            <span class="item_title">Gương Hiếu Học</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="reserved_rooms">
+                    <h2 class="section_title">Phòng Đang Đặt (1)</h2>
+                    <ul class="data_list">
+                        <li class="data_item room_item">
+                            <div class="room_info">
+                                <span class="item_title">Phòng Tĩnh Tâm (Tầng 3)</span>
+                                <span class="item_status status_normal">Thời gian: 09:00 - 11:00, 25/10/2025</span>
+                            </div>
+                            <button class="cancel_btn">Hủy</button>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
     </main>
-    <script type="module" src="../js/account.js"></script>
-    <script>
-        document.querySelectorAll('.tag').forEach(tag => {
-        const hue = Math.floor(Math.random() * 360);
-        tag.style.setProperty('--tag-bg', `hsl(${hue}, 80%, 70%)`);
-        });
-    </script>
 </body>
 </html>
