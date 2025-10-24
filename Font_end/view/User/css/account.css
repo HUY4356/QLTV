@@ -20,7 +20,7 @@
 
 /* ===== BODY ===== */
 body {
-    background: url("../img/account.jpg") no-repeat center center/cover;
+    background: url("../img/Tàng\ thư\ các.jpg") no-repeat center center/cover;
     color: var(--text-main);
     min-height: 100vh;
 }
@@ -308,7 +308,7 @@ body {
 }
 
 .card-diamond .user_name {
-    color: #00ffff; 
+    color: #feffff; 
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.8), 0 0 10px #00ffff;
 }
 
