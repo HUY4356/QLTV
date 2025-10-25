@@ -1,173 +1,424 @@
-
+/* ===== IMPORT FONTS AND ROOT VARIABLES ===== */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap');
-/* ===== font-family: 'Roboto', sans-serif;
-         font-family: 'Playfair Display', serif;
-===== */
-/* ===== RESET ===== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500;700&display=swap');
+
+:root {
+    --primary-color: #ffffff; /* Xanh đậm */
+    --secondary-color: #c4c4c4; /* Xanh trung bình */
+    --accent-color: #E91E63; /* Màu hồng nổi bật cho nút chính */
+    --background-color-body: #f4f4f9; /* Nền sáng */
+    --glass-bg: rgba(233, 230, 230, 0.342);
+    --glass-border: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== RESET & BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-  font-family: "Epunda Slab", serif;
- background: #ffffff;
-  
+    background: url("../img/product.jpg") no-repeat center center/cover;
+    color: var(--primary-color);
+    line-height: 1.6;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===== PRODUCT CONTAINER & LAYOUT ===== */
+.product_container {
+    width: 90%;
+    margin: 50px auto;
+    background: #47474727; 
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); /* Shadow nhẹ nhàng hơn */
+    padding: 20px;
+}
+.main_content_layout {
+    display: flex;
+    gap: 25px;
+}
+
+/* Cột Trái: Chi tiết sản phẩm chính (2/3) */
+.main_product_column {
+    flex: 2; /* Chiếm 2 phần */
+}
+
+/* Khung chi tiết sản phẩm chính (sử dụng phong cách Glassmorphism nhẹ) */
+.product_detail_box {
+    display: flex;
+    background: var(--glass-bg); 
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+}
+
+/* Cột Phải: Sách Liên Quan (1/3) */
+.related_products_column {
+    flex: 1; /* Chiếm 1 phần */
+    background: var(--glass-bg); 
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); /* Shadow nhẹ nhàng hơn */
+    padding: 20px;
+}
+
+.related_products h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #fff; /* Tiêu đề màu trắng trên nền glass */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.related_list_scroll {
+    max-height: 700px; 
+    overflow-y: scroll;
+    padding-right: 10px; 
+}
+
+/* Thanh cuộn tùy chỉnh (trên Glassmorphism background) */
+.related_list_scroll::-webkit-scrollbar {
+    width: 6px;
+}
+.related_list_scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+.related_list_scroll::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 
+/* ================== CỘT MEDIA & SLIDER (Bên Trái) ================== */
 
-/* ===== MAIN BOX ===== */
-.main_box {
-  width: 100%;
-  margin: auto;
-  overflow: hidden;
-  background: #F9F3EF;
+.product_media {
+    flex: 0 0 350px; 
+    margin-right: 40px;
+    text-align: center;
 }
 
-    /* --- GALLERY --- */
-    .book-gallery {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* tăng từ 5 lên 7 */
-  gap: 25px;
-  width: 80%;
-  margin: 2rem auto;
-  justify-items: center;
-  background: #EAD8C0;
+.book_image_slider {
+    width: 100%;
+    padding-top: 150%; 
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
 }
 
-/* .book-gallery::before,
-.book-gallery::after {
-  content: "";
-  background: white;
-  border-radius: 12px;
-  width: 100%;
-  height: auto;
-} */
+.slider_track {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Nút Điều Hướng */
+.slider_btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(27, 60, 83, 0.7); /* Màu Primary */
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+    border-radius: 50%;
+    font-size: 1.2rem;
+}
+
+.slider_btn:hover {
+    background: var(--secondary-color);
+}
+
+/* Metadata */
+.book_meta {
+    font-family: 'Roboto', sans-serif;
+    margin-top: 15px;
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+    text-align: left;
+    padding: 0 10px;
+}
+
+.book_meta i.fas {
+    color: #FFC107; /* Vàng */
+}
+
+/* ================== PRODUCT INFO (Bên Trái) ================== */
+
+.product_info {
+    flex: 1;
+    text-align: left;
+}
+
+.book_title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem; /* Tăng kích thước tiêu đề */
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.book_author {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.book_category {
+    display: inline-block;
+    background: rgba(69, 104, 130, 0.1); /* Màu secondary nhạt */
+    color: var(--secondary-color); 
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.book_summary h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+/* Nút Hành động */
+.book_actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.action_btn {
+    font-family: 'Roboto', sans-serif;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.action_btn i {
+    margin-right: 8px;
+}
+
+.primary_btn {
+    background: #1aa5db; /* Màu Hồng nổi bật */
+    color: white;
+    box-shadow: 0 4px 10px rgba(233, 30, 99, 0.4);
+    flex: 1 1 200px;
+}
+
+.primary_btn:hover {
+    background: #1483af;
+    transform: translateY(-2px);
+}
+
+.secondary_btn {
+    background: #C2185B; /* Màu Xanh đậm cho hành động phụ */
+    color: white;
+    flex: 1 1 200px;
+}
+
+.secondary_btn:hover {
+    background: #a5154e;
+    transform: translateY(-2px);
+}
+
+/* ================== RELATED CARDS (Glassmorphism) ================== */
+
+.related_card {
+    display: flex;
+    align-items: flex-start; 
+    gap: 15px; 
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    background-color: rgba(255, 255, 255, 0.1); /* Nền nhẹ nhàng */
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+}
+
+.related_card:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.related_card .card_image {
+    width: 80px; 
+    height: 120px; 
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.related_card .card_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.related_card .card_title {
+    font-size: 1.1rem; 
+    font-weight: 700;
+    text-align: left;
+    color: white; /* Text màu trắng trên nền Glass */
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    line-height: 1.4;
+    margin-top: 5px; 
+}
 
 
-
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      /* background: linear-gradient(120deg, #f0e9df, #e8f1fa); */
-      margin-top: 0px;
-      padding: 0px;
-      
-      flex-direction: column;
-      align-items: center;
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1200px) {
+    /* Chuyển sang bố cục Stacked (Cột trên cột) */
+    .main_content_layout {
+        flex-direction: column;
+        gap: 20px;
     }
 
-    /* --- GALLERY --- */
-    .book-gallery {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 25px;
-      width: 80%;
+    .related_products_column {
+        order: 2;
+        max-height: none;
+        box-shadow: none;
+        padding: 0;
+        background: none;
+        /* Reset Glassmorphism border/shadow để chỉ áp dụng cho nội dung bên trong */
+        border: none;
+    }
     
-      justify-items: center;
+    .related_products_column .related_products {
+        background: rgba(255, 255, 255, 0.9); /* Dùng nền trắng bình thường cho mobile/tablet */
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        padding: 20px;
     }
 
-
-    /* --- MỖI CARD --- */
-    .book-card {
-      margin-top: 20px;
-      margin-bottom: 20px;
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      text-align: center;
-      cursor: pointer;
-      width: 100%;
-      max-width: 200px;
+    .related_products h2 {
+        color: var(--primary-color);
+        text-shadow: none;
     }
 
-    .book-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    /* Chuyển sang cuộn ngang cho sách liên quan trên mobile/tablet */
+    .related_list_scroll {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap; 
+        max-height: none;
+        padding-bottom: 10px;
+        padding-right: 0;
+        margin-left: -20px; 
+        margin-right: -20px;
+        padding-left: 20px;
+    }
+    
+    .related_card {
+        /* Chuyển lại style card nhỏ và nền trắng khi cuộn ngang */
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        width: 150px; 
+        height: auto;
+        padding: 10px;
+        margin-right: 15px;
+        white-space: normal;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border: 1px solid #eee;
+        background-color: #fff;
+        vertical-align: top;
+    }
+    
+    .related_card:hover {
+        background-color: #f0f0f5;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .related_card .card_image {
+        width: 100px; /* Tăng kích thước ảnh cho card cuộn ngang */
+        height: 150px;
+        padding-top: 0;
+        position: static;
+    }
+    
+    .related_card .card_title {
+        font-size: 0.9rem;
+        text-align: center;
+        margin-top: 5px;
+        font-weight: 600;
+        color: var(--primary-color);
+        text-shadow: none;
     }
 
-    /* --- ẢNH --- */
-    .book-card img {
-      width: 100%;
-      aspect-ratio: 2 / 3; /* tỷ lệ 1 : 1.5 */
-      object-fit: cover;
+    /* Điều chỉnh bố cục sản phẩm chính */
+    .product_detail_box {
+        flex-direction: column;
+        padding: 20px;
     }
 
-    /* --- TÊN TÁC PHẨM --- */
-    .book-card h3 {
-      font-size: 16px;
-      color: #2c3e50;
-      margin: 10px 0 12px;
-      padding: 0 6px;
-      text-align: center;
+    .product_media {
+        flex: none;
+        width: 80%;
+        max-width: 350px;
+        margin: 0 auto 30px auto;
+        margin-right: 0;
     }
 
-    /* --- PHÂN TRANG --- */
-    .gallery-container {
-      width: 100%;
-      text-align: center;
-      margin-top: 40px;
-
-      margin-bottom: 80px;
-
-
+    .book_title, .book_author {
+        text-align: center;
     }
-
-    .pagination {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      background: #fff;
-      padding: 10px 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    
+    .book_category {
+        display: block;
+        width: fit-content;
+        margin: 0 auto 1.5rem auto;
     }
-
-    .pagination button {
-      border: none;
-      background: #3498db;
-      color: white;
-      font-weight: bold;
-      padding: 8px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-
-      transition:  0.3s;
-
-    }
-
-    .pagination button:hover {
-      background: #2176bd;
-    }
-
-    .page-numbers {
-      display: flex;
-      gap: 4px;
-    }
-
-.page-numbers {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
 }
 
-.page-numbers button {
-  border: none;
-  background: #f0f0f0;
-  color: #2c3e50;
-  font-weight: 600;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.page-numbers button:hover {
-  background: #3498db;
-  color: white;
-}
-
-.page-numbers button.active {
-  background: #2176bd;
-  color: white;
+@media (max-width: 550px) {
+    .product_media {
+        width: 100%;
+        max-width: none;
+    }
+    
+    .book_actions {
+        flex-direction: column;
+    }
 }

@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
     payment_options: "help/payment_options.html",
     contact_us: "help/contact_us.html",
     product: "product.html",
-    inforbook: "inforbook.html",
     payment: "payment.html",
   };
 
@@ -69,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
     payment_options: "css/help.css",
     contact_us: "css/help.css",
     product: "css/product.css",
-    inforbook: "css/inforbook.css",
     payment: "css/payment.css",
   };
 
@@ -86,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
     contact_us: "js/help.js",
     product: "js/product.js",
     premium: "js/premium.js",
-    inforbook: "js/inforbook.js",
     payment: "js/payment.js",
   };
 
