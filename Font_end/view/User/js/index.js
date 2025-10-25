@@ -83,9 +83,11 @@ document.addEventListener("DOMContentLoaded", () => {
     Admin: "js/admin.js",
     get_help: "js/help.js",
     returns: "js/help.js",
-    payment_options: "js/help.js",
     contact_us: "js/help.js",
     product: "js/product.js",
+    premium: "js/premium.js",
+    inforbook: "js/inforbook.js",
+    payment: "js/payment.js",
   };
 
   // Kiểm tra tham số URL

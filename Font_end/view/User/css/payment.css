@@ -1,94 +1,199 @@
+/* ===== RESET VÀ PHÔNG CHỮ ĐÃ CÓ ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    body {
-      
-      font-family: 'EB Garamond', serif;
-      background: linear-gradient(120deg, #91beea, #bdcedf);
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #EAD8C0; /* Màu nền cũ */
+    color: #1B3C53;
+    line-height: 1.6;
+}
+
+/* ===== KHUNG CHÍNH (TƯƠNG TỰ premium_container) ===== */
+.payment_container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    /* Sử dụng background giống trang premium */
+    background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("../img/Tàng\ thư\ các.jpg") center/cover no-repeat fixed;
+    color: #ffffff;
+}
+
+/* ===== BLUR BOX (TƯƠNG TỰ blur_box) ===== */
+.payment_box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 3rem 4rem;
+    max-width: 900px; /* Độ rộng lớn hơn cho form */
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.payment_title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+    color: #ffffff; /* Màu nhấn Vàng */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.payment_intro {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #f0f0f0;
+}
+
+/* ===== NỘI DUNG CHÍNH (FLEX LAYOUT) ===== */
+.payment_content {
+    display: flex;
+    gap: 3rem;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+/* Tóm Tắt Đơn Hàng */
+.summary_card {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.summary_title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #EAD8C0; /* Màu nền ấm */
+}
+
+.summary_item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+}
+
+.summary_item:last-child {
+    border-bottom: none;
+}
+
+.summary_item.total {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #3dc8ff; /* Màu vàng nhấn */
+    padding-top: 1rem;
+}
+
+/* Form Thanh Toán */
+.payment_form {
+    flex: 2;
+}
+
+.form_title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+}
+
+.form_group {
+    margin-bottom: 1rem;
+}
+
+.form_row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form_row .form_group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #FFD700; /* Hiệu ứng focus màu vàng */
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+/* Nút Submit */
+.submit_btn {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    background: #00C6FF; /* Màu xanh nổi bật (tương tự Holographic) */
+    color: #1a1a1a;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.1s;
+    box-shadow: 0 4px 15px rgba(0, 198, 255, 0.4);
+}
+
+.submit_btn:hover {
+    background: #0099CC;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 198, 255, 0.6);
+}
+
+/* Ghi chú bảo mật */
+.security_note {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .payment_box {
+        padding: 2rem;
     }
 
-    .payment-container {
-
-      background: #ffffff;
-      padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      width: 800px;
-      display: flex;
-      gap: 30px;
+    .payment_content {
+        flex-direction: column;
+        gap: 2rem;
     }
-
-    .payment-box {
-      flex: 1;
-    }
-
-    .qr-box {
-      flex: 1;
-      text-align: center;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    .qr-box.active {
-      display: flex;
-    }
-
-    .qr-box img {
-      width: 220px;
-      height: 220px;
-      margin-top: 10px;
-      border: 2px solid #dddddd;
-      border-radius: 10px;
-    }
-
-    h1 {
-      text-align: center;
-      font-weight: 700;
-      margin-bottom: 5px;
-      color: #2c3e50;
-    }
-
-    .subtitle {
-      text-align: center;
-      color: #555;
-      font-size: 15px;
-      margin-bottom: 25px;
-    }
-
-    .plan-info {
-      background: #dfd732b2;
-      padding: 15px;
-      border-radius: 10px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    select {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #bbb;
-      border-radius: 6px;
-      font-size: 15px;
-      margin-bottom: 15px;
-    }
-
-    .confirm-btn {
-      width: 100%;
-      background: #2c3e50;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .confirm-btn:hover {
-      background: #34495e;
-    }
+}

@@ -232,64 +232,34 @@ body {
 }
 
 
-/* Gói Nâng Cao (Vàng - Gold, class 'advanced') */
+/* Gói Bạc (Silver) */
 .premium_card.advanced {
-    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
-                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+    background: radial-gradient(ellipse farthest-corner at right bottom, #E6E8FA 0%, #C0C0C0 8%, #A9A9A9 30%, #778899 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #F0F8FF 0%, #E6E6FA 8%, #D3D3D3 25%, #696969 62.5%, #696969 100%);
 }
+
 .premium_card.advanced::before {
     background:
         linear-gradient(white, white) padding-box,
-        linear-gradient(135deg, #FFECB3, #FFD700) border-box; 
+        linear-gradient(135deg, #E6E8FA, #C0C0C0) border-box; 
 }
+
 .premium_card.advanced .card_title {
     color: #ffffff;
 }
 
-/* ==============================================
-    Gói Cao Cấp (DIAMOND/HOLOGRAPHIC, class 'premium')
-============================================== */
+/* Gói Nâng Cao (Vàng - Gold, class 'premium') */
 .premium_card.premium {
-    background: url(../img/holo2.jpg) center center/cover no-repeat;
-    /* Đặt màu chữ mặc định của thẻ Diamond là ĐEN */
-    color: #000; 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.2);
-    filter: brightness(1.1) contrast(1.1); 
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
 }
-.premium_card.premium:hover {
-    transform: scale(1.02);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9), 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.3);
-}
-
-/* Ánh kim cầu vồng cho viền Diamond */
 .premium_card.premium::before {
     background:
         linear-gradient(white, white) padding-box,
-        linear-gradient(45deg, #FF69B4, #8A2BE2, #00BFFF, #32CD32, #FFD700) border-box;
-    background-size: 400% 400%;
-    animation: holographicBorderShift 10s ease-in-out infinite alternate;
+        linear-gradient(135deg, #FFECB3, #FFD700) border-box; 
 }
-
-@keyframes holographicBorderShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
 .premium_card.premium .card_title {
-    /* Đặt màu tiêu đề là ĐEN, thêm đổ bóng trắng để nổi bật trên nền holo */
-    color: #ffaffb; 
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.801), -1px -1px 2px rgba(255, 255, 255, 0.8);
-}
-
-.premium_card.premium .card_benefits li {
     color: #ffffff;
-}
-
-.premium_card.premium .card_benefits strong {
-    /* Đặt màu nhấn là ĐEN */
-    color: #ff92c9;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.801);
 }
 
 
