@@ -1,0 +1,30 @@
+﻿@model QLThuvien.Models.DatPhong
+@{
+    ViewData["Title"] = "Đặt phòng học";
+}
+
+<h2>Đặt phòng học</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="UserId"></label>
+        <select asp-for="UserId" asp-items="ViewBag.UserId" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="PhongId"></label>
+        <select asp-for="PhongId" asp-items="ViewBag.PhongId" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label asp-for="NgayDat"></label>
+        <input asp-for="NgayDat" class="form-control" type="date" />
+    </div>
+    <div class="form-group">
+        <label asp-for="GioBatDau"></label>
+        <input asp-for="GioBatDau" class="form-control" type="time" />
+    </div>
+    <div class="form-group">
+        <label asp-for="GioKetThuc"></label>
+        <input asp-for="GioKetThuc" class="form-control" type="time" />
+    </div>
+    <button type="submit" class="btn btn-primary">Đặt phòng</button>
+</form>
