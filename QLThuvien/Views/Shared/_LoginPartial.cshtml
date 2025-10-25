@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+        var fullName = User?.FindFirst("full_name")?.Value;
+        var displayName = string.IsNullOrWhiteSpace(fullName) ? User?.Identity?.Name : fullName;
+ 
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+            @displayName
+        </a>
+    </li>
+
+    @* Link quản trị chỉ hiện với Admin *@
+    @if (User != null && User.IsInRole("Admin"))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Admin" asp-controller="IdentityUsers" asp-action="Index">
+                Quản lý tài khoản
+            </a>
+        </li>
+    }
+
+    @* (Tuỳ chọn) Link đến chức năng người dùng bạn đã thêm bằng MVC *@
+    @* <li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Account" asp-action="Profile">Hồ sơ</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-controller="Account" asp-action="ChangePassword">Đổi mật khẩu</a>
+    </li> *@
+
+    <li class="nav-item">
+        <form class="form-inline" method="post"
+              asp-area="Identity" asp-page="/Account/Logout"
+              asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit" class="nav-link btn btn-link text-dark">Đăng xuất</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Đăng ký</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Đăng nhập</a>
+    </li>
+}
+</ul>

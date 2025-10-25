@@ -1,0 +1,54 @@
+﻿@model IEnumerable<QLThuvien.Models.The>
+@{
+    ViewData["Title"] = "Thẻ thư viện";
+}
+<h2>@ViewData["Title"]</h2>
+@* @if (TempData["Ok"] != null)
+{
+    <div class="alert alert-success">@TempData["Ok"]</div>
+} *@
+
+<p><a class="btn btn-primary" asp-area="Admin" asp-controller="Cards" asp-action="Create">+ Cấp thẻ</a></p>
+
+<table class="table table-striped">
+    <thead><tr><th>Mã thẻ</th><th>Người dùng</th><th>Hạn thẻ</th><th>Trạng thái</th><th></th></tr></thead>
+    <tbody>
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td>@t.TheCode</td>
+                <td>@t.User.Fullname (@t.User.Email)</td>
+                <td>@t.HanThe</td>
+                <td>@t.TrangThai</td>
+                <td>
+                    <form asp-area="Admin" asp-controller="Cards" asp-action="ExtendMonths" method="post" class="d-inline">
+                        <input type="hidden" name="id" value="@t.Id" />
+                        <select name="months" class="form-select form-select-sm d-inline w-auto me-2">
+                            <option value="1">+1 tháng</option>
+                            <option value="3">+3 tháng</option>
+                            <option value="6">+6 tháng</option>
+                            <option value="12">+12 tháng</option>
+                        </select>
+                        <button type="submit" class="btn btn-sm btn-outline-primary">Gia hạn</button>
+                    </form>
+
+                    @* Khóa/Mở khóa *@
+                    @if (t.TrangThai == "blocked")
+                    {
+                        <form asp-area="Admin" asp-controller="Cards" asp-action="Unlock" method="post" class="d-inline ms-2">
+                            <input type="hidden" name="id" value="@t.Id" />
+                            <button type="submit" class="btn btn-sm btn-success">Mở khóa</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-area="Admin" asp-controller="Cards" asp-action="Block" method="post" class="d-inline ms-2">
+                            <input type="hidden" name="id" value="@t.Id" />
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Khóa thẻ</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

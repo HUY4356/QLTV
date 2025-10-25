@@ -1,0 +1,706 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "QLThuvien",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/datphong": {
+      "post": {
+        "tags": [
+          "DatPhong"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/YeuCauDatPhongDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/YeuCauDatPhongDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/YeuCauDatPhongDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Rooms": {
+      "get": {
+        "tags": [
+          "Rooms"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Phong"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Phong"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Phong"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Rooms/{id}": {
+      "get": {
+        "tags": [
+          "Rooms"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Phong"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Phong"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Phong"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BanTheSach": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "danhMucSachId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maVach": {
+            "type": "string",
+            "nullable": true
+          },
+          "tinhTrang": {
+            "type": "string",
+            "nullable": true
+          },
+          "danhMucSach": {
+            "$ref": "#/components/schemas/DanhMucSach"
+          },
+          "muonTras": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MuonTra"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BaoCaoVongQuaySach": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "danhMucSachId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "thongKeLuotMuon": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "thoiGianBaoCao": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "danhMucSach": {
+            "$ref": "#/components/schemas/DanhMucSach"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BoSungTaiLieu": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "deXuat": {
+            "type": "string",
+            "nullable": true
+          },
+          "xuLy": {
+            "type": "string",
+            "nullable": true
+          },
+          "capNhat": {
+            "type": "string",
+            "nullable": true
+          },
+          "noiDung": {
+            "type": "string",
+            "nullable": true
+          },
+          "danhMucSachId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "danhMucSach": {
+            "$ref": "#/components/schemas/DanhMucSach"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DanhMucSach": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nhomSachId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maSach": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenSach": {
+            "type": "string",
+            "nullable": true
+          },
+          "tacGia": {
+            "type": "string",
+            "nullable": true
+          },
+          "donGia": {
+            "type": "number",
+            "format": "double"
+          },
+          "slton": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "viTriKe": {
+            "type": "string",
+            "nullable": true
+          },
+          "banTheSaches": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BanTheSach"
+            },
+            "nullable": true
+          },
+          "baoCaoVongQuaySaches": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BaoCaoVongQuaySach"
+            },
+            "nullable": true
+          },
+          "boSungTaiLieus": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BoSungTaiLieu"
+            },
+            "nullable": true
+          },
+          "datTruocSaches": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DatTruocSach"
+            },
+            "nullable": true
+          },
+          "nhomSach": {
+            "$ref": "#/components/schemas/NhomSach"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DatPhong": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "phongId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ngayDat": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "gioBatDau": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "gioKetThuc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          },
+          "phong": {
+            "$ref": "#/components/schemas/Phong"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DatTruocSach": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "danhMucSachId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ngayDat": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          },
+          "danhMucSach": {
+            "$ref": "#/components/schemas/DanhMucSach"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "additionalProperties": false
+      },
+      "HanMuc": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "roleId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxBooks": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxDays": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxRenewals": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maxFines": {
+            "type": "number",
+            "format": "double"
+          },
+          "role": {
+            "$ref": "#/components/schemas/Role"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MuonTra": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "theId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "banTheSachId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ngayMuon": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ngayTra": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "soLanGiaHan": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tienPhat": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          },
+          "banTheSach": {
+            "$ref": "#/components/schemas/BanTheSach"
+          },
+          "the": {
+            "$ref": "#/components/schemas/The"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NhomSach": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maNhom": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenNhom": {
+            "type": "string",
+            "nullable": true
+          },
+          "danhMucSaches": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DanhMucSach"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Phong": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tenPhong": {
+            "type": "string",
+            "nullable": true
+          },
+          "dienTich": {
+            "type": "number",
+            "format": "double"
+          },
+          "sucChua": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "datPhongs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DatPhong"
+            },
+            "nullable": true
+          },
+          "loaiPhong": {
+            "$ref": "#/components/schemas/RoomType"
+          },
+          "trangThai": {
+            "$ref": "#/components/schemas/RoomStatus"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Role": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "hanMucs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/HanMuc"
+            },
+            "nullable": true
+          },
+          "users": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RoomStatus": {
+        "enum": [
+          "Trong",
+          "DuocThue",
+          "BaoTri"
+        ],
+        "type": "string"
+      },
+      "RoomType": {
+        "enum": [
+          "CaNhan",
+          "Nhom",
+          "Thue",
+          "Rieng",
+          "BanCuaSo",
+          "Vip"
+        ],
+        "type": "string"
+      },
+      "The": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "theCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "hanThe": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "trangThai": {
+            "type": "string",
+            "nullable": true
+          },
+          "muonTras": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MuonTra"
+            },
+            "nullable": true
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "additionalProperties": false
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fullname": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "roleId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "datPhongs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DatPhong"
+            },
+            "nullable": true
+          },
+          "datTruocSaches": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DatTruocSach"
+            },
+            "nullable": true
+          },
+          "role": {
+            "$ref": "#/components/schemas/Role"
+          },
+          "thes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/The"
+            },
+            "nullable": true
+          },
+          "viPhamUsers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ViPhamUser"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ViPhamUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "countNoShow": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "countTreHan": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lastUpdated": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "additionalProperties": false
+      },
+      "YeuCauDatPhongDto": {
+        "required": [
+          "gioBatDau",
+          "gioKetThuc",
+          "phongId",
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "phongId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gioBatDau": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "gioKetThuc": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

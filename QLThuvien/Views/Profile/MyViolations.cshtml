@@ -1,0 +1,92 @@
+﻿@model QLThuvien.ViewModels.MyViPhamViewModel
+@{
+    ViewData["Title"] = "Lịch sử Vi phạm của tôi";
+    // Sử dụng Layout chung của người dùng
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+            @if (Model.HasViolations)
+            {
+                <div class="card shadow-sm">
+                    <div class="card-header bg-light">
+                        Thống kê Vi phạm
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Số lần không đến nhận phòng (No-Show):
+                            @if (Model.SoLanNoShow > 0)
+                            {
+                                <span class="badge bg-warning rounded-pill fs-6">@Model.SoLanNoShow lần</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">0 lần</span>
+                            }
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Số lần trả sách trễ hạn:
+                            @if (Model.SoLanTreHan > 0)
+                            {
+                                <span class="badge bg-danger rounded-pill fs-6">@Model.SoLanTreHan lần</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">0 lần</span>
+                            }
+                        </li>
+                        @if (Model.CapNhatCuoi.HasValue)
+                        {
+                            <li class="list-group-item text-muted text-end border-0 pt-1 pb-2">
+                                <small>Lần vi phạm cuối: @Model.CapNhatCuoi.Value.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</small>
+                            </li>
+                        }
+                    </ul>
+                    <div class="card-footer text-muted bg-light">
+                        <small>Vui lòng liên hệ thủ thư nếu bạn có thắc mắc. Vi phạm nhiều lần có thể ảnh hưởng đến quyền lợi sử dụng thư viện.</small>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-success text-center shadow-sm" role="alert">
+                    <h4 class="alert-heading">
+                        <i class="fa-solid fa-check-circle me-2"></i> Chúc mừng!
+                    </h4>
+                    <p>Bạn hiện không có vi phạm nào được ghi nhận.</p>
+                    <hr>
+                    <p class="mb-0">Hãy tiếp tục tuân thủ nội quy thư viện nhé!</p>
+                </div>
+            }
+
+            @* Thêm link quay lại trang quản lý tài khoản của Identity *@
+            <div class="mt-4 text-center">
+                <a asp-area="Identity" asp-page="/Account/Manage/Index" class="btn btn-outline-secondary">
+                    <i class="fa-solid fa-arrow-left me-1"></i> Quay lại trang tài khoản
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @* Không cần script đặc biệt cho trang này trừ khi có tương tác khác *@
+}
+```
+
+---
+
+### Bước 8: Hoàn chỉnh `Program.cs`
+
+File `Program.cs` bạn đã cập nhật ở Bước 9 của phản hồi trước đã **đầy đủ** các đăng ký service cần thiết. Bạn không cần sửa lại nữa.
+
+---
+
+### Bước 9: Cập nhật Layout
+
+
+

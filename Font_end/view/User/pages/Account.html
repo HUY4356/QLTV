@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../css/account.css">
+</head>
+<body>
+    <main>
+        <div class="main_box">
+            <div class="parent">
+                <div class="div1">
+                    <div class="avatar div1-1">
+                        <img src="img/user_avatar.jpg" alt="Avatar" class="avatar-img">
+                    </div>
+                    <div class="div1-2">
+                        <div class="info">Money D Dragon</div>
+                        <div class="email">TKC_library@gmail.com</div>
+                        <div class="number">+84 09 090 909</div>
+                        <div class="adr">456 Knowledge Avenue, Ninh kieu, CT 10001</div>                     
+                    </div>
+                    <div class="div1-3">
+                        <div class="tags">
+                            <span class="tag">ci-fi</span>
+                            <span class="tag">novel</span>
+                            <span class="tag">seg</span>
+                            <!-- ... -->
+                        </div>
+                        <div class="favorites">
+                            <div class="book">
+                            <img src="img/bia_sach_1.jpg" alt="Book 1" class="book-img">
+                            </div>
+                            <div class="book">
+                            <img src="img/bia_sach_2.jpg" alt="Book 2" class="book-img">
+                            </div>
+                            <div class="book">
+                            <img src="img/bia_sach_3.jpg" alt="Book 2" class="book-img">
+                            </div>
+                            <div class="book">
+                            <img src="img/bia_sach_4.jpg" alt="Book 2" class="book-img">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions div1-4">
+                        <button class="btn logout">Edit</button>
+                        <button class="btn logout">Log out</button>
+                    </div>
+                </div>
+                <div class="div2"> </div>
+                <div class="div3"> </div>
+            </div>             
+        </div>
+    </main>
+    <script type="module" src="../js/account.js"></script>
+    <script>
+        document.querySelectorAll('.tag').forEach(tag => {
+        const hue = Math.floor(Math.random() * 360);
+        tag.style.setProperty('--tag-bg', `hsl(${hue}, 80%, 70%)`);
+        });
+    </script>
+</body>
+</html>

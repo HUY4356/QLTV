@@ -1,0 +1,41 @@
+﻿@model QLThuvien.Models.Phong
+@{
+    ViewData["Title"] = "Thêm phòng mới";
+}
+
+<h2 class="mb-4">➕ Thêm phòng mới</h2>
+
+<form asp-action="Create" method="post" class="row g-3">
+    <div class="col-md-6">
+        <label class="form-label">Tên phòng</label>
+        <input asp-for="TenPhong" class="form-control" required />
+    </div>
+    <div class="col-md-6">
+        <label class="form-label">Loại phòng</label>
+        <select asp-for="LoaiPhong" class="form-select">
+            <option value="CaNhan">Cá nhân</option>
+            <option value="Nhom">Nhóm</option>
+            <option value="BanCuaSo">Bàn cửa sổ</option>
+        </select>
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Sức chứa</label>
+        <input asp-for="SucChua" class="form-control" type="number" required />
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Diện tích (m²)</label>
+        <input asp-for="DienTich" class="form-control" type="number" step="0.1" required />
+    </div>
+    <div class="col-md-4">
+        <label class="form-label">Trạng thái</label>
+        <select asp-for="TrangThai" class="form-select">
+            <option value="Trong">Còn trống</option>
+            <option value="DuocThue">Đang thuê</option>
+            <option value="BaoTri">Bảo trì</option>
+        </select>
+    </div>
+    <div class="col-12 text-end">
+        <button type="submit" class="btn btn-success">Lưu phòng</button>
+        <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+    </div>
+</form>

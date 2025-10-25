@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Thống kê thư viện";
+    var topSach = ViewBag.TopSach as List<dynamic>;
+    var topPhong = ViewBag.TopPhong as List<dynamic>;
+}
+
+<div class="container my-5">
+    <h1 class="mb-4 text-center">📊 Thống kê thư viện</h1>
+
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="alert alert-info text-center">
+            <strong>Chế độ quản trị:</strong> Bạn đang xem thống kê với quyền <span class="badge bg-primary">Admin</span>.
+        </div>
+    }
+
+    <!-- Top sách -->
+    <h2 class="mt-4 mb-3">📘 Top 10 sách được mượn nhiều nhất</h2>
+    @if (topSach != null && topSach.Count > 0)
+    {
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>STT</th>
+                    <th>Tên sách</th>
+                    <th>Số lượt mượn</th>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <th>Thao tác</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < topSach.Count; i++)
+                {
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>@topSach[i].TenSach</td>
+                        <td>@topSach[i].SoLanMuon</td>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <td>
+                                <a class="btn btn-sm btn-outline-warning" asp-controller="Sach" asp-action="Edit" asp-route-id="@topSach[i].DanhMucSachId">Sửa</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning">Không có dữ liệu sách mượn.</div>
+    }
+
+    <!-- Top phòng -->
+    <h2 class="mt-5 mb-3">🏢 Top 10 phòng được đặt nhiều nhất</h2>
+    @if (topPhong != null && topPhong.Count > 0)
+    {
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>STT</th>
+                    <th>Tên phòng</th>
+                    <th>Số lượt đặt</th>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <th>Thao tác</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < topPhong.Count; i++)
+                {
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>@topPhong[i].TenPhong</td>
+                        <td>@topPhong[i].SoLanDat</td>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <td>
+                                <a class="btn btn-sm btn-outline-warning" asp-controller="Phong" asp-action="Edit" asp-route-id="@topPhong[i].PhongId">Sửa</a>
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning">Không có dữ liệu phòng đặt.</div>
+    }
+
+    <!-- Tuỳ chọn xuất Excel cho Admin -->
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="mt-4 text-end">
+            <a class="btn btn-success" asp-action="ExportExcel">
+                📥 Xuất thống kê ra Excel
+            </a>
+        </div>
+    }
+</div>

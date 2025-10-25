@@ -1,0 +1,35 @@
+﻿@model IEnumerable<QLThuvien.Areas.Admin.Controllers.IdentityUsersController.IdentityUserListItemVM>
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Quản lý tài khoản</h1>
+<p>
+    <a asp-area="Admin" asp-controller="IdentityUsers" asp-action="Create" class="btn btn-primary">+ Tạo tài khoản</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Số ĐT</th>
+            <th>Vai trò</th>
+            <th style="width:220px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Name</td>
+                <td>@u.Email</td>
+                <td>@(string.IsNullOrWhiteSpace(u.PhoneNumber) ? "-" : u.PhoneNumber)</td>
+                <td>@string.Join(", ", u.Roles)</td>
+                <td>
+                    <a class="btn btn-sm btn-outline-secondary" asp-area="Admin" asp-controller="IdentityUsers" asp-action="Edit" asp-route-id="@u.Id">Sửa</a>
+                    <a class="btn btn-sm btn-outline-warning" asp-area="Admin" asp-controller="IdentityUsers" asp-action="ResetPassword" asp-route-id="@u.Id">Đặt lại MK</a>
+                    <a class="btn btn-sm btn-outline-danger" asp-area="Admin" asp-controller="IdentityUsers" asp-action="Delete" asp-route-id="@u.Id">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

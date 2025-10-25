@@ -1,0 +1,21 @@
+﻿@model QLThuvien.Models.ViPhamUser
+
+@{
+    ViewData["Title"] = "Vi phạm của tôi";
+}
+
+<h2>📌 Vi phạm của bạn</h2>
+
+@if (Model != null)
+{
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Họ tên:</strong> @Model.User?.Fullname</li>
+        <li class="list-group-item"><strong>Số lần No-Show:</strong> @Model.CountNoShow</li>
+        <li class="list-group-item"><strong>Số lần Trễ hạn:</strong> @Model.CountTreHan</li>
+        <li class="list-group-item"><strong>Cập nhật cuối:</strong> @Model.LastUpdated?.ToString("dd/MM/yyyy HH:mm")</li>
+    </ul>
+}
+else
+{
+    <div class="alert alert-success">Bạn chưa có vi phạm nào 🎉</div>
+}

@@ -1,0 +1,47 @@
+﻿@model QLThuvien.ViewModels.PhongViewModel
+@{
+    ViewData["Title"] = "Danh sách phòng";
+}
+
+<h2 class="mb-4">📋 Danh sách phòng</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Tên phòng</th>
+            <th>Loại</th>
+            <th>Sức chứa</th>
+            <th>Diện tích (m²)</th>
+            <th>Trạng thái</th>
+            <th>Lượt đặt</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var phong in Model.DanhSachPhong)
+        {
+            var soLuot = Model.LichDatPhong.ContainsKey(phong.Id)
+            ? Model.LichDatPhong[phong.Id].Count
+            : 0;
+
+            <tr>
+                <td>@phong.TenPhong</td>
+                <td>@phong.LoaiPhong</td>
+                <td>@phong.SucChua</td>
+                <td>@phong.DienTich</td>
+                <td>@phong.TrangThai</td>
+                <td>@soLuot</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@phong.Id" class="btn btn-sm btn-warning">Sửa</a>
+                    <form asp-action="Delete" asp-route-id="@phong.Id" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Xóa phòng này?')">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="mt-4 text-end">
+    <a asp-action="Create" class="btn btn-success">➕ Thêm phòng mới</a>
+</div>
