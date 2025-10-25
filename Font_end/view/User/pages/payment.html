@@ -15,7 +15,7 @@
         <div class="payment_box">
             <h1 class="payment_title">Thanh Toán Gói Cao Cấp</h1>
             <p class="payment_intro">
-                Vui lòng nhập thông tin thanh toán để hoàn tất đăng ký gói **Premium**.
+                Vui lòng chọn thời hạn và chuyển khoản qua QR Code để hoàn tất đăng ký gói **Premium**.
             </p>
 
             <div class="payment_content">
@@ -26,18 +26,20 @@
                         <strong id="selected_package">Gói Premium</strong> 
                     </div>
                     <div class="summary_item">
-                        <span>Giá:</span>
-                        <span id="original_price">15$ / tháng</span> 
+                        <span>Thời hạn:</span>
+                        <strong id="selected_duration">1 tháng</strong> 
+                    </div>
+                    <div class="summary_item">
+                        <span>Giá Gốc / tháng:</span>
+                        <span id="base_price">15$ / tháng</span> 
                     </div>
                     <div class="summary_item total">
                         <span>Tổng Cộng:</span>
-                        <strong id="total_price">15$ / tháng</strong> 
+                        <strong id="total_price">15$</strong> 
                     </div>
                 </div>
 
                 <form class="payment_form">
-                    <h2 class="form_title">Chi Tiết Thanh Toán</h2>
-
                     <div class="form_group">
                         <label for="name">Họ và Tên</label>
                         <input type="text" id="name" placeholder="Ví dụ: Nguyễn Văn A" required>
@@ -47,25 +49,25 @@
                         <label for="email">Email</label>
                         <input type="email" id="email" placeholder="email@example.com" required>
                     </div>
-
+                    
                     <div class="form_group">
-                        <label for="card_number">Số Thẻ (Visa/Mastercard)</label>
-                        <input type="text" id="card_number" placeholder="xxxx xxxx xxxx xxxx" required maxlength="19">
+                        <label for="duration">Chọn Thời Hạn</label>
+                        <select id="duration" required>
+                            <option value="1">1 tháng</option>
+                            <option value="6">6 tháng (Giảm 10%)</option>
+                            <option value="12">12 tháng (Giảm 20%)</option>
+                        </select>
                     </div>
 
-                    <div class="form_row">
-                        <div class="form_group">
-                            <label for="expiry">Ngày Hết Hạn (MM/YY)</label>
-                            <input type="text" id="expiry" placeholder="MM/YY" required maxlength="5">
+                    <div id="qr_details" class="qr_section">
+                        <div class="qr_code_placeholder">
+                            <img id="qr_image" src="img/qr50.jpg" alt="Mã QR Thanh toán">
                         </div>
-                        <div class="form_group">
-                            <label for="cvv">CVV</label>
-                            <input type="text" id="cvv" placeholder="123" required maxlength="3">
-                        </div>
+                        
+                        <p class="qr_note">Lưu ý: Nội dung chuyển khoản là **[HỌ TÊN KHÔNG DẤU]** + **[GÓI]** (Ví dụ: NGUYENVANA PREMIUM).</p>
                     </div>
-
                     <button type="submit" class="submit_btn">
-                        THANH TOÁN 15$
+                        XÁC NHẬN THANH TOÁN
                     </button>
                 </form>
             </div>

@@ -20,7 +20,8 @@
 
 /* ===== BODY ===== */
 body {
-    background: url("../img/Tàng thư các.jpg") no-repeat center center/cover;
+    background:
+    url("../img/account.jpg") no-repeat center center/cover;
     color: var(--text-main);
     min-height: 100vh;
 }
@@ -31,8 +32,8 @@ body {
     margin: 4rem auto 8rem auto;
     padding: 2rem;
     border-radius: 16px;
-    background: var(--card-bg);
-    backdrop-filter: blur(16px) saturate(160%);
+    background: rgba(29, 29, 29, 0.4);
+    backdrop-filter: blur(14px) saturate(160%);
     -webkit-backdrop-filter: blur(14px) saturate(160%);
     border: 1px solid var(--border-light);
     box-shadow:

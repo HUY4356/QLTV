@@ -1,4 +1,3 @@
-/* ===== RESET VÀ PHÔNG CHỮ ĐÃ CÓ ===== */
 * {
     margin: 0;
     padding: 0;
@@ -7,12 +6,11 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: #EAD8C0; /* Màu nền cũ */
+    background: #EAD8C0;
     color: #1B3C53;
     line-height: 1.6;
 }
 
-/* ===== KHUNG CHÍNH (TƯƠNG TỰ premium_container) ===== */
 .payment_container {
     width: 100%;
     min-height: 100vh;
@@ -21,14 +19,12 @@ body {
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    /* Sử dụng background giống trang premium */
     background:
         linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-        url("../img/Tàng\ thư\ các.jpg") center/cover no-repeat fixed;
+        url("../img/payment.jpg") center/cover no-repeat fixed;
     color: #ffffff;
 }
 
-/* ===== BLUR BOX (TƯƠNG TỰ blur_box) ===== */
 .payment_box {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px) saturate(180%);
@@ -36,7 +32,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 15px;
     padding: 3rem 4rem;
-    max-width: 900px; /* Độ rộng lớn hơn cho form */
+    max-width: 900px;
     width: 100%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     text-align: center;
@@ -48,7 +44,7 @@ body {
     font-weight: 700;
     margin-bottom: 0.5rem;
     letter-spacing: 1px;
-    color: #ffffff; /* Màu nhấn Vàng */
+    color: #FFD700;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
 }
 
@@ -59,7 +55,6 @@ body {
     color: #f0f0f0;
 }
 
-/* ===== NỘI DUNG CHÍNH (FLEX LAYOUT) ===== */
 .payment_content {
     display: flex;
     gap: 3rem;
@@ -67,7 +62,6 @@ body {
     margin-bottom: 2rem;
 }
 
-/* Tóm Tắt Đơn Hàng */
 .summary_card {
     flex: 1;
     background: rgba(0, 0, 0, 0.2);
@@ -80,7 +74,7 @@ body {
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
-    color: #EAD8C0; /* Màu nền ấm */
+    color: #EAD8C0;
 }
 
 .summary_item {
@@ -99,20 +93,17 @@ body {
 .summary_item.total {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #3dc8ff; /* Màu vàng nhấn */
+    color: #00C6FF;
     padding-top: 1rem;
 }
 
-/* Form Thanh Toán */
-.payment_form {
-    flex: 2;
+#selected_package {
+    color: #FFD700;
+    font-weight: 700;
 }
 
-.form_title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: #ffffff;
+.payment_form {
+    flex: 2;
 }
 
 .form_group {
@@ -137,7 +128,8 @@ label {
 }
 
 input[type="text"],
-input[type="email"] {
+input[type="email"],
+select {
     width: 100%;
     padding: 0.8rem 1rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -149,18 +141,69 @@ input[type="email"] {
     transition: border-color 0.3s;
 }
 
-input:focus {
-    border-color: #FFD700; /* Hiệu ứng focus màu vàng */
-    outline: none;
-    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+input::placeholder {
+    color: rgba(255, 255, 255, 0.5); 
 }
 
-/* Nút Submit */
+input:focus,
+select:focus {
+    border-color: #00C6FF;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 198, 255, 0.5);
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+select option {
+    background: #1a1a1a;
+    color: #ffffff;
+    padding: 5px;
+}
+
+/* ================================== */
+/* CSS CẬP NHẬT CHO QR CODE */
+/* ================================== */
+
+.qr_code_placeholder {
+    background: #ffffff;
+    border-radius: 8px;
+    margin: 15px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.3;
+    box-shadow: 0 0 15px rgba(0, 198, 255, 0.4);
+    overflow: hidden; /* Đảm bảo ảnh không tràn ra khỏi khung */
+}
+
+/* CSS cho thẻ ảnh QR thực tế */
+.qr_code_placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Giữ tỷ lệ ảnh */
+}
+
+/* Ghi chú dưới QR code */
+.qr_note {
+    text-align: center;
+    margin-top: 10px;
+    color: #FF6347; /* Màu đỏ nhẹ cho ghi chú quan trọng */
+    font-size: 0.95rem;
+}
+
+/* ================================== */
+
+
 .submit_btn {
     width: 100%;
     padding: 1rem;
     margin-top: 1.5rem;
-    background: #00C6FF; /* Màu xanh nổi bật (tương tự Holographic) */
+    background: #00C6FF;
     color: #1a1a1a;
     border: none;
     border-radius: 10px;
@@ -178,7 +221,6 @@ input:focus {
     box-shadow: 0 6px 20px rgba(0, 198, 255, 0.6);
 }
 
-/* Ghi chú bảo mật */
 .security_note {
     text-align: center;
     margin-top: 2rem;
@@ -186,7 +228,6 @@ input:focus {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .payment_box {
         padding: 2rem;
