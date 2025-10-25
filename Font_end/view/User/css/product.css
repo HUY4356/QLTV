@@ -5,7 +5,7 @@
 :root {
     --primary-color: #ffffff; /* Xanh đậm */
     --secondary-color: #c4c4c4; /* Xanh trung bình */
-    --accent-color: #E91E63; /* Màu hồng nổi bật cho nút chính */
+    --accent-color: #e9326f; /* Màu hồng nổi bật cho nút chính */
     --background-color-body: #f4f4f9; /* Nền sáng */
     --glass-bg: rgba(233, 230, 230, 0.342);
     --glass-border: rgba(255, 255, 255, 0.3);
@@ -196,7 +196,7 @@ a {
 
 .book_category {
     display: inline-block;
-    background: rgba(69, 104, 130, 0.1); /* Màu secondary nhạt */
+    background: var(--accent-color); /* Màu secondary nhạt */
     color: var(--secondary-color); 
     padding: 5px 10px;
     border-radius: 5px;
