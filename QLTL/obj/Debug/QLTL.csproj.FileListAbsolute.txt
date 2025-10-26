@@ -1,2 +1,0 @@
-C:\Users\ADMIN\source\repos\QLTL\QLTL\obj\Debug\QLTL.csproj.AssemblyReference.cache
-C:\Users\ADMIN\source\repos\QLTL\QLTL\obj\Debug\QLTL.csproj.CoreCompileInputs.cache
