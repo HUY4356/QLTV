@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Quản lý Thư viện</title>
+    <link rel="stylesheet" href="~/Content/Site.css" />
+</head>
+<body>
+    <div class="navbar">
+        <a href="@Url.Action("Index", "Home")">Trang chủ</a> |
+        <a href="@Url.Action("About", "Home")">Giới thiệu</a> |
+        <a href="@Url.Action("Contact", "Home")">Liên hệ</a>
+    </div>
+    <hr />
+    <div class="container">
+        @RenderBody()
+    </div>
+</body>
+</html>

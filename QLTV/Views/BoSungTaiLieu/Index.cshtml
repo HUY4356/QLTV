@@ -1,0 +1,31 @@
+﻿@model IEnumerable<QLTV.Models.BoSungTaiLieu>
+
+@{
+    ViewBag.Title = "Danh sách tài liệu bổ sung";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-bordered">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.TenTaiLieu)</th>
+        <th>@Html.DisplayNameFor(model => model.NgayBoSung)</th>
+        <th>Thao tác</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.TenTaiLieu)</td>
+            <td>@Html.DisplayFor(modelItem => item.NgayBoSung)</td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.ID }, new { @class = "btn btn-sm btn-warning" }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ID }, new { @class = "btn btn-sm btn-danger" })
+            </td>
+        </tr>
+    }
+</table>

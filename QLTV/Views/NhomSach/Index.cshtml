@@ -1,0 +1,25 @@
+﻿@model IEnumerable<QLTV.Models.NhomSach>
+
+<h2>Danh sách nhóm sách</h2>
+<p><a href="@Url.Action("Create")" class="btn btn-success">+ Thêm nhóm mới</a></p>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Tên nhóm</th>
+        <th>Mô tả</th>
+        <th>Hành động</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.TenNhom</td>
+            <td>@item.MoTa</td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-primary">Sửa</a>
+                <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger">Xóa</a>
+            </td>
+        </tr>
+    }
+</table>

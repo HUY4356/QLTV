@@ -1,0 +1,16 @@
+﻿@model QLTV.Models.NhomSach
+@{
+    ViewBag.Title = "Xóa Nhóm Sách";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<p>Bạn có chắc muốn xóa nhóm <strong>@Model.TenNhom</strong> không?</p>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+    <button type="submit" class="btn btn-danger">🗑 Xóa</button>
+    @Html.ActionLink("⬅️ Hủy", "Index", null, new { @class = "btn btn-secondary" })
+}

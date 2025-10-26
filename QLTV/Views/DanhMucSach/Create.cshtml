@@ -1,0 +1,30 @@
+﻿@model QLTV.Models.DanhMucSach
+@{
+    ViewBag.Title = "Thêm Sách";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label>Tên sách:</label>
+        @Html.TextBoxFor(m => m.TenSach, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Tác giả:</label>
+        @Html.TextBoxFor(m => m.TacGia, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Nhóm sách:</label>
+        @Html.DropDownList("NhomSachId", null, "Chọn nhóm sách", new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-success">💾 Lưu</button>
+    @Html.ActionLink("⬅️ Quay lại", "Index", null, new { @class = "btn btn-secondary" })
+}

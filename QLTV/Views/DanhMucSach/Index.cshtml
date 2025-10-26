@@ -1,0 +1,34 @@
+﻿@model IEnumerable<QLTV.Models.DanhMucSach>
+@{
+    ViewBag.Title = "Danh mục Sách";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>@Html.ActionLink("➕ Thêm Sách", "Create", null, new { @class = "btn btn-primary" })</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Tên sách</th>
+            <th>Tác giả</th>
+            <th>Nhóm sách</th>
+            <th>Tác vụ</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TenSach</td>
+                <td>@item.TacGia</td>
+                <td>@item.NhomSach?.TenNhom</td>
+                <td>
+                    @Html.ActionLink("✏️ Sửa", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-sm" })
+                    @Html.ActionLink("🗑 Xóa", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

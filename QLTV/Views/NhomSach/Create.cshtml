@@ -1,0 +1,21 @@
+﻿@model QLTV.Models.NhomSach
+@{
+    ViewBag.Title = "Thêm Nhóm Sách";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label>Tên nhóm sách:</label>
+        @Html.TextBoxFor(m => m.TenNhom, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.TenNhom, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-success">💾 Lưu</button>
+    @Html.ActionLink("⬅️ Quay lại", "Index", null, new { @class = "btn btn-secondary" })
+}
