@@ -1,21 +1,37 @@
-// ==== SLIDER IMAGE LOGIC ====
-const track = document.getElementById("slider_track");
+// Lấy các phần tử DOM
+const sliderTrack = document.getElementById("slider_track");
 const slides = document.querySelectorAll(".slide");
-const prevBtn = document.getElementById("prev_btn");
 const nextBtn = document.getElementById("next_btn");
+const prevBtn = document.getElementById("prev_btn");
 
-let index = 0;
+let currentIndex = 0;
+const totalSlides = slides.length;
 
+// Cập nhật vị trí slider
 function updateSlider() {
-    track.style.transform = `translateX(-${index * 100}%)`;
+  sliderTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
 }
 
+// Nút kế tiếp
 nextBtn.addEventListener("click", () => {
-    index = (index + 1) % slides.length;
-    updateSlider();
+  currentIndex = (currentIndex + 1) % totalSlides;
+  updateSlider();
 });
 
+// Nút lùi lại
 prevBtn.addEventListener("click", () => {
-    index = (index - 1 + slides.length) % slides.length;
-    updateSlider();
+  currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+  updateSlider();
+});
+
+// ✅ Tuỳ chọn: Tự động chuyển slide sau 4s
+let autoSlide = setInterval(() => {
+  nextBtn.click();
+}, 4000);
+
+// Dừng tự động khi rê chuột vào slider
+const sliderBox = document.querySelector(".book_image_slider");
+sliderBox.addEventListener("mouseenter", () => clearInterval(autoSlide));
+sliderBox.addEventListener("mouseleave", () => {
+  autoSlide = setInterval(() => nextBtn.click(), 4000);
 });
