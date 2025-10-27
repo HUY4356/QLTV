@@ -20,6 +20,7 @@ CREATE TABLE DanhMucSach (
   DonGia DECIMAL(10,2) NOT NULL CHECK (DonGia >= 0),
   SLTon INT NOT NULL CHECK (SLTon >= 0),
   ViTriKe NVARCHAR(50) NOT NULL,
+  AnhUrl NVARCHAR(255),
   FOREIGN KEY (NhomSach_id) REFERENCES NhomSach(id)
 );
 
